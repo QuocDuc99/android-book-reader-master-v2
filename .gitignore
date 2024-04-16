@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/android-fbreader-library/.gradle/
+/android-fbreader-library/build/
+/android-fbreader-library/build/intermediates/javac/debug/classes/
