@@ -58,6 +58,7 @@
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="textTitle,imgBack" />
@@ -74,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/afc_15dp"
+                android:visibility="invisible"
                 android:src="@drawable/ic_view_list_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

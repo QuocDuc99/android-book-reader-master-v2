@@ -269,7 +269,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 onCreate();
             }
         };
-        mBookApplication = new BookApplication(this);
+       // mBookApplication = new BookApplication(this);
         mMainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         layoutMenu = (ConstraintLayout) findViewById(R.id.layoutMenu);
@@ -283,15 +283,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         actionSearch = (SearchView) findViewById(R.id.imgSearch);
         btnCloseSearch = (ImageView) findViewById(R.id.iconClose);
         btnOption = (ImageView) findViewById(R.id.imageOption);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            getSupportActionBar().setBackgroundDrawable(
-                    new ColorDrawable(getResources().getColor(R.color.white)));
-        }
-        if (toolbar.getOverflowIcon() != null) {
-            toolbar.getOverflowIcon().setTint(Color.BLACK);
-        }
+
         Log.d("ducNQ", "onCreatesavedInstanceState: ");
         storage = new Storage(this);
 
@@ -387,7 +379,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        /*getMenuInflater().inflate(R.menu.main, menu);
 
         MenuItem searchMenu = menu.findItem(R.id.action_search);
         //        MenuItem fullScreen = menu.findItem(R.id.actionFullScreen);
@@ -474,23 +466,23 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 lastSearch = "";
             }
         });
-
+*/
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+      /*  int id = item.getItemId();
 
         if (id == R.id.action_about) {
             AboutPreferenceCompat.buildDialog(this, R.raw.about).show();
             return true;
         }
 
-        /*if (id == R.id.actionFullScreen) {
+        *//*if (id == R.id.actionFullScreen) {
           //  sendBroadcast(new Intent(ACTION_MENU));
             return true;
-        }*/
+        }*//*
 
         if (id == R.id.action_settings) {
             SettingsActivity.startActivity(this);
@@ -537,7 +529,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             edit.commit();
             restartActivity();
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -888,7 +880,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         isRunning = true;
         RotatePreferenceCompat.onResume(this, BookApplication.PREFERENCE_ROTATE);
         CacheImagesAdapter.cacheClear(this);
-        mBookApplication.ttf.preloadFonts();
+      //  mBookApplication.ttf.preloadFonts();
     }
 
     @Override
@@ -956,15 +948,15 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 // btnFont.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
             }
         });
-        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) btnMucLuc.setVisibility(View.INVISIBLE);
-            }
-        });
+//        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
+//            @Override
+//            public void onChanged(Boolean aBoolean) {
+//                if (aBoolean) btnMucLuc.setVisibility(View.INVISIBLE);
+//            }
+//        });
         mMainViewModel.eventSearchN.observe((LifecycleOwner) this, aBoolean -> {
             if (btnSearch != null) {
-                btnSearch.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
+               // btnSearch.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
             }
         });
         mMainViewModel.eventAddBookMark.observe((LifecycleOwner) this, new Observer<Boolean>() {
@@ -979,13 +971,13 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         mMainViewModel.eventOpenNote.observe((LifecycleOwner) this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
+               /* if (aBoolean) {
                     mGroup.setVisibility(View.VISIBLE);
                     layoutMenu.setVisibility(View.INVISIBLE);
                 } else {
                     mGroup.setVisibility(View.INVISIBLE);
                     layoutMenu.setVisibility(View.VISIBLE);
-                }
+                }*/
             }
         });
         mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {

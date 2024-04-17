@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main1);
-        String pathBook = "https://cdn-file.thuvien.edu.vn/Uploads/THU_VIEN/shn/3/1823/UserFiles/TV5-2-5d70c0b3-08c8-4b60-bc8e-6d4dbeeb7c60.pdf";
+        String pathBook =  "https://media-dev.thuvien.edu.vn/v_lib/upload/79776317/ebook/2024/3/65eecef546c6d1001d17d10d.pdf";
+       // String pathBook = "https://cdn-file.thuvien.edu.vn/Uploads/THU_VIEN/shn/3/1823/UserFiles/TV5-2-5d70c0b3-08c8-4b60-bc8e-6d4dbeeb7c60.pdf";
         openBook = findViewById(R.id.clickButton);
         openBook.setOnClickListener(new View.OnClickListener() {
             @Override

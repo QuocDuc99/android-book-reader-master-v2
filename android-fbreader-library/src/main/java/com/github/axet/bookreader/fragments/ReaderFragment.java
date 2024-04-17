@@ -270,6 +270,7 @@ public class ReaderFragment extends Fragment
         new Handler().postDelayed(() -> {
             if (fb != null && fb.app != null) {
                 mNavigationSeekbar = new NavigationSeekbar(fb.app, requireContext());
+                mMainViewModel.eventShowMucLuc.setValue(fb.app.getCurrentTOCElement()!=null);
                 if (mNavigationSeekbar.getRootView() != null) {
                     mView.removeView(mNavigationSeekbar.getRootView());
                 }
@@ -1012,9 +1013,9 @@ public class ReaderFragment extends Fragment
         tocMenu.setVisible(fb.app.Model != null
                 && fb.app.Model.mTOCTree != null
                 && fb.app.Model.mTOCTree.hasChildren());
-        mMainViewModel.eventShowMucLuc.setValue(fb.app.Model != null
-                && fb.app.Model.mTOCTree != null
-                && fb.app.Model.mTOCTree.hasChildren());
+//        mMainViewModel.eventShowMucLuc.setValue(fb.app.Model != null
+//                && fb.app.Model.mTOCTree != null
+//                && fb.app.Model.mTOCTree.hasChildren());
         searchMenu.setVisible(search);
         mMainViewModel.eventSearchN.setValue(search);
         //reflow.setVisible(
