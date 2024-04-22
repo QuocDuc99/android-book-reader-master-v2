@@ -8,14 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,11 +19,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -41,7 +38,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.github.axet.androidlibrary.activities.AppCompatFullscreenThemeActivity;
 import com.github.axet.androidlibrary.app.FileTypeDetector;
-import com.github.axet.androidlibrary.preferences.AboutPreferenceCompat;
 import com.github.axet.androidlibrary.preferences.RotatePreferenceCompat;
 import com.github.axet.androidlibrary.widgets.CacheImagesAdapter;
 import com.github.axet.androidlibrary.widgets.ErrorDialog;
@@ -50,29 +46,25 @@ import com.github.axet.androidlibrary.widgets.OpenFileDialog;
 import com.github.axet.androidlibrary.widgets.SearchView;
 import com.github.axet.androidlibrary.widgets.ThemeUtils;
 import com.github.axet.androidlibrary.widgets.WebViewCustom;
-
 import com.github.axet.bookreader.app.BookApplication;
 import com.github.axet.bookreader.app.Storage;
-import com.github.axet.bookreader.app.TTFManager;
-import com.github.axet.bookreader.fragments.FragmentBookMark;
 import com.github.axet.bookreader.fragments.LibraryFragment;
 import com.github.axet.bookreader.fragments.ReaderFragment;
+import com.github.axet.bookreader.keyboard_height.KeyboardHeightProvider;
 import com.github.axet.bookreader.util.Util;
 import com.github.axet.bookreader.viewmodel.MainViewModel;
 import com.github.axet.bookreader.widgets.FBReaderView;
-
 import com.google.android.material.internal.NavigationMenuItemView;
 import com.google.android.material.navigation.NavigationView;
-import org.geometerplus.fbreader.fbreader.options.ImageOptions;
-import org.geometerplus.fbreader.fbreader.options.MiscOptions;
-import org.geometerplus.zlibrary.text.view.ZLTextPosition;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import org.geometerplus.fbreader.fbreader.options.ImageOptions;
+import org.geometerplus.fbreader.fbreader.options.MiscOptions;
+import org.geometerplus.zlibrary.text.view.ZLTextPosition;
 import org.geometerplus.zlibrary.ui.android.R;
 import org.geometerplus.zlibrary.ui.android.library.ZLAndroidApplication;
 
@@ -80,18 +72,23 @@ import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public class BookActivity extends AppCompatFullscreenThemeActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        SharedPreferences.OnSharedPreferenceChangeListener,
+        KeyboardHeightProvider.KeyboardListener {
     public static final String TAG = BookActivity.class.getSimpleName();
 
     public static final int RESULT_FILE = 1;
     public static final int RESULT_ADD_CATALOG = 2;
     public static final String PATH_BOOK = "PATH_BOOK";
+    public static final String PATH_THUMB = "PATH_THUMB";
+    public static final String NAME_BOOK = "NAME_BOOK";
+    public static final String PAGE_BOOK = "PAGE_BOOK";
 
     public Toolbar toolbar;
     protected ConstraintLayout layoutMenu;
     protected ImageView btnTTS, btnBookMark, btnFont, btnMucLuc, btnSearch, btnCloseSearch,
             btnOption;
     protected SearchView actionSearch;
+    private KeyboardHeightProvider mKeyboardHeightProvider;
     // private FullscreenActivity.ListenAction mListenAction;
     protected ImageView btnBack;
     protected Group mGroup;
@@ -100,8 +97,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     Storage storage;
     boolean isRunning;
     OpenChoicer choicer;
+    private boolean isShowKeyboard = false;
     String lastSearch;
-
+    String nameBook;
+    String thumbBook;
     BookApplication mBookApplication;
     LibraryFragment libraryFragment = LibraryFragment.newInstance();
     public boolean volumeEnabled = true; // tmp enabled / disable volume keys
@@ -117,10 +116,25 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         }
     };
 
-    public static Intent newInstance(Context context, String pathBook) {
+    public static Intent newInstance(Context context, String pathBook, String nameBook,
+            String thumb, int pageBook) {
         Intent intent = new Intent(context, BookActivity.class);
         intent.putExtra(PATH_BOOK, pathBook);
+        intent.putExtra(NAME_BOOK, nameBook);
+        intent.putExtra(PAGE_BOOK, pageBook);
+        intent.putExtra(PATH_THUMB, thumb);
         return intent;
+    }
+
+    @Override
+    public void onHeightChanged(int height, int lastHeight) {
+        Log.d("ducNQ", "onHeightChanged: " + height);
+        isShowKeyboard = height > 0;
+    }
+
+    @Override
+    public void onHeightNoChanged(int height, int lastHeight) {
+
     }
 
     public interface SearchListener {
@@ -147,6 +161,42 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     public interface OnBackPressed {
         boolean onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        animateTransition();
+        //overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom);
+    }
+
+    private void animateTransition() {
+        // Create the desired animation
+        Animation slideOutAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_bottom);
+
+        // Set the animation listener
+        slideOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // Animation start logic, if needed
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // Perform any necessary actions after the animation ends
+                finish(); // Close the activity or perform any other desired action
+                overridePendingTransition(0, 0); // Optional: Disable the default activity transition
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // Animation repeat logic, if needed
+            }
+        });
+
+        // Apply the animation to the root view of the activity
+        View rootView = findViewById(R.id.contents);
+        rootView.startAnimation(slideOutAnimation);
     }
 
     public static class SortByPage implements Comparator<Storage.RecentInfo> {
@@ -263,13 +313,15 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main);
+       // overridePendingTransition(R.anim.activity_slide_start_enter, R.anim.activity_scale_start_exit);
         zlib = new ZLAndroidApplication() {
             {
                 attachBaseContext(BookActivity.this.getApplicationContext());
                 onCreate();
             }
         };
-       // mBookApplication = new BookApplication(this);
+        mKeyboardHeightProvider = new KeyboardHeightProvider(this);
+        mKeyboardHeightProvider.addKeyboardListener(this);
         mMainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         layoutMenu = (ConstraintLayout) findViewById(R.id.layoutMenu);
@@ -284,7 +336,13 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         btnCloseSearch = (ImageView) findViewById(R.id.iconClose);
         btnOption = (ImageView) findViewById(R.id.imageOption);
 
-        Log.d("ducNQ", "onCreatesavedInstanceState: ");
+        findViewById(R.id.imgBack2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         storage = new Storage(this);
 
         registerReceiver(receiver, new IntentFilter(ACTION_MENU));
@@ -343,194 +401,29 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         });
         setOnClick();
         observerData();
+        TextView textViewNameBook = findViewById(R.id.textTitleBook);
         String pathBook = getIntent().getStringExtra(PATH_BOOK);
+        nameBook = getIntent().getStringExtra(NAME_BOOK);
+        thumbBook = getIntent().getStringExtra(PATH_THUMB);
+        int pageBook = getIntent().getIntExtra(PAGE_BOOK, 1);
         Uri uri = Uri.parse(pathBook);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                textViewNameBook.setText(nameBook);
+                mMainViewModel.eventPageBook.setValue(pageBook);
                 loadBook(uri, null);
             }
         }, 100);
     }
 
-  /*  @SuppressLint("RestrictedApi")
-    @Override
-    public void onBackPressed() {
-        FragmentManager fm = getSupportFragmentManager();
-        List<Fragment> ff = fm.getFragments();
-        mMainViewModel.eventOpenNote.setValue(false);
-        Fragment fragmentBookMark =
-                getSupportFragmentManager().findFragmentByTag(FragmentBookMark.TAG);
-        if (fragmentBookMark != null && fragmentBookMark.isVisible()) {
-            super.onBackPressed();
-            return;
-        }
-        if (ff != null && !ff.isEmpty()) {
-            for (Fragment f : ff) {
-                if (f != null && f.isVisible() && f instanceof OnBackPressed) {
-                    OnBackPressed s = (OnBackPressed) f;
-                    if (s.onBackPressed())  return;
-                }
-            }
-        }
-        super.onBackPressed();
-        if (fm.getBackStackEntryCount() == 0) onResume(); // udpate theme if changed
-    }*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        /*getMenuInflater().inflate(R.menu.main, menu);
-
-        MenuItem searchMenu = menu.findItem(R.id.action_search);
-        //        MenuItem fullScreen = menu.findItem(R.id.actionFullScreen);
-        MenuItem actionToc = menu.findItem(R.id.action_toc);
-        MenuItem actionFont = menu.findItem(R.id.action_fontsize);
-
-        final SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
-        MenuItem theme = menu.findItem(R.id.action_theme);
-
-        //setColorFilterForIcon
-        searchMenu.getIcon().setTint(Color.BLACK);
-        theme.getIcon().setTint(Color.BLACK);
-        //  fullScreen.getIcon().setTint(Color.BLACK);
-        actionToc.getIcon().setTint(Color.BLACK);
-
-        String t = shared.getString(BookApplication.PREFERENCE_THEME, "");
-        if (t.equals(getString(R.string.Theme_System))) {
-            theme.setVisible(false);
-        } else {
-            theme.setVisible(true);
-            String d = getString(R.string.Theme_Dark);
-            theme.setIcon(t.equals(d) ? R.drawable.ic_brightness_night_white_24dp
-                    : R.drawable.ic_brightness_day_white_24dp);
-            ResourcesMap map = new ResourcesMap(this, R.array.themes_values, R.array.themes_text);
-            theme.setTitle(
-                    map.get(getString(t.equals(d) ? R.string.Theme_Dark : R.string.Theme_Light)));
-        }
-
-        // final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenu);
-        //actionSearch.setBackgroundColor(Color.GRAY);
-        actionSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @SuppressLint("RestrictedApi")
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                lastSearch = query;
-                actionSearch.clearFocus();
-                FragmentManager fm = getSupportFragmentManager();
-                for (Fragment f : fm.getFragments()) {
-                    if (f != null && f.isVisible() && f instanceof SearchListener) {
-                        SearchListener s = (SearchListener) f;
-                        s.search(actionSearch.getQuery().toString());
-                    }
-                }
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        actionSearch.setOnSearchClickListener(new View.OnClickListener() {
-            @SuppressLint("RestrictedApi")
-            @Override
-            public void onClick(View v) {
-                if (lastSearch != null && !lastSearch.isEmpty()) {
-                    actionSearch.setQuery(lastSearch, false);
-                }
-                FragmentManager fm = getSupportFragmentManager();
-                for (Fragment f : fm.getFragments()) {
-                    if (f != null && f.isVisible() && f instanceof SearchListener) {
-                        SearchListener s = (SearchListener) f;
-                        actionSearch.setQueryHint(s.getHint());
-                    }
-                }
-            }
-        });
-        actionSearch.setOnCollapsedListener(new SearchView.OnCollapsedListener() {
-            @SuppressLint("RestrictedApi")
-            @Override
-            public void onCollapsed() {
-                FragmentManager fm = getSupportFragmentManager();
-                for (Fragment f : fm.getFragments()) {
-                    if (f != null && f.isVisible() && f instanceof SearchListener) {
-                        SearchListener s = (SearchListener) f;
-                        s.searchClose();
-                    }
-                }
-            }
-        });
-        actionSearch.setOnCloseButtonListener(new SearchView.OnCloseButtonListener() {
-            @Override
-            public void onClosed() {
-                lastSearch = "";
-            }
-        });
-*/
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      /*  int id = item.getItemId();
-
-        if (id == R.id.action_about) {
-            AboutPreferenceCompat.buildDialog(this, R.raw.about).show();
-            return true;
-        }
-
-        *//*if (id == R.id.actionFullScreen) {
-          //  sendBroadcast(new Intent(ACTION_MENU));
-            return true;
-        }*//*
-
-        if (id == R.id.action_settings) {
-            SettingsActivity.startActivity(this);
-            return true;
-        }
-
-        final SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
-        if (id == R.id.action_file) {
-            String last = shared.getString(BookApplication.PREFERENCE_LAST_PATH, null);
-            Uri old = null;
-            if (last != null) {
-                old = Uri.parse(last);
-                File f = Storage.getFile(old);
-                while (f != null && !f.exists()) f = f.getParentFile();
-                if (f != null) old = Uri.fromFile(f);
-            } else {
-                old = Uri.parse(ContentResolver.SCHEME_CONTENT + Storage.CSS); // show SAF default
-            }
-            choicer = new OpenChoicer(OpenFileDialog.DIALOG_TYPE.FILE_DIALOG, true) {
-                @Override
-                public void onResult(Uri uri) {
-                    String s = uri.getScheme();
-                    if (s.equals(ContentResolver.SCHEME_FILE)) {
-                        File f = Storage.getFile(uri);
-                        f = f.getParentFile();
-                        SharedPreferences.Editor editor = shared.edit();
-                        editor.putString(BookApplication.PREFERENCE_LAST_PATH, f.toString());
-                        editor.commit();
-                    }
-                    loadBook(uri, null);
-                }
-            };
-            choicer.setStorageAccessFramework(this, RESULT_FILE);
-            choicer.setPermissionsDialog(this, Storage.PERMISSIONS_RO, RESULT_FILE);
-            choicer.show(old);
-        }
-
-        if (id == R.id.action_theme) {
-            SharedPreferences.Editor edit = shared.edit();
-            String t = shared.getString(BookApplication.PREFERENCE_THEME, "");
-            String d = getString(R.string.Theme_Dark);
-            edit.putString(BookApplication.PREFERENCE_THEME,
-                    t.equals(d) ? getString(R.string.Theme_Light) : d);
-            edit.commit();
-            restartActivity();
-            return true;
-        }*/
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -577,6 +470,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                             @Override
                             public void onClick(View v) {
                                 t.interrupt();
+                                onBackPressed();
                             }
                         });
                 try {
@@ -654,7 +548,6 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
             final FBReaderView r = (FBReaderView) v.findViewById(R.id.recent_fbview);
 
-            // r.config.setValue(r.app.ViewOptions.ScrollbarType, 0);
             r.config.setValue(r.app.MiscOptions.WordTappingAction,
                     MiscOptions.WordTappingActionEnum.doNothing);
             r.config.setValue(r.app.ImageOptions.TapAction, ImageOptions.TapActionEnum.doNothing);
@@ -774,12 +667,13 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public void openBook(Uri uri) {
-       // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        addFragment(ReaderFragment.newInstance(uri), ReaderFragment.TAG).commit();
+        // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        addFragment(ReaderFragment.newInstance(uri, nameBook, thumbBook),
+                ReaderFragment.TAG).commit();
     }
 
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
-       // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, pos), ReaderFragment.TAG).commit();
     }
 
@@ -806,13 +700,21 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         RotatePreferenceCompat.onDestroy(this);
         SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
         shared.unregisterOnSharedPreferenceChangeListener(this);
+        if (mKeyboardHeightProvider != null) {
+            mKeyboardHeightProvider.removeKeyboardListener(this);
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         isRunning = false;
-        Util.closeKeyboard(this);
+        if (mKeyboardHeightProvider != null) {
+            mKeyboardHeightProvider.onPause();
+        }
+        if (isShowKeyboard) {
+            Util.closeKeyboard(this);
+        }
     }
 
     @Override
@@ -880,7 +782,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         isRunning = true;
         RotatePreferenceCompat.onResume(this, BookApplication.PREFERENCE_ROTATE);
         CacheImagesAdapter.cacheClear(this);
-      //  mBookApplication.ttf.preloadFonts();
+        if (mKeyboardHeightProvider != null) {
+            mKeyboardHeightProvider.onResume();
+        }
+        //  mBookApplication.ttf.preloadFonts();
     }
 
     @Override
@@ -948,15 +853,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 // btnFont.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
             }
         });
-//        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
-//            @Override
-//            public void onChanged(Boolean aBoolean) {
-//                if (aBoolean) btnMucLuc.setVisibility(View.INVISIBLE);
-//            }
-//        });
+
         mMainViewModel.eventSearchN.observe((LifecycleOwner) this, aBoolean -> {
             if (btnSearch != null) {
-               // btnSearch.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
+                // btnSearch.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
             }
         });
         mMainViewModel.eventAddBookMark.observe((LifecycleOwner) this, new Observer<Boolean>() {
@@ -980,12 +880,14 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 }*/
             }
         });
-        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (btnMucLuc != null) btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
-            }
-        });
+//        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
+//            @Override
+//            public void onChanged(Boolean aBoolean) {
+//                if (btnMucLuc != null) {
+//                    btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
+//                }
+//            }
+//        });
     }
 
     private void setOnClick() {
@@ -1031,13 +933,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 mListenAction.actionBookMark();
             }
         });
-       /* btnTTS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListenAction == null) return;
-                mListenAction.actionTTS();
-            }
-        });*/
+
         if (mListenAction != null) {
             mListenAction.extendView(btnBookMark);
         }

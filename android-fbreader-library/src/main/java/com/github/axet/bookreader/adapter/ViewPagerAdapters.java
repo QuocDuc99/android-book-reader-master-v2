@@ -44,9 +44,9 @@ public class ViewPagerAdapters extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        FragmentTableOfContent fragmentTableOfContent =
-                new FragmentTableOfContent(mTOCAdapter);
-        return fragmentTableOfContent;
+        //FragmentTableOfContent fragmentTableOfContent =
+           //     new FragmentTableOfContent(mTOCAdapter);
+        return null;//fragmentTableOfContent;
        /* switch (position) {
             case 0:
                 FragmentTableOfContent fragmentTableOfContent =

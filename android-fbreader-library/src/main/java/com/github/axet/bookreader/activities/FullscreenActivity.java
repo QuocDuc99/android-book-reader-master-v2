@@ -109,54 +109,13 @@ public class FullscreenActivity extends AppCompatFullscreenThemeActivity {
             toolbar.getOverflowIcon().setTint(Color.BLACK);
         }
         String pathBook = getIntent().getStringExtra(PATH_BOOK);
-        startActivity(BookActivity.newInstance(this,pathBook));
+       // startActivity(BookActivity.newInstance(this,pathBook));
         setOnClick();
         observerData();
     }
 
     private void observerData() {
-        //        mMainViewModel.eventShowBookMark.observe(this, aBoolean -> {
-        //            if (btnBookMark != null) {
-        //                btnBookMark.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
-        //            }
-        //        });
-      /*  mMainViewModel.eventFont.observe((LifecycleOwner) this, aBoolean -> {
-            if (btnFont != null) {
-                // btnFont.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
-            }
-        });
-        mMainViewModel.eventSearchN.observe((LifecycleOwner) this, aBoolean -> {
-            if (btnSearch != null) {
-                btnSearch.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
-            }
-        });
-        mMainViewModel.eventAddBookMark.observe((LifecycleOwner) this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (btnBookMark != null) {
-                    btnBookMark.setImageResource(
-                            aBoolean ? R.drawable.ic_bookmark_white_24dp : R.drawable.ic_bookmark);
-                }
-            }
-        });
-        mMainViewModel.eventOpenNote.observe((LifecycleOwner) this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    mGroup.setVisibility(View.VISIBLE);
-                    layoutMenu.setVisibility(View.INVISIBLE);
-                } else {
-                    mGroup.setVisibility(View.INVISIBLE);
-                    layoutMenu.setVisibility(View.VISIBLE);
-                }
-            }
-        });*/
-       /* mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (btnMucLuc != null) btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.GONE);
-            }
-        });*/
+
     }
 
     private void setOnClick() {
@@ -202,13 +161,7 @@ public class FullscreenActivity extends AppCompatFullscreenThemeActivity {
                 mListenAction.actionBookMark();
             }
         });
-       /* btnTTS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListenAction == null) return;
-                mListenAction.actionTTS();
-            }
-        });*/
+
         if (mListenAction != null) {
             mListenAction.extendView(btnBookMark);
         }

@@ -152,7 +152,7 @@
                 app:layout_constraintEnd_toStartOf="@id/iconSearch"
                 app:layout_constraintStart_toEndOf="@id/imgMucLuc"
                 app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="@string/app_name"
+                app:queryHint="@string/app_named"
                 tools:ignore="RtlSymmetry" />
 
             <ImageView

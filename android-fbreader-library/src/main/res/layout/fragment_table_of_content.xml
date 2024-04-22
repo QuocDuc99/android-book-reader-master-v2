@@ -8,17 +8,68 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet_dialog">
+
+        <ImageView
+            android:id="@+id/imgThumb"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="@dimen/afc_15dp"
+            android:layout_marginTop="@dimen/afc_15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/plugin_bookshelf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/afc_10dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/afc_5dp"
+            android:src="@drawable/ic_close_large_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgThumb"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/afc_5dp"
+            android:layout_marginTop="@dimen/afc_5dp"
+            android:layout_marginEnd="@dimen/afc_5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/add_more_fonts_to"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/imgClose"
+            app:layout_constraintStart_toEndOf="@id/imgThumb"
+            app:layout_constraintTop_toTopOf="@id/imgClose" />
+
+        <TextView
+            android:id="@+id/page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/afc_5dp"
+            android:text="Trang 1/12"
+            android:textColor="#6B6B6B"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/imgThumb"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <com.github.axet.androidlibrary.widgets.TreeRecyclerView
             android:id="@+id/rcMucLuc"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/afc_10dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/imgThumb" />
 
         <ProgressBar
             android:id="@+id/prLoading"

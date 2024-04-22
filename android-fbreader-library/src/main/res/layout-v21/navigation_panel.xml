@@ -17,7 +17,7 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <!--android:background="@drawable/bg_out_line"-->
         <TextView
             android:id="@+id/navigation_text"
             android:layout_width="wrap_content"
@@ -29,7 +29,6 @@
             android:paddingBottom="4dp"
             android:paddingEnd="8dp"
             android:singleLine="true"
-            android:background="@drawable/bg_out_line"
             android:textAppearance="?android:attr/textAppearanceMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +49,6 @@
             android:singleLine="true"
             android:visibility="invisible"
             android:textAppearance="?android:attr/textAppearanceMedium"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="4dp"
+            android:visibility="invisible"
             android:progressDrawable="@drawable/seek_bar"
             android:thumb="@drawable/seek_thumb"
             app:layout_constraintTop_toBottomOf="@id/navigation_text" />

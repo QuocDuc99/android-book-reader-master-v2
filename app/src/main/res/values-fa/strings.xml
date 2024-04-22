@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Book Reader</string>
+    <string name="app_named">Book Reader</string>
 
     <string name="loading_book">در حال بارگذاری کتاب</string>
     <string name="open_file">باز کردن پرونده</string>

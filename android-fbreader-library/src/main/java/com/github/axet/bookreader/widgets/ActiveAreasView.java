@@ -163,6 +163,7 @@ public class ActiveAreasView extends RelativeLayout {
         for (String k : maps.keySet()) {
             ZoneView v = new ZoneView(getContext());
             v.text.setText(names.get(k));
+            v.text.setTextColor(Color.BLACK);
             views.put(k, v);
             addView(v);
         }

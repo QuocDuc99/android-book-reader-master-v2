@@ -1144,7 +1144,7 @@ public class FBReaderView extends RelativeLayout {
             new NavigationPopup(app);
         }
         if (app.getPopupById(SelectionPopup.ID) == null) {
-            new SelectionPopup(app) {
+           /* new SelectionPopup(app) {
                 @Override
                 public void createControlPanel(Activity activity, RelativeLayout root) {
                     super.createControlPanel(activity, root);
@@ -1159,7 +1159,7 @@ public class FBReaderView extends RelativeLayout {
                         t.setVisibility(View.VISIBLE);
                     }
                 }
-            };
+            };*/
         }
 
         config();
@@ -1665,10 +1665,10 @@ public class FBReaderView extends RelativeLayout {
         app.addAction(ActionCode.SELECTION_SHOW_PANEL, new FBAction(app) {
             @Override
             protected void run(Object... params) {
-                final ZLTextView view = app.getTextView();
-                ((SelectionPopup) app.getPopupById(SelectionPopup.ID)).move(
-                        view.getSelectionStartY(), view.getSelectionEndY());
-                app.showPopup(SelectionPopup.ID);
+//                final ZLTextView view = app.getTextView();
+//                ((SelectionPopup) app.getPopupById(SelectionPopup.ID)).move(
+//                        view.getSelectionStartY(), view.getSelectionEndY());
+//                app.showPopup(SelectionPopup.ID);
                 Log.d("ducNQ", "run:12 ");
             }
         });
@@ -1937,7 +1937,7 @@ public class FBReaderView extends RelativeLayout {
 
         ((PopupPanel) app.getPopupById(TextSearchPopup.ID)).setPanelInfo(a, this);
         ((NavigationPopup) app.getPopupById(NavigationPopup.ID)).setPanelInfo(a, this);
-        ((PopupPanel) app.getPopupById(SelectionPopup.ID)).setPanelInfo(a, this);
+//        ((PopupPanel) app.getPopupById(SelectionPopup.ID)).setPanelInfo(a, this);
     }
 
     private void addBookMark() {

@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/contents"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.github.axet.bookreader.activities.BookActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:theme="@style/AppBarOverlay">
+        android:theme="@style/AppBarOverlay"
+        android:visibility="invisible">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,9 +28,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutDefault"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgBack"
@@ -39,8 +40,8 @@
             android:layout_marginTop="15dp"
             android:background="?selectableItemBackgroundBorderless"
             android:padding="5dp"
-            android:visibility="invisible"
             android:src="@drawable/ic_back"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,9 +59,9 @@
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:constraint_referenced_ids="textTitle,imgBack" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,19 +72,32 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgMucLuc"
+                android:id="@+id/imgBack2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/afc_15dp"
-                android:visibility="invisible"
-                android:src="@drawable/ic_view_list_black_24dp"
+                android:layout_marginTop="15dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:rotation="270"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMucLuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/afc_15dp"
+                android:src="@drawable/ic_view_list_black_24dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/imgBack2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgBack2"
                 app:tint="@color/dark_gray" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:visibility="gone"
                 android:id="@+id/imageOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,6 +105,7 @@
                 android:background="?selectableItemBackgroundBorderless"
                 android:rotation="90"
                 android:src="@drawable/ic_option"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -99,10 +114,10 @@
                 android:id="@+id/imgBookMark"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:visibility="invisible"
                 android:layout_marginEnd="15dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_bookmark"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imageOption"
                 app:layout_constraintTop_toTopOf="parent"
@@ -115,7 +130,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_format_size_white_24dp"
-                android:visibility="gone"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgBookMark"
                 app:layout_constraintTop_toTopOf="parent"
@@ -138,9 +153,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:visibility="gone"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_search"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgTTS"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -154,7 +169,7 @@
                 app:layout_constraintEnd_toStartOf="@id/iconSearch"
                 app:layout_constraintStart_toEndOf="@id/imgMucLuc"
                 app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="@string/app_name"
+                app:queryHint="@string/app_named"
                 tools:ignore="RtlSymmetry" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -168,6 +183,24 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textTitleBook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/afc_10dp"
+                android:layout_marginEnd="@dimen/afc_10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imgMucLuc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgMucLuc"
+                app:layout_constraintStart_toEndOf="@id/imgBack2"
+                app:layout_constraintTop_toTopOf="@id/imgMucLuc" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
