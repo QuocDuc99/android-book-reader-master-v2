@@ -19,14 +19,16 @@ public class NavigationSeekbar {
     private volatile boolean myIsInProgress;
     private ListenNaviSeekbar mListenNaviSeekbar;
     private int progressCurrent;
+    private Activity mActivity;
     private boolean fromUserCurrent;
     private SeekBar slider;
     private TextView text;
     private Context mContext;
 
-    public NavigationSeekbar(FBReaderApp myFBReader, Context context) {
+    public NavigationSeekbar(FBReaderApp myFBReader, Context context, Activity activity) {
         this.myFBReader = myFBReader;
         mContext = context;
+        this.mActivity = activity;
         init(context);
     }
 
@@ -47,7 +49,7 @@ public class NavigationSeekbar {
         createPanel();
     }
 
-    private void gotoPage(int page) {
+    public void gotoPage(int page) {
         final ZLTextView view = myFBReader.getTextView();
         if (page == 1) {
             view.gotoHome();
@@ -58,6 +60,11 @@ public class NavigationSeekbar {
             myFBReader.getViewWidget().reset();
             myFBReader.getViewWidget().repaint();
         }
+    }
+
+    public String getPage() {
+        if (text == null) return "";
+        return text.getText().toString();
     }
 
     private void createPanel() {
@@ -86,10 +93,10 @@ public class NavigationSeekbar {
                 fromUserCurrent = fromUser;
             }
         });
-        text.setOnClickListener(v -> {
+        /*text.setOnClickListener(v -> {
             final ZLTextView textView = myFBReader.getTextView();
             final ZLTextView.PagePosition pagePosition = textView.pagePosition();
-            DialogPage dialogPage = new DialogPage(mContext, 1, pagePosition.Total);
+            DialogPage dialogPage = new DialogPage(mContext, mActivity, 1, pagePosition.Total);
             dialogPage.show();
             dialogPage.setActionCancel(() -> {
                 dialogPage.dismiss();
@@ -100,7 +107,7 @@ public class NavigationSeekbar {
                 dialogPage.dismiss();
                 return null;
             });
-        });
+        });*/
     }
 
     private int getSelectionCurrent(String s) {
@@ -147,6 +154,7 @@ public class NavigationSeekbar {
 
     public interface ListenNaviSeekbar {
         void actionReloadBookmark();
+
         void actionShowKeyboard();
     }
 }

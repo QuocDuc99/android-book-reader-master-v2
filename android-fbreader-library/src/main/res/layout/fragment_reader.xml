@@ -31,14 +31,14 @@
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/viewKeyboard"/>
+            app:layout_constraintBottom_toTopOf="@id/viewKeyboard" />
 
         <include
             android:id="@+id/layout_page"
             layout="@layout/layout_search_page"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/viewKeyboard" />
 
         <View
@@ -46,6 +46,20 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/imgMucLuc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/afc_5dp"
+            android:layout_marginEnd="@dimen/afc_15dp"
+            android:text="Mục lục"
+            android:background="?selectableItemBackgroundBorderless"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layoutPanel"
+            app:drawableTopCompat="@drawable/ic_muc_luc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -14,11 +14,11 @@
             android:required="false" />
 
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name="com.github.axet.bookreader.activities.BookActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:theme="@style/AppThemeLight.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"
             android:exported="true">
             <meta-data
                 android:name="android.app.searchable"

@@ -36,6 +36,7 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import com.github.axet.androidlibrary.preferences.ScreenlockPreference;
@@ -80,7 +81,10 @@ public class ReaderFragment extends Fragment
     public static final int REFLOW_END = 15;
 
     public static final int RESULT_FONTS = 1;
-
+    private String pathThumb = "";
+    public static String PATHTHUMB = "PATHTHUMB";
+    public static String NAMEBOOK = "NAMEBOOK";
+    private String nameBook = "";
     BookApplication mBookApplication;
     Handler handler = new Handler();
     Storage storage;
@@ -95,8 +99,9 @@ public class ReaderFragment extends Fragment
     MenuItem searchMenu;
     ConstraintLayout mView;
     BroadcastReceiver battery;
-    private DialogBookFragment mDialogBookFragment;
-    ImageView btnOption, btnBookMark, btnFullScreen, btnMucLuc;
+    private FragmentTableOfContent mDialogBookFragment;
+    ImageView btnOption, btnBookMark, btnFullScreen;
+    TextView btnMucLuc;
     SearchView btnSearch;
     MainViewModel mMainViewModel;
     Runnable invalidateOptionsMenu;
@@ -227,10 +232,12 @@ public class ReaderFragment extends Fragment
         }
     }
 
-    public static ReaderFragment newInstance(Uri uri) {
+    public static ReaderFragment newInstance(Uri uri, String nameBook, String thumbBook) {
         ReaderFragment fragment = new ReaderFragment();
         Bundle args = new Bundle();
         args.putParcelable("uri", uri);
+        args.putString(PATHTHUMB, thumbBook);
+        args.putString(NAMEBOOK, nameBook);
         fragment.setArguments(args);
         return fragment;
     }
@@ -250,8 +257,6 @@ public class ReaderFragment extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //keyboardHeightProvider = new KeyboardHeightProvider(requireActivity());
-        // keyboardHeightProvider.addKeyboardListener(this);
         storage = new Storage(getContext());
         mBookApplication = new BookApplication(requireContext());
         setHasOptionsMenu(true);
@@ -269,8 +274,11 @@ public class ReaderFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
         new Handler().postDelayed(() -> {
             if (fb != null && fb.app != null) {
-                mNavigationSeekbar = new NavigationSeekbar(fb.app, requireContext());
-                mMainViewModel.eventShowMucLuc.setValue(fb.app.getCurrentTOCElement()!=null);
+                mNavigationSeekbar =
+                        new NavigationSeekbar(fb.app, requireContext(), requireActivity());
+                mMainViewModel.eventShowMucLuc.setValue(fb.app.Model != null
+                        && fb.app.Model.mTOCTree != null
+                        && fb.app.Model.mTOCTree.hasChildren());
                 if (mNavigationSeekbar.getRootView() != null) {
                     mView.removeView(mNavigationSeekbar.getRootView());
                 }
@@ -292,8 +300,31 @@ public class ReaderFragment extends Fragment
 
                     }
                 });
+                observerData();
             }
         }, 100);
+    }
+
+    private void observerData() {
+        mMainViewModel.eventPageBook.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if (mNavigationSeekbar != null) {
+                    int totalPageBook = fb.app.getTextView().pagePosition().Total;
+                    if (integer > 1 && integer <= totalPageBook) {
+                        mNavigationSeekbar.gotoPage(integer);
+                    }
+                }
+            }
+        });
+        mMainViewModel.eventShowMucLuc.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (btnMucLuc != null) {
+                    btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
+                }
+            }
+        });
     }
 
     @SuppressLint("RestrictedApi")
@@ -329,6 +360,24 @@ public class ReaderFragment extends Fragment
                 FragmentBookMark.TAG).commit();
     }
 
+    private void showToc() {
+        if (fb.app.Model == null
+                && fb.app.Model.mTOCTree == null
+                && !fb.app.Model.mTOCTree.hasChildren()) {
+            // openNote();
+        } else {
+            final TOCTree current = fb.app.getCurrentTOCElement();
+            List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
+            final TOCAdapter a = new TOCAdapter(tocTreeList, current);
+            String page = "";
+            if (mNavigationSeekbar != null) {
+                page = mNavigationSeekbar.getPage();
+            }
+            mDialogBookFragment = new FragmentTableOfContent(a, nameBook, pathThumb, page);
+            mDialogBookFragment.show(getParentFragmentManager(), DialogBookFragment.TAG);
+        }
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -339,6 +388,13 @@ public class ReaderFragment extends Fragment
         fb = (FBReaderView) v.findViewById(R.id.main_view);
         mViewKeyboard = v.findViewById(R.id.viewKeyboard);
         mView = v.findViewById(R.id.layoutPanel);
+        btnMucLuc = v.findViewById(R.id.imgMucLuc2);
+        btnMucLuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             showToc();
+            }
+        });
         fb.setListenFBReaderView(new FBReaderView.ListenFBReaderView() {
             @Override
             public void actionFull(boolean check) {
@@ -351,9 +407,6 @@ public class ReaderFragment extends Fragment
 
             @Override
             public void actionAddBookMark(boolean check) {
-                //                if (fb != null && fb.app != null && fb.app.getCurrentTOCElement() != null) {
-                //                    fb.app.getCurrentTOCElement().setAddBookMark(true);
-                //                }
                 if (fb != null) {
                     fb.setAddBookMark(true);
                 }
@@ -362,9 +415,6 @@ public class ReaderFragment extends Fragment
 
             @Override
             public void actionNoneAddBookMark(boolean check) {
-                //                if (fb != null && fb.app != null && fb.app.getCurrentTOCElement() != null) {
-                //                    fb.app.getCurrentTOCElement().setAddBookMark(false);
-                //                }
                 if (fb != null) {
                     fb.setAddBookMark(false);
                 }
@@ -379,15 +429,7 @@ public class ReaderFragment extends Fragment
 
             @Override
             public void actionMucLuc() {
-                if (fb.app.getCurrentTOCElement() == null) {
-                    openNote();
-                } else {
-                    final TOCTree current = fb.app.getCurrentTOCElement();
-                    List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
-                    final TOCAdapter a = new TOCAdapter(tocTreeList, current);
-                    mDialogBookFragment = new DialogBookFragment(a, fb.book.info.bookmarks, fb);
-                    mDialogBookFragment.show(getParentFragmentManager(), DialogBookFragment.TAG);
-                }
+                showToc();
             }
 
             @Override
@@ -416,8 +458,6 @@ public class ReaderFragment extends Fragment
                             fb.book.info.bookmarks.add(bookmark);
                             fb.setTimeBookMark(bookmark.last);
                             fb.setAddBookMark(true);
-                            // fb.app.getCurrentTOCElement().setTimeBookMark(bookmark.last);
-                            // fb.app.getCurrentTOCElement().setAddBookMark(true);
                             mMainViewModel.eventAddBookMark.setValue(true);
                         } else {
                             removeBookmark();
@@ -452,8 +492,6 @@ public class ReaderFragment extends Fragment
                 final ZLTextView.PagePosition pagePosition = textView.pagePosition();
             }
         });
-        //initVariable(v);
-        // initAction();
 
         fb.listener = new FBReaderView.Listener() {
             @Override
@@ -480,10 +518,6 @@ public class ReaderFragment extends Fragment
             @Override
             public void onBookmarksUpdate() {
                 updateToolbar();
-                //                if (fb.book != null) {
-                //                    mMainViewModel.eventBookMark.setValue(
-                //                            fb.book.info.bookmarks != null && fb.book.info.bookmarks.size() > 0);
-                //                }
             }
 
             @Override
@@ -507,6 +541,8 @@ public class ReaderFragment extends Fragment
         fb.setActivity(getActivity());
 
         Uri uri = getArguments().getParcelable("uri");
+        pathThumb = getArguments().getString(PATHTHUMB);
+        nameBook = getArguments().getString(NAMEBOOK);
         FBReaderView.ZLTextIndexPosition pos = getArguments().getParcelable("pos");
 
         try {
@@ -535,12 +571,6 @@ public class ReaderFragment extends Fragment
             }
         });
         fb.setUpGimBookMark();
-        //        new Handler().postDelayed(new Runnable() {
-        //            @Override
-        //            public void run() {
-        //                fb.setUpGimBookMark();
-        //            }
-        //        }, 100);
 
         return v;
     }
@@ -552,13 +582,10 @@ public class ReaderFragment extends Fragment
             int i = fb.book.info.bookmarks.indexOf(bookmark);
             if (i >= 0 && i < fb.book.info.bookmarks.size()) {
                 fb.book.info.bookmarks.remove(i);
-                //  i = fb.book.info.bookmarks.indexOf(bookmark);
-                //fb.book.info.bookmarks.remove(i);
                 fb.bookmarksUpdate();
                 savePosition();
                 mMainViewModel.eventAddBookMark.setValue(false);
                 fb.setAddBookMark(false);
-                //fb.app.getCurrentTOCElement().setAddBookMark(false);
             }
         }
     }
@@ -722,10 +749,6 @@ public class ReaderFragment extends Fragment
             dialog.show();
             return true;
         }
-        //        if (id == R.id.action_reflow) {
-        //            fb.setReflow(!fb.isReflow());
-        //            updateToolbar();
-        //        }
         if (id == R.id.action_debug) {
             fb.pluginview.reflowDebug = !fb.pluginview.reflowDebug;
             if (fb.pluginview.reflowDebug) {
@@ -924,10 +947,6 @@ public class ReaderFragment extends Fragment
             fontsPopup.fontsFrame.setVisibility(View.GONE);
             fontsPopup.updateFontsize(REFLOW_START, REFLOW_END, (int) (getFontsizeReflow() * 10));
         }
-        //        View v = MenuItemCompat.getActionView(item);
-        //        if (v == null || !ViewCompat.isAttachedToWindow(v)) {
-        //            v = getOverflowMenuButton(getActivity());
-        //        }
         PopupWindowCompat.showAsTooltip(fontsPopup, v, Gravity.BOTTOM,
                 ThemeUtils.getThemeColor(getContext(), R.attr.colorButtonNormal),
                 // v has overflow ThemedContext
@@ -973,14 +992,9 @@ public class ReaderFragment extends Fragment
     public void onCreateOptionsMenu(final Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        // invalidateOptionsMenu =
-        //        InvalidateOptionsMenuCompat.onCreateOptionsMenu(this, menu, inflater);
-
         MenuItem homeMenu = menu.findItem(R.id.action_home);
         MenuItem tocMenu = menu.findItem(R.id.action_toc);
         searchMenu = menu.findItem(R.id.action_search);
-        //MenuItem reflow = menu.findItem(R.id.action_reflow);
-        // MenuItem debug = menu.findItem(R.id.action_debug);
         MenuItem bookmarksMenu = menu.findItem(R.id.action_bm);
         final MenuItem fontsize = menu.findItem(R.id.action_fontsize);
         final MenuItem rtl = menu.findItem(R.id.action_rtl);
@@ -1013,21 +1027,8 @@ public class ReaderFragment extends Fragment
         tocMenu.setVisible(fb.app.Model != null
                 && fb.app.Model.mTOCTree != null
                 && fb.app.Model.mTOCTree.hasChildren());
-//        mMainViewModel.eventShowMucLuc.setValue(fb.app.Model != null
-//                && fb.app.Model.mTOCTree != null
-//                && fb.app.Model.mTOCTree.hasChildren());
         searchMenu.setVisible(search);
         mMainViewModel.eventSearchN.setValue(search);
-        //reflow.setVisible(
-        //     fb.pluginview != null && !(fb.pluginview instanceof ComicsPlugin.ComicsView));
-
-      /*  if (BuildConfig.DEBUG
-                && fb.pluginview != null
-                && !(fb.pluginview instanceof ComicsPlugin.ComicsView)) {
-            //  debug.setVisible(true);
-        } else {
-            //  debug.setVisible(false);
-        }*/
 
         fontsize.setVisible(fb.pluginview == null || fb.pluginview.reflow);
         mMainViewModel.eventFont.setValue(fb.pluginview == null || fb.pluginview.reflow);
@@ -1070,12 +1071,9 @@ public class ReaderFragment extends Fragment
         {
             bookmarksMenu.setVisible(
                     fb.book.info.bookmarks != null && fb.book.info.bookmarks.size() > 0);
-            //            mMainViewModel.eventBookMark.setValue(
-            //                    fb.book.info.bookmarks != null && fb.book.info.bookmarks.size() > 0);
         }
 
         if (fb.pluginview instanceof ComicsPlugin.ComicsView) theme.setVisible(false);
-        //setUpView();
     }
 
     void showTOC() {
@@ -1152,51 +1150,10 @@ public class ReaderFragment extends Fragment
         return false;
     }
 
-   /* @Override
-    public boolean onBackPressed() {
-        Log.d("ducNQ", "onBackPressed: " + fb.isPinch());
-        if (fb.isPinch()) {
-            fb.pinchClose();
-            return true;
-        }
-        return false;
-    }*/
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (fontsPopup != null && fontsPopup.choicer != null) {
             fontsPopup.choicer.onActivityResult(resultCode, data);
         }
     }
-
-    /*@Override
-    public void onHeightChanged(int height, int lastHeight) {
-        Log.d("ducNQ", "onHeightChanged: ");
-        int halfHeightDevice = Util.getScreenHeight(requireActivity()) / 2;
-        ConstraintLayout.LayoutParams layoutParamsMainLayout =
-                (ConstraintLayout.LayoutParams) mViewKeyboard.getLayoutParams();
-        if (height > 0) {
-           *//* if (height + Util.getHeightNavigationBar(requireActivity()) > halfHeightDevice) {
-                layoutParamsMainLayout.height = height;
-            } else {
-                layoutParamsMainLayout.height =
-                        height + Util.getHeightNavigationBar(requireActivity());
-            }*//*
-            layoutParamsMainLayout.height = height;
-            if (mNavigationSeekbar != null) {
-                mNavigationSeekbar.refreshEdittext();
-            }
-        } else {
-            layoutParamsMainLayout.height = 1;
-            if (mNavigationSeekbar != null) {
-                //mNavigationSeekbar.showTextPage();
-            }
-        }
-        mViewKeyboard.requestLayout();
-    }
-
-    @Override
-    public void onHeightNoChanged(int height, int lastHeight) {
-
-    }*/
 }

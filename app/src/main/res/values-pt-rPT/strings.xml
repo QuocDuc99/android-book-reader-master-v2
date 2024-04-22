@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Leitor de Livros</string>
+    <string name="app_named">Leitor de Livros</string>
 
     <string-array name="viewmode_text">
         <item>@string/view_mode_paging</item>

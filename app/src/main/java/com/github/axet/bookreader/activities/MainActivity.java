@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("ducNQ", "onClickss: ");
-                startActivity(BookActivity.newInstance(MainActivity.this,pathBook));
+                startActivity(BookActivity.newInstance(MainActivity.this,pathBook,"Book demo","",10));
             }
         });
     }

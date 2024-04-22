@@ -1,20 +1,24 @@
 package com.github.axet.bookreader.dialog
 
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
+import com.github.axet.bookreader.keyboard_height.KeyboardHeightProvider
 import com.github.axet.bookreader.util.Util
 import org.geometerplus.zlibrary.ui.android.databinding.DialogPageBinding
 
 class DialogPage(
   private val context: Context,
+  private val activity: Activity,
   private val pageStart: Int,
   private val pageEnd: Int
-) : Dialog(context) {
+) : Dialog(context){
   private lateinit var binding: DialogPageBinding
   var actionCancel: (() -> Unit)? = null
   var actionOk: ((Int) -> Unit)? = null
@@ -26,7 +30,7 @@ class DialogPage(
     binding = DialogPageBinding.inflate(LayoutInflater.from(context))
     setContentView(binding.root)
     binding.navigationCancel.setOnClickListener {
-      Util.closeKeyboard(context)
+      Util.closeKeyboard(context,binding.navigationEditText)
       actionCancel?.invoke()
 
     }
@@ -39,14 +43,15 @@ class DialogPage(
       if (pageSelect < pageStart || pageSelect > pageEnd) {
         binding.navigationEditText.error = "Số trang không hợp lệ"
       } else {
-        Util.closeKeyboard(context)
+        Util.closeKeyboard(context,binding.navigationEditText)
         actionOk?.invoke(pageSelect)
       }
     }
-    binding.navigationEditText.requestFocus()
-   // Handler(Looper.myLooper()!!).postDelayed({
-      Util.showKeyboard(context)
-   // },10)
+
+    Handler(Looper.myLooper()!!).postDelayed({
+      binding.navigationEditText.requestFocus()
+      Util.showKeyboard(context,binding.navigationEditText)
+    },100)
 
     binding.navigationEditText.hint = "Chuyển tới trang ($pageStart-$pageEnd)"
     super.onCreate(savedInstanceState)
