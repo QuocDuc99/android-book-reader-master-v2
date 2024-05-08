@@ -48,20 +48,27 @@ import com.github.axet.androidlibrary.widgets.ThemeUtils;
 import com.github.axet.androidlibrary.widgets.WebViewCustom;
 import com.github.axet.bookreader.app.BookApplication;
 import com.github.axet.bookreader.app.Storage;
+import com.github.axet.bookreader.fragments.FragmentReadBookWebView;
 import com.github.axet.bookreader.fragments.LibraryFragment;
 import com.github.axet.bookreader.fragments.ReaderFragment;
 import com.github.axet.bookreader.keyboard_height.KeyboardHeightProvider;
+import com.github.axet.bookreader.model.Attachments;
+import com.github.axet.bookreader.model.MyStores;
+import com.github.axet.bookreader.model.TableOfContents;
 import com.github.axet.bookreader.util.Util;
 import com.github.axet.bookreader.viewmodel.MainViewModel;
 import com.github.axet.bookreader.widgets.FBReaderView;
 import com.google.android.material.internal.NavigationMenuItemView;
 import com.google.android.material.navigation.NavigationView;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import org.geometerplus.fbreader.fbreader.options.ImageOptions;
 import org.geometerplus.fbreader.fbreader.options.MiscOptions;
 import org.geometerplus.zlibrary.text.view.ZLTextPosition;
@@ -78,11 +85,21 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     public static final int RESULT_FILE = 1;
     public static final int RESULT_ADD_CATALOG = 2;
-    public static final String PATH_BOOK = "PATH_BOOK";
+    // public static final String PATH_BOOK = "PATH_BOOK";
     public static final String PATH_THUMB = "PATH_THUMB";
     public static final String NAME_BOOK = "NAME_BOOK";
     public static final String PAGE_BOOK = "PAGE_BOOK";
-
+    public static final String LIST_ATTACHMENT = "LIST_ATTACHMENT";
+    public static final String ATTACHMENT = "ATTACHMENT";
+    public static final String LIST_TOC = "LIST_TOC";
+    public static final String TOC = "TOC";
+    public static final String MY_STORES = "MY_STORES";
+    public String pathBookCurrent = "";
+    private List<Attachments> mAttachmentsList = new ArrayList<>();
+    private MyStores mMyStores;
+    private List<TableOfContents> mTableOfContentsList = new ArrayList<>();
+    private TableOfContents mTableOfContents;
+    private Attachments mAttachments;
     public Toolbar toolbar;
     protected ConstraintLayout layoutMenu;
     protected ImageView btnTTS, btnBookMark, btnFont, btnMucLuc, btnSearch, btnCloseSearch,
@@ -116,19 +133,23 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         }
     };
 
-    public static Intent newInstance(Context context, String pathBook, String nameBook,
-            String thumb, int pageBook) {
+    public static Intent newInstance(Context context, String nameBook, String thumb,
+            List<Attachments> attachmentsList, MyStores myStores,
+            List<TableOfContents> tableOfContentsList, TableOfContents tableOfContents,
+            Attachments attachments) {
         Intent intent = new Intent(context, BookActivity.class);
-        intent.putExtra(PATH_BOOK, pathBook);
         intent.putExtra(NAME_BOOK, nameBook);
-        intent.putExtra(PAGE_BOOK, pageBook);
         intent.putExtra(PATH_THUMB, thumb);
+        intent.putExtra(LIST_ATTACHMENT, (Serializable) attachmentsList);
+        intent.putExtra(ATTACHMENT, (Serializable) attachments);
+        intent.putExtra(MY_STORES, (Serializable) myStores);
+        intent.putExtra(LIST_TOC, (Serializable) tableOfContentsList);
+        intent.putExtra(TOC, (Serializable) tableOfContents);
         return intent;
     }
 
     @Override
     public void onHeightChanged(int height, int lastHeight) {
-        Log.d("ducNQ", "onHeightChanged: " + height);
         isShowKeyboard = height > 0;
     }
 
@@ -166,37 +187,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        animateTransition();
-        //overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom);
-    }
-
-    private void animateTransition() {
-        // Create the desired animation
-        Animation slideOutAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_out_bottom);
-
-        // Set the animation listener
-        slideOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                // Animation start logic, if needed
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                // Perform any necessary actions after the animation ends
-                finish(); // Close the activity or perform any other desired action
-                overridePendingTransition(0, 0); // Optional: Disable the default activity transition
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                // Animation repeat logic, if needed
-            }
-        });
-
-        // Apply the animation to the root view of the activity
-        View rootView = findViewById(R.id.contents);
-        rootView.startAnimation(slideOutAnimation);
+        overridePendingTransition(0, R.anim.slide_out_bottom);
     }
 
     public static class SortByPage implements Comparator<Storage.RecentInfo> {
@@ -308,12 +299,12 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public ZLAndroidApplication zlib;
+    int pageBook = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main);
-       // overridePendingTransition(R.anim.activity_slide_start_enter, R.anim.activity_scale_start_exit);
         zlib = new ZLAndroidApplication() {
             {
                 attachBaseContext(BookActivity.this.getApplicationContext());
@@ -390,7 +381,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                             editor.putString(BookApplication.PREFERENCE_LAST_PATH, f.toString());
                             editor.commit();
                         }
-                        loadBook(uri, null);
+                        loadBook(uri, null, pathBookCurrent);
                     }
                 };
                 choicer.setStorageAccessFramework(BookActivity.this, RESULT_FILE);
@@ -402,19 +393,50 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         setOnClick();
         observerData();
         TextView textViewNameBook = findViewById(R.id.textTitleBook);
-        String pathBook = getIntent().getStringExtra(PATH_BOOK);
         nameBook = getIntent().getStringExtra(NAME_BOOK);
         thumbBook = getIntent().getStringExtra(PATH_THUMB);
-        int pageBook = getIntent().getIntExtra(PAGE_BOOK, 1);
-        Uri uri = Uri.parse(pathBook);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        mAttachmentsList = (List<Attachments>) getIntent().getSerializableExtra(LIST_ATTACHMENT);
+        mMyStores = (MyStores) getIntent().getSerializableExtra(MY_STORES);
+        mTableOfContents = (TableOfContents) getIntent().getSerializableExtra(TOC);
+        mTableOfContentsList = (List<TableOfContents>) getIntent().getSerializableExtra(LIST_TOC);
+        mAttachments = (Attachments) getIntent().getSerializableExtra(ATTACHMENT);
+        String pathBook;
+        if (mAttachmentsList.size() > 0) {
+            pathBook = mAttachmentsList.get(0).getUrl();
+        } else {
+            if (mAttachments != null) {
+                pathBook = mAttachments.getUrl() == null ? "" : mAttachments.getUrl();
+            } else {
+                pathBook = "";
+            }
+        }
+        pathBookCurrent = pathBook;
+        if (mTableOfContents != null && mTableOfContents.getPageIndex() != null) {
+            pageBook =
+                    mTableOfContents.getPageIndex() == null ? 1 : mTableOfContents.getPageIndex();
+        } else {
+            if (mMyStores != null) {
+                pageBook = mMyStores.getPageIndex();
+            }
+        }
+        if (pathBook == null) return;
+        if (pathBook.endsWith(".pdf") || pathBook.endsWith(".epub")) {
+            Uri uri = Uri.parse(pathBook);
+            new Handler().postDelayed(() -> {
                 textViewNameBook.setText(nameBook);
                 mMainViewModel.eventPageBook.setValue(pageBook);
-                loadBook(uri, null);
-            }
-        }, 100);
+                loadBook(uri, null, pathBookCurrent);
+            }, 100);
+        } else {
+            FragmentReadBookWebView fragmentReadBookWebView =
+                    new FragmentReadBookWebView(pathBook, nameBook);
+            fragmentReadBookWebView.show(getSupportFragmentManager(),
+                    FragmentReadBookWebView.Companion.getTAG());
+            fragmentReadBookWebView.setActionClose(() -> {
+                finish();
+                return null;
+            });
+        }
     }
 
     @Override
@@ -454,10 +476,11 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             if (t != null && t.startsWith(WebViewCustom.SCHEME_HTTP)) u = Uri.parse(t);
         }
         if (u == null) return;
-        loadBook(u, null);
+        loadBook(u, null,pathBookCurrent);
     }
 
-    public void loadBook(final Uri u, final Runnable success) {
+    public void loadBook(final Uri u, final Runnable success,final String pathBookCurrent) {
+        this.pathBookCurrent = pathBookCurrent;
         final ProgressDialog builder = new ProgressDialog(this);
         final AlertDialog d = builder.create();
         d.show();
@@ -508,7 +531,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     @SuppressLint("RestrictedApi")
     public void loadBook(final Storage.Book book) {
-        final List<Uri> uu = storage.recentUris(book);
+       /* final List<Uri> uu = storage.recentUris(book);
         if (uu.size() > 1) {
             LayoutInflater inflater = LayoutInflater.from(this);
 
@@ -635,7 +658,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
             builder.show();
             return;
-        }
+        }*/
         openBook(book.url);
     }
 
@@ -668,8 +691,8 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     public void openBook(Uri uri) {
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        addFragment(ReaderFragment.newInstance(uri, nameBook, thumbBook),
-                ReaderFragment.TAG).commit();
+        addFragment(ReaderFragment.newInstance(uri, nameBook, thumbBook, mAttachmentsList,
+                mTableOfContentsList,pathBookCurrent), ReaderFragment.TAG).commit();
     }
 
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
@@ -779,6 +802,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     @Override
     protected void onResume() {
         super.onResume();
+        //overridePendingTransition(R.anim.slide_in_top, 0);
         isRunning = true;
         RotatePreferenceCompat.onResume(this, BookApplication.PREFERENCE_ROTATE);
         CacheImagesAdapter.cacheClear(this);
@@ -880,14 +904,14 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 }*/
             }
         });
-//        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
-//            @Override
-//            public void onChanged(Boolean aBoolean) {
-//                if (btnMucLuc != null) {
-//                    btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
-//                }
-//            }
-//        });
+        //        mMainViewModel.eventShowMucLuc.observe(this, new Observer<Boolean>() {
+        //            @Override
+        //            public void onChanged(Boolean aBoolean) {
+        //                if (btnMucLuc != null) {
+        //                    btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
+        //                }
+        //            }
+        //        });
     }
 
     private void setOnClick() {
