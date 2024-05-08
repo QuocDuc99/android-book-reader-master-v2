@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="zoomable"
+            type="boolean" />
+
+        <variable
+            name="titleBook"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="com.github.axet.bookreader.custom.webview.WebViewLoadingListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_marginStart="@dimen/afc_5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/afc_10dp"
+            android:rotation="270"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/textBook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textBook" />
+
+        <TextView
+            android:id="@+id/textBook"
+            style="@style/TextStyle.Bold.H3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/afc_10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:layout_marginStart="@dimen/afc_5dp"
+            android:text="@{titleBook}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgBack"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/afc_file" />
+
+        <com.github.axet.bookreader.custom.webview.CustomWebview
+            android:id="@+id/webview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/afc_10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textBook"
+            app:listener="@{ listener }"
+            app:supportZoom="@{ zoomable }"
+            app:url="@{ url }" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

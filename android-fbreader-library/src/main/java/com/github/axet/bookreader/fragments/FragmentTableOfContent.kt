@@ -16,33 +16,53 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.github.axet.bookreader.util.Util.getHeightNavigationBar
-import com.github.axet.bookreader.util.Util.getScreenHeight
+import com.github.axet.bookreader.adapter.AttachmentAdapters
+import com.github.axet.bookreader.adapter.TableOfContentAdapters
+import com.github.axet.bookreader.model.Attachments
+import com.github.axet.bookreader.model.TableOfContents
 import com.github.axet.bookreader.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.geometerplus.fbreader.bookmodel.TOCTree
 import org.geometerplus.zlibrary.ui.android.R
 import org.geometerplus.zlibrary.ui.android.databinding.FragmentTableOfContentBinding
 
 class FragmentTableOfContent : BottomSheetDialogFragment {
-  private val mTOCTree: TOCTree? = null
-  private val mTOCTreeList: List<TOCTree>? = null
+  private var listAttachment = mutableListOf<Attachments>()
+  private var listTOC = mutableListOf<TableOfContents>()
   private var mTOCAdapter: ReaderFragment.TOCAdapter? = null
   var mMainViewModel: MainViewModel? = null
   private var pathThumb = ""
   private var nameBook = ""
   private var page = ""
-
+  private var attachmentAdapter: AttachmentAdapters? = null
+  private var tableOfContentAdapter: TableOfContentAdapters? = null
+  var actionSelectTOC: ((Int) -> Unit)? = null
+  var actionSelectAttachments: ((Attachments) -> Unit)? = null
   constructor()
+
+  constructor(
+    list: MutableList<Attachments>, nameBook: String,
+    pathThumb: String, page: String,
+    listTOC: MutableList<TableOfContents>
+  ) {
+    this.listAttachment.clear()
+    this.listAttachment.addAll(list)
+    this.listTOC.clear()
+    this.listTOC.addAll(listTOC)
+    this.pathThumb = pathThumb
+    this.nameBook = nameBook
+    this.page = page
+  }
+
   constructor(
     TocAdapter: ReaderFragment.TOCAdapter, nameBook: String,
-    pathThumb: String, page: String
-  ) {
+    pathThumb: String, page: String,
+
+    ) {
     mTOCAdapter = TocAdapter
     this.pathThumb = pathThumb
     this.nameBook = nameBook
@@ -96,7 +116,40 @@ class FragmentTableOfContent : BottomSheetDialogFragment {
   }
 
   private fun setUpAdapter() {
-    binding.rcMucLuc.adapter = mTOCAdapter
+    attachmentAdapter = AttachmentAdapters(requireContext())
+    tableOfContentAdapter = TableOfContentAdapters(requireContext())
+    attachmentAdapter?.actionSelectTOC = {
+      actionSelectTOC?.invoke(it)
+    }
+    tableOfContentAdapter?.actionSelectTOC = {
+      actionSelectTOC?.invoke(it)
+    }
+    attachmentAdapter?.actionSelectAttachments = {
+      actionSelectAttachments?.invoke(it)
+    }
+    binding.rcMucLuc.layoutManager =
+      LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+    if (listAttachment.size == 1) {
+      binding.rcMucLuc.adapter = tableOfContentAdapter
+//      listAttachment[0].listChapter?.let {
+//        tableOfContentAdapter?.setDisplayDataChapter(it as MutableList<TableOfContents>)
+//      }
+      if (listTOC.isNullOrEmpty()) {
+        return
+      }
+      listTOC.filter { it.attachmentId != null }
+      //tableOfContentAdapter?.setFullDataChapter(listTOC.toMutableList())
+      tableOfContentAdapter?.setDisplayDataChapter(listTOC.toMutableList())
+    } else {
+      binding.rcMucLuc.adapter = attachmentAdapter
+      attachmentAdapter?.setDataBook(listAttachment)
+    }
+
+//    if(listAttachment.size>0){
+//
+//    }
+//    tableOfContentAdapter?.setDisplayDataChapter()
+    //binding.rcMucLuc.adapter = mTOCAdapter
   }
 
   override fun onStart() {

@@ -58,4 +58,5 @@
 	<string name="pref_tts_title">TTS Language</string>
 	<string name="ignore_embedded_fonts">Ignore book\'s embedded fonts</string>
 	<string name="bookmark_note"><![CDATA[Đánh dấu & ghi chú]]></string>
+	<string name="message_continue_confirm">Bạn có muốn tiếp tục?</string>
 </resources>

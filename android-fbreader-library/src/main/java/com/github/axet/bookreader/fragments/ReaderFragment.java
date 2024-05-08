@@ -53,6 +53,8 @@ import com.github.axet.bookreader.app.ComicsPlugin;
 import com.github.axet.bookreader.app.Plugin;
 import com.github.axet.bookreader.app.Storage;
 import com.github.axet.bookreader.custom.NavigationSeekbar;
+import com.github.axet.bookreader.model.Attachments;
+import com.github.axet.bookreader.model.TableOfContents;
 import com.github.axet.bookreader.viewmodel.MainViewModel;
 import com.github.axet.bookreader.widgets.BookmarksDialog;
 import com.github.axet.bookreader.widgets.FBReaderView;
@@ -60,7 +62,11 @@ import com.github.axet.bookreader.widgets.FontsPopup;
 import com.github.axet.bookreader.widgets.ScrollWidget;
 import com.github.axet.bookreader.widgets.ToolbarButtonView;
 import com.github.axet.bookreader.fragments.DialogBookFragment;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import org.geometerplus.fbreader.bookmodel.TOCTree;
 import org.geometerplus.fbreader.fbreader.ActionCode;
 import org.geometerplus.zlibrary.core.application.ZLApplication;
@@ -83,7 +89,15 @@ public class ReaderFragment extends Fragment
     public static final int RESULT_FONTS = 1;
     private String pathThumb = "";
     public static String PATHTHUMB = "PATHTHUMB";
+    public static String PATH_BOOK_CURRENT = "PATH_BOOK_CURRENT";
     public static String NAMEBOOK = "NAMEBOOK";
+    public static String LIST_ATTACHMENT = "LIST_ATTACHMENT";
+    public static String LIST_TOCS = "LIST_TOCS";
+    public static String TOCS = "TOCS";
+    private String getPathBookCurrent = "";
+    private ArrayList<Attachments> mAttachmentsList = new ArrayList<>();
+    private List<TableOfContents> mTableOfContentsList = new ArrayList<>();
+    private TableOfContents mTableOfContents;
     private String nameBook = "";
     BookApplication mBookApplication;
     Handler handler = new Handler();
@@ -232,12 +246,17 @@ public class ReaderFragment extends Fragment
         }
     }
 
-    public static ReaderFragment newInstance(Uri uri, String nameBook, String thumbBook) {
+    public static ReaderFragment newInstance(Uri uri, String nameBook, String thumbBook,
+            List<Attachments> attachmentsList, List<TableOfContents> mTableOfContentsList,
+            String pathBookCurrent) {
         ReaderFragment fragment = new ReaderFragment();
         Bundle args = new Bundle();
         args.putParcelable("uri", uri);
         args.putString(PATHTHUMB, thumbBook);
         args.putString(NAMEBOOK, nameBook);
+        args.putString(PATH_BOOK_CURRENT, pathBookCurrent);
+        args.putSerializable(LIST_ATTACHMENT, (Serializable) attachmentsList);
+        args.putSerializable(LIST_TOCS, (Serializable) mTableOfContentsList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -276,9 +295,7 @@ public class ReaderFragment extends Fragment
             if (fb != null && fb.app != null) {
                 mNavigationSeekbar =
                         new NavigationSeekbar(fb.app, requireContext(), requireActivity());
-                mMainViewModel.eventShowMucLuc.setValue(fb.app.Model != null
-                        && fb.app.Model.mTOCTree != null
-                        && fb.app.Model.mTOCTree.hasChildren());
+                mMainViewModel.eventShowMucLuc.setValue(!mAttachmentsList.isEmpty());
                 if (mNavigationSeekbar.getRootView() != null) {
                     mView.removeView(mNavigationSeekbar.getRootView());
                 }
@@ -321,7 +338,7 @@ public class ReaderFragment extends Fragment
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (btnMucLuc != null) {
-                    btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
+                    // btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
                 }
             }
         });
@@ -361,21 +378,58 @@ public class ReaderFragment extends Fragment
     }
 
     private void showToc() {
-        if (fb.app.Model == null
-                && fb.app.Model.mTOCTree == null
-                && !fb.app.Model.mTOCTree.hasChildren()) {
-            // openNote();
-        } else {
-            final TOCTree current = fb.app.getCurrentTOCElement();
-            List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
-            final TOCAdapter a = new TOCAdapter(tocTreeList, current);
-            String page = "";
-            if (mNavigationSeekbar != null) {
-                page = mNavigationSeekbar.getPage();
-            }
-            mDialogBookFragment = new FragmentTableOfContent(a, nameBook, pathThumb, page);
-            mDialogBookFragment.show(getParentFragmentManager(), DialogBookFragment.TAG);
+        //        if (fb.app.Model == null
+        //                && fb.app.Model.mTOCTree == null
+        //                && !fb.app.Model.mTOCTree.hasChildren()) {
+        //            // openNote();
+        //        } else {
+        final TOCTree current = fb.app.getCurrentTOCElement();
+        List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
+        final TOCAdapter a = new TOCAdapter(tocTreeList, current);
+        String page = "";
+        if (mNavigationSeekbar != null) {
+            page = mNavigationSeekbar.getPage();
         }
+        ArrayList<Attachments> attachmentsArrayList = new ArrayList<>();
+        for (Attachments att : mAttachmentsList) {
+            Attachments attachments =
+                    new Attachments(att.getId(), att.getFileName(), att.getOriginName(),
+                            att.getFileType(), att.getSize(), att.getUrl(), att.getPrivateUrl(),
+                            att.getCategoryTypeId());
+            attachments.setExpand(att.isExpand());
+            attachments.setListChapter(att.getListChapter());
+            attachmentsArrayList.add(attachments);
+        }
+        mDialogBookFragment =
+                new FragmentTableOfContent(attachmentsArrayList, nameBook, pathThumb, page,
+                        mTableOfContentsList);
+        mDialogBookFragment.setActionSelectTOC(integer -> {
+            int totalPage = fb.app.getTextView().pagePosition().Total;
+            if (integer <= totalPage) {
+                fb.app.getTextView().gotoPage(integer);
+            }
+            mDialogBookFragment.dismissAllowingStateLoss();
+            return null;
+        });
+        mDialogBookFragment.setActionSelectAttachments(attachments -> {
+            String pathBook = "";
+            if (attachments != null) {
+                pathBook = attachments.getUrl() == null ? "" : attachments.getUrl();
+                if (pathBook == null) return null;
+                if (!getPathBookCurrent.equals(pathBook)) {
+                    getPathBookCurrent = pathBook;
+                    Uri uri = Uri.parse(pathBook);
+                    mMainViewModel.eventPageBook.setValue(1);
+                    ((BookActivity) requireActivity()).loadBook(uri, null,
+                            getPathBookCurrent);
+                    mDialogBookFragment.dismissAllowingStateLoss();
+                }
+            }
+            return null;
+        });
+        //new FragmentTableOfContent(a, nameBook, pathThumb, page);
+        mDialogBookFragment.show(getParentFragmentManager(), DialogBookFragment.TAG);
+        // }
     }
 
     @Override
@@ -392,7 +446,7 @@ public class ReaderFragment extends Fragment
         btnMucLuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             showToc();
+                showToc();
             }
         });
         fb.setListenFBReaderView(new FBReaderView.ListenFBReaderView() {
@@ -543,6 +597,25 @@ public class ReaderFragment extends Fragment
         Uri uri = getArguments().getParcelable("uri");
         pathThumb = getArguments().getString(PATHTHUMB);
         nameBook = getArguments().getString(NAMEBOOK);
+        getPathBookCurrent = getArguments().getString(PATH_BOOK_CURRENT);
+        mAttachmentsList = (ArrayList<Attachments>) getArguments().getSerializable(LIST_ATTACHMENT);
+        mTableOfContentsList = (List<TableOfContents>) getArguments().getSerializable(LIST_TOCS);
+        mTableOfContents = (TableOfContents) getArguments().getSerializable(TOCS);
+        if (mAttachmentsList == null || mAttachmentsList.isEmpty()) {
+            btnMucLuc.setVisibility(View.INVISIBLE);
+        } else {
+            if (mAttachmentsList.size() == 1) {
+                if (/*mAttachmentsList.get(0).getListChapter() == null || mAttachmentsList.get(0)
+                        .getListChapter()
+                        .isEmpty() ||*/ mTableOfContentsList.isEmpty()) {
+                    btnMucLuc.setVisibility(View.INVISIBLE);
+                } else {
+                    btnMucLuc.setVisibility(View.VISIBLE);
+                }
+            } else {
+                btnMucLuc.setVisibility(View.VISIBLE);
+            }
+        }
         FBReaderView.ZLTextIndexPosition pos = getArguments().getParcelable("pos");
 
         try {

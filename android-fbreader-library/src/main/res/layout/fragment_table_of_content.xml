@@ -61,7 +61,7 @@
             app:layout_constraintStart_toEndOf="@id/imgThumb"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
-        <com.github.axet.androidlibrary.widgets.TreeRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcMucLuc"
             android:layout_width="match_parent"
             android:layout_height="0dp"
