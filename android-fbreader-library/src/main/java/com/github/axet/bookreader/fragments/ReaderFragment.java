@@ -78,7 +78,7 @@ import static com.github.axet.bookreader.app.Storage.TYPE_BOOKMARK;
 
 public class ReaderFragment extends Fragment
         implements BookActivity.SearchListener, SharedPreferences.OnSharedPreferenceChangeListener,
-        FullscreenActivity.FullscreenListener/*, BookActivity.OnBackPressed*/ {
+        FullscreenActivity.FullscreenListener, BookActivity.OnBackPressed {
     public static final String TAG = ReaderFragment.class.getSimpleName();
     // private KeyboardHeightProvider keyboardHeightProvider;
     public static final int FONT_START = 15;
@@ -475,6 +475,7 @@ public class ReaderFragment extends Fragment
                 mMainViewModel.eventAddBookMark.setValue(check);
             }
         });
+        ((BookActivity) requireActivity()).setOnBackPressed(this::onBackPressed);
         ((BookActivity) requireActivity()).setListenAction(new BookActivity.ListenAction() {
             @Override
             public void actionFullScreen() {
@@ -1228,5 +1229,15 @@ public class ReaderFragment extends Fragment
         if (fontsPopup != null && fontsPopup.choicer != null) {
             fontsPopup.choicer.onActivityResult(resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        if (fb != null && fb.app != null && fb.app.getTextView() != null) {
+            final ZLTextView textView = fb.app.getTextView();
+            final ZLTextView.PagePosition pagePosition = textView.pagePosition();
+            ((BookActivity) requireActivity()).refreshData(pagePosition.Current);
+        }
+        return false;
     }
 }

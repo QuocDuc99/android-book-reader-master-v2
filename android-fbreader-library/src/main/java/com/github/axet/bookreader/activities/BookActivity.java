@@ -36,6 +36,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.github.axet.androidlibrary.activities.AppCompatFullscreenThemeActivity;
 import com.github.axet.androidlibrary.app.FileTypeDetector;
 import com.github.axet.androidlibrary.preferences.RotatePreferenceCompat;
@@ -94,6 +95,9 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static final String LIST_TOC = "LIST_TOC";
     public static final String TOC = "TOC";
     public static final String MY_STORES = "MY_STORES";
+    public static final String MY_STORE_BOOK = "MY_STORE_BOOK";
+    public static final String CURRENT_BOOK = "CURRENT_BOOK";
+    public static final String INDEX_CURRENT = "INDEX_CURRENT";
     public String pathBookCurrent = "";
     private List<Attachments> mAttachmentsList = new ArrayList<>();
     private MyStores mMyStores;
@@ -118,9 +122,15 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     String lastSearch;
     String nameBook;
     String thumbBook;
+    private int indexCurrent = 0;
+    private OnBackPressed mOnBackPressed;
     BookApplication mBookApplication;
     LibraryFragment libraryFragment = LibraryFragment.newInstance();
     public boolean volumeEnabled = true; // tmp enabled / disable volume keys
+
+    public void setOnBackPressed(OnBackPressed onBackPressed) {
+        mOnBackPressed = onBackPressed;
+    }
 
     public void setListenAction(ListenAction listenAction) {
         mListenAction = listenAction;
@@ -136,7 +146,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static Intent newInstance(Context context, String nameBook, String thumb,
             List<Attachments> attachmentsList, MyStores myStores,
             List<TableOfContents> tableOfContentsList, TableOfContents tableOfContents,
-            Attachments attachments) {
+            Attachments attachments,int indexCurrent) {
         Intent intent = new Intent(context, BookActivity.class);
         intent.putExtra(NAME_BOOK, nameBook);
         intent.putExtra(PATH_THUMB, thumb);
@@ -145,7 +155,14 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         intent.putExtra(MY_STORES, (Serializable) myStores);
         intent.putExtra(LIST_TOC, (Serializable) tableOfContentsList);
         intent.putExtra(TOC, (Serializable) tableOfContents);
+        intent.putExtra(INDEX_CURRENT, indexCurrent);
         return intent;
+    }
+
+    public void refreshData(int currentPage) {
+        Intent intent = new Intent(MY_STORE_BOOK);
+        intent.putExtra(CURRENT_BOOK, currentPage);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
     @Override
@@ -187,6 +204,9 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if (mOnBackPressed != null) {
+            mOnBackPressed.onBackPressed();
+        }
         overridePendingTransition(0, R.anim.slide_out_bottom);
     }
 
@@ -395,6 +415,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         TextView textViewNameBook = findViewById(R.id.textTitleBook);
         nameBook = getIntent().getStringExtra(NAME_BOOK);
         thumbBook = getIntent().getStringExtra(PATH_THUMB);
+        indexCurrent = getIntent().getIntExtra(INDEX_CURRENT,0);
         mAttachmentsList = (List<Attachments>) getIntent().getSerializableExtra(LIST_ATTACHMENT);
         mMyStores = (MyStores) getIntent().getSerializableExtra(MY_STORES);
         mTableOfContents = (TableOfContents) getIntent().getSerializableExtra(TOC);
@@ -402,7 +423,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         mAttachments = (Attachments) getIntent().getSerializableExtra(ATTACHMENT);
         String pathBook;
         if (mAttachmentsList.size() > 0) {
-            pathBook = mAttachmentsList.get(0).getUrl();
+            if (indexCurrent >= mAttachmentsList.size()) {
+                indexCurrent = 0;
+            }
+            pathBook = mAttachmentsList.get(indexCurrent).getUrl();
         } else {
             if (mAttachments != null) {
                 pathBook = mAttachments.getUrl() == null ? "" : mAttachments.getUrl();
@@ -476,10 +500,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             if (t != null && t.startsWith(WebViewCustom.SCHEME_HTTP)) u = Uri.parse(t);
         }
         if (u == null) return;
-        loadBook(u, null,pathBookCurrent);
+        loadBook(u, null, pathBookCurrent);
     }
 
-    public void loadBook(final Uri u, final Runnable success,final String pathBookCurrent) {
+    public void loadBook(final Uri u, final Runnable success, final String pathBookCurrent) {
         this.pathBookCurrent = pathBookCurrent;
         final ProgressDialog builder = new ProgressDialog(this);
         final AlertDialog d = builder.create();
@@ -692,7 +716,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public void openBook(Uri uri) {
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, nameBook, thumbBook, mAttachmentsList,
-                mTableOfContentsList,pathBookCurrent), ReaderFragment.TAG).commit();
+                mTableOfContentsList, pathBookCurrent), ReaderFragment.TAG).commit();
     }
 
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {

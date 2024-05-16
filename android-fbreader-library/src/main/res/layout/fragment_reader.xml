@@ -47,6 +47,7 @@
             android:layout_height="1dp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
+
         <TextView
             android:id="@+id/imgMucLuc2"
             android:layout_width="wrap_content"
@@ -59,7 +60,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/layoutPanel"
-            app:drawableTopCompat="@drawable/ic_muc_luc" />
+            android:drawableTop="@drawable/ic_toc2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
