@@ -28,10 +28,10 @@ android {
     }
     buildTypes {
         release {
-            shrinkResources true
-            minifyEnabled true//false
+          //  shrinkResources true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
     }
 
@@ -47,6 +47,10 @@ android {
     }
     buildFeatures{
         dataBinding true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 

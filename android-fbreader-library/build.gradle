@@ -17,8 +17,8 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
-//apply plugin: 'maven'
-apply plugin: 'signing'
+apply plugin: 'maven-publish'
+//apply plugin: 'signing'
 apply plugin: 'digital.wup.android-maven-publish' // 'gradle publishToMavenLocal' and 'publish' tasks
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
@@ -39,6 +39,8 @@ android {
 
   lintOptions {
     disable 'WrongViewCast'
+    checkReleaseBuilds false
+    abortOnError false
   }
 
   buildTypes {
@@ -78,59 +80,68 @@ task sourcesJar(type: Jar) {
 def prop(String name) {
   project.hasProperty(name) ? project.getProperty(name) : null
 }
-
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      groupId 'com.github.axet.fbreader'
-      artifactId 'library'
-      version android.defaultConfig.versionName
-
-      from components.android
-      artifact sourcesJar
-      artifact javadocJar
-
-      pom {
-        name = 'Android FBReader Library'
-        description = 'FBReader base classes.'
-        url = 'https://gitlab.com/axet/android-fbreader-library'
-        licenses {
-          license {
-            name = 'GPLv2'
-            url = 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt'
-          }
-        }
-        developers {
-          developer {
-            id = 'axet'
-            name = 'Alexey Kuznetsov'
-            email = 'axet@me.com'
-          }
-        }
-        scm {
-          connection = 'scm:git:' + pom.url.get()
-          developerConnection = 'scm:git:' + pom.url.get()
-          url = pom.url
-        }
-      }
-    }
-  }
-  repositories {
-    maven {
-      def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-      def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-      url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-      credentials {
-        username prop('ossrhUsername')
-        password prop('ossrhPassword')
-      }
+      groupId = 'com.github.QuocDuc99'
+      artifactId = 'android-fbreader-library'
+      version = '1.0'
+    //  from components.release
     }
   }
 }
+//publishing {
+//  publications {
+//    mavenJava(MavenPublication) {
+//      groupId 'com.github.axet.fbreader'
+//      artifactId 'library'
+//      version android.defaultConfig.versionName
+//
+//      from components.android
+//      artifact sourcesJar
+//      artifact javadocJar
+//
+//      pom {
+//        name = 'Android FBReader Library'
+//        description = 'FBReader base classes.'
+//        url = 'https://gitlab.com/axet/android-fbreader-library'
+//        licenses {
+//          license {
+//            name = 'GPLv2'
+//            url = 'https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt'
+//          }
+//        }
+//        developers {
+//          developer {
+//            id = 'axet'
+//            name = 'Alexey Kuznetsov'
+//            email = 'axet@me.com'
+//          }
+//        }
+//        scm {
+//          connection = 'scm:git:' + pom.url.get()
+//          developerConnection = 'scm:git:' + pom.url.get()
+//          url = pom.url
+//        }
+//      }
+//    }
+//  }
+//  repositories {
+//    maven {
+//      def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+//      def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+//      url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+//      credentials {
+//        username prop('ossrhUsername')
+//        password prop('ossrhPassword')
+//      }
+//    }
+//  }
+//}
 
-signing {
-  sign publishing.publications.mavenJava
-}
+//signing {
+//  sign publishing.publications.mavenJava
+//}
 
 dependencies {
   implementation 'com.android.support:support-v4:21.0.3'
