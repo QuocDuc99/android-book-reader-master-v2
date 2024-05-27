@@ -56,6 +56,7 @@ android {
   }
   buildFeatures {
     dataBinding true
+    viewBinding true
   }
 }
 
@@ -82,15 +83,11 @@ def prop(String name) {
 }
 publishing {
   publications {
-//    register<MavenPublication>("release"){
-//      afterEvaluate {
-//        from components.release
-//      }
-//    }
     mavenJava(MavenPublication) {
       groupId = 'com.github.QuocDuc99'
       artifactId = 'android-fbreader-library'
-      version = '2.0.2'
+      //version = '2.0.2'
+      version android.defaultConfig.versionName
       from components.findByName('release')
     }
   }
