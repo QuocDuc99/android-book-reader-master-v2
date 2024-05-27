@@ -82,11 +82,16 @@ def prop(String name) {
 }
 publishing {
   publications {
-    mavenJava(MavenPublication) {
+//    register<MavenPublication>("release"){
+//      afterEvaluate {
+//        from components.release
+//      }
+//    }
+    mavenAar(MavenPublication) {
       groupId = 'com.github.QuocDuc99'
       artifactId = 'android-fbreader-library'
-      version = '1.0'
-    //  from components.release
+      version = '2.0.2'
+      from components.findByName('release')
     }
   }
 }
