@@ -90,7 +90,7 @@ publishing {
     mavenAar(MavenPublication) {
       groupId = 'com.github.QuocDuc99'
       artifactId = 'android-fbreader-library'
-      version = '2.0.2'
+     // version = '2.0.2'
       from components.findByName('release')
     }
   }
