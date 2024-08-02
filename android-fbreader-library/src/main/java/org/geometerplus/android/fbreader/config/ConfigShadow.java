@@ -19,6 +19,7 @@
 
 package org.geometerplus.android.fbreader.config;
 
+import android.os.Build;
 import java.util.*;
 
 import android.app.Service;
@@ -29,6 +30,9 @@ import android.os.RemoteException;
 import org.geometerplus.zlibrary.core.options.Config;
 
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
+
+import static android.content.Context.RECEIVER_EXPORTED;
+import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public final class ConfigShadow extends Config implements ServiceConnection {
 	private final Context myContext;
@@ -188,9 +192,15 @@ public final class ConfigShadow extends Config implements ServiceConnection {
 	public void onServiceConnected(ComponentName name, IBinder service) {
 		synchronized (this) {
 			myInterface = ConfigInterface.Stub.asInterface(service);
-			myContext.registerReceiver(
-				myReceiver, new IntentFilter(FBReaderIntents.Event.CONFIG_OPTION_CHANGE)
-			);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+				myContext.registerReceiver(myReceiver,
+						new IntentFilter(FBReaderIntents.Event.CONFIG_OPTION_CHANGE),
+						RECEIVER_EXPORTED);
+			} else {
+				myContext.registerReceiver(myReceiver,
+						new IntentFilter(FBReaderIntents.Event.CONFIG_OPTION_CHANGE));
+			}
+
 		}
 
 		final List<Runnable> actions;

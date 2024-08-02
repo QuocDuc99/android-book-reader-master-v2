@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -356,7 +357,12 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
         storage = new Storage(this);
 
-        registerReceiver(receiver, new IntentFilter(ACTION_MENU));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(receiver, new IntentFilter(ACTION_MENU), RECEIVER_EXPORTED);
+        }else {
+            registerReceiver(receiver, new IntentFilter(ACTION_MENU));
+        }
+        //registerReceiver(receiver, );
 
         if (savedInstanceState == null
                 && getIntent().getParcelableExtra(SAVE_INSTANCE_STATE) == null) {

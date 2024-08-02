@@ -4,6 +4,7 @@
 
 package org.geometerplus.android.fbreader.api;
 
+import android.os.Build;
 import java.io.Serializable;
 import java.util.*;
 
@@ -11,6 +12,9 @@ import android.content.*;
 import android.graphics.Bitmap;
 import android.os.IBinder;
 import android.os.Parcelable;
+
+import static android.content.Context.RECEIVER_EXPORTED;
+import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public class ApiClientImplementation implements ServiceConnection, Api, ApiMethods {
 	public static interface ConnectionListener {
@@ -52,7 +56,11 @@ public class ApiClientImplementation implements ServiceConnection, Api, ApiMetho
 	public synchronized void connect() {
 		if (myInterface == null) {
 			myContext.bindService(FBReaderIntents.defaultInternalIntent(FBReaderIntents.Action.API), this, Context.BIND_AUTO_CREATE);
-			myContext.registerReceiver(myEventReceiver, new IntentFilter(FBReaderIntents.Action.API_CALLBACK));
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+				myContext.registerReceiver(myEventReceiver, new IntentFilter(FBReaderIntents.Action.API_CALLBACK), RECEIVER_EXPORTED);
+			}else {
+				myContext.registerReceiver(myEventReceiver, new IntentFilter(FBReaderIntents.Action.API_CALLBACK));
+			}
 		}
 	}
 

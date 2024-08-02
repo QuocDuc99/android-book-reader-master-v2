@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -67,6 +68,7 @@ import java.util.ArrayList;
 import java.util.List;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.fbreader.bookmodel.TOCTree;
 import org.geometerplus.fbreader.fbreader.ActionCode;
 import org.geometerplus.zlibrary.core.application.ZLApplication;
@@ -74,6 +76,7 @@ import org.geometerplus.zlibrary.core.view.ZLViewEnums;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
 import org.geometerplus.zlibrary.ui.android.R;
 
+import static android.content.Context.RECEIVER_EXPORTED;
 import static com.github.axet.bookreader.app.Storage.TYPE_BOOKMARK;
 
 public class ReaderFragment extends Fragment
@@ -420,8 +423,7 @@ public class ReaderFragment extends Fragment
                     getPathBookCurrent = pathBook;
                     Uri uri = Uri.parse(pathBook);
                     mMainViewModel.eventPageBook.setValue(1);
-                    ((BookActivity) requireActivity()).loadBook(uri, null,
-                            getPathBookCurrent);
+                    ((BookActivity) requireActivity()).loadBook(uri, null, getPathBookCurrent);
                     mDialogBookFragment.dismissAllowingStateLoss();
                 }
             }
@@ -681,8 +683,13 @@ public class ReaderFragment extends Fragment
                 fb.invalidateFooter();
             }
         };
-        battery.onReceive(getContext(), getContext().registerReceiver(battery,
-                new IntentFilter(Intent.ACTION_BATTERY_CHANGED)));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            battery.onReceive(getContext(), getContext().registerReceiver(battery,
+                    new IntentFilter(Intent.ACTION_BATTERY_CHANGED), RECEIVER_EXPORTED));
+        } else {
+            battery.onReceive(getContext(), getContext().registerReceiver(battery,
+                    new IntentFilter(Intent.ACTION_BATTERY_CHANGED)));
+        }
 
         time.run();
 
