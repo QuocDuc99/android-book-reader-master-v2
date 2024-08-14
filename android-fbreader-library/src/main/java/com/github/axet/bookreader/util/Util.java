@@ -57,4 +57,9 @@ public class Util {
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
        // inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
+
+    public static int getScreenWidth(Context context) {
+        DisplayMetrics displaymetrics = context.getResources().getDisplayMetrics();
+        return displaymetrics.widthPixels;
+    }
 }
