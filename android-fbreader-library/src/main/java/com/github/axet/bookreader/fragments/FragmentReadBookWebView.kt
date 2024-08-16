@@ -2,7 +2,9 @@ package com.github.axet.bookreader.fragments
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.github.axet.bookreader.custom.webview.WebViewLoadingListener
 import com.github.axet.bookreader.dialog.BaseDialogFragmentBinding
 import com.github.axet.bookreader.viewmodel.MainViewModel
@@ -12,6 +14,7 @@ import org.geometerplus.zlibrary.ui.android.databinding.FragmentWebviewReadBookB
 class FragmentReadBookWebView constructor(private val url: String, private val titleBook: String) :
   BaseDialogFragmentBinding<FragmentWebviewReadBookBinding, MainViewModel>(TYPE_FULL_SCREEN),
   WebViewLoadingListener {
+  private val DOMAIN_URL = "https://view.officeapps.live.com/op/embed.aspx?src="
   var actionClose: (() -> Unit)? = null
 
   companion object {
@@ -33,7 +36,8 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
   override fun initData() {
     registerForContextMenu(mBinding.webview)
     mBinding.zoomable = true
-    mBinding.url = url
+    mBinding.webview.settings.javaScriptEnabled = true
+    mBinding.url = "https://view.officeapps.live.com/op/embed.aspx?src=${url}"
     mBinding.titleBook = titleBook
   }
 
@@ -64,7 +68,7 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
   }
 
   override fun onLoadingPageFinish(view: WebView?, url: String?) {
-
+    mBinding.progressBar.visibility = View.INVISIBLE
   }
 
   override fun onLoadingPageStart(view: WebView?, url: String?) {

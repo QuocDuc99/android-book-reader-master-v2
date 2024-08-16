@@ -15,13 +15,10 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -65,15 +62,9 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import org.geometerplus.fbreader.fbreader.options.ImageOptions;
-import org.geometerplus.fbreader.fbreader.options.MiscOptions;
-import org.geometerplus.zlibrary.text.view.ZLTextPosition;
 import org.geometerplus.zlibrary.ui.android.R;
 import org.geometerplus.zlibrary.ui.android.library.ZLAndroidApplication;
 
@@ -128,7 +119,8 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     BookApplication mBookApplication;
     LibraryFragment libraryFragment = LibraryFragment.newInstance();
     public boolean volumeEnabled = true; // tmp enabled / disable volume keys
-
+    private boolean checkBackPressed = false;
+    private AlertDialog mAlertDialog;
     public void setOnBackPressed(OnBackPressed onBackPressed) {
         mOnBackPressed = onBackPressed;
     }
@@ -205,6 +197,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        checkBackPressed = true;
         if (mOnBackPressed != null) {
             mOnBackPressed.onBackPressed();
         }
@@ -510,15 +503,21 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public void loadBook(final Uri u, final Runnable success, final String pathBookCurrent) {
+        if (checkBackPressed) return;
         this.pathBookCurrent = pathBookCurrent;
         final ProgressDialog builder = new ProgressDialog(this);
-        final AlertDialog d = builder.create();
-        d.show();
+        mAlertDialog = builder.create();
+        if (!isFinishing()) {
+            mAlertDialog.show();
+        } else {
+            return;
+        }
         Thread thread = new Thread("load book") {
             @Override
             public void run() {
                 final Thread t = Thread.currentThread();
-                d.getButton(DialogInterface.BUTTON_POSITIVE)
+                if (mAlertDialog == null) return;
+                mAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -531,7 +530,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if (isFinishing() || !isRunning) return;
+                            if (isFinishing() || mAlertDialog == null) return;
                             loadBook(book);
                             if (success != null) success.run();
                         }
@@ -544,7 +543,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            d.cancel();
+                            if (mAlertDialog != null) mAlertDialog.cancel();
                         }
                     });
                 }
@@ -748,7 +747,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        if (mAlertDialog != null && mAlertDialog.isShowing()) {
+            mAlertDialog.cancel();
+            mAlertDialog = null;
+        }
         unregisterReceiver(receiver);
         RotatePreferenceCompat.onDestroy(this);
         SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
@@ -756,6 +758,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         if (mKeyboardHeightProvider != null) {
             mKeyboardHeightProvider.removeKeyboardListener(this);
         }
+        super.onDestroy();
     }
 
     @Override

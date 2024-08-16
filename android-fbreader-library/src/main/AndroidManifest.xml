@@ -20,6 +20,7 @@
             android:name="com.github.axet.bookreader.activities.BookActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeLight.NoActionBar"
             android:exported="true">
             <meta-data
