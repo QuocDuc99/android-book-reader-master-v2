@@ -15,4 +15,23 @@
         <item>PAGING</item>
         <item>CONTINUOUS</item>
     </string-array>
+
+    <declare-styleable name="VerticalSeekBar">
+        <attr name="seekBarRotation">
+            <!-- Clock wise - 90 deg; top = min, bottom = max -->
+            <enum name="CW90" value="90" />
+            <!-- Clock wise - 270 deg; bottom = min, top = max -->
+            <enum name="CW270" value="270" />
+        </attr>
+    </declare-styleable>
+    <!-- Used in file sort dialog -->
+    <string-array name="file_sort_items">
+        <item>Type</item>
+        <item>Date</item>
+        <item>Size</item>
+        <item>Name</item>
+    </string-array>
+    <string-array name="setting_items">
+        <item>Maximum count of recently files(1~20)</item>
+    </string-array>
 </resources>
