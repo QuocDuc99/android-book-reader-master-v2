@@ -1,0 +1,8 @@
+group.pals.android.lib.ui.filechooser.androidFileChooser-pngs-0 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\generated\res\pngs\release
+group.pals.android.lib.ui.filechooser.androidFileChooser-resValues-1 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\generated\res\resValues\release
+group.pals.android.lib.ui.filechooser.androidFileChooser-rs-2 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\generated\res\rs\release
+group.pals.android.lib.ui.filechooser.androidFileChooser-mergeReleaseResources-3 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+group.pals.android.lib.ui.filechooser.androidFileChooser-mergeReleaseResources-4 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-5 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\build\intermediates\merged_res\release
+group.pals.android.lib.ui.filechooser.androidFileChooser-main-6 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\src\main\res
+group.pals.android.lib.ui.filechooser.androidFileChooser-release-7 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\androidFileChooser\src\release\res

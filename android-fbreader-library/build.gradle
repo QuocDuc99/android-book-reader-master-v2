@@ -64,8 +64,8 @@ android {
   }
 }
 java {
-  sourceCompatibility = JavaVersion.VERSION_17            // << --- ADD This
-  targetCompatibility = JavaVersion.VERSION_17
+  sourceCompatibility = JavaVersion.VERSION_1_8            // << --- ADD This
+  targetCompatibility = JavaVersion.VERSION_1_8
 }
 // https://docs.gradle.org/current/userguide/publishing_maven.html
 

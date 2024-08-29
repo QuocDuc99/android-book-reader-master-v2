@@ -1,0 +1,120 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.github.johnpersano.supertoasts.superToasts-mergeReleaseResources-2:/values/values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "15,4,40,35,21,27,69,61,65,49,54,77",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "602,120,1699,1510,798,1149,2907,2584,2748,2073,2304,3282",
+                        "endLines": "17,13,45,38,25,33,73,63,67,52,57,79",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "731,594,2004,1691,1141,1502,3219,2740,2899,2296,2504,3448"
+                    },
+                    "to": {
+                        "startLines": "10,13,23,29,33,38,45,50,53,56,60,64",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "418,550,1020,1325,1508,1852,2204,2517,2676,2830,3055,3257",
+                        "endLines": "12,22,28,32,37,44,49,52,55,59,63,66",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "545,1015,1320,1503,1847,2199,2512,2671,2825,3050,3252,3421"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "2,4,5,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "57,147,192,102",
+                        "endColumns": "39,43,46,39",
+                        "endOffsets": "92,186,234,137"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,95,139,186",
+                        "endColumns": "39,43,46,39",
+                        "endOffsets": "90,134,181,221"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\dimen.xml",
+                    "from": {
+                        "startLines": "5,6,7,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "136,186,240,92",
+                        "endColumns": "48,52,46,42",
+                        "endOffsets": "180,234,282,130"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "226,275,328,375",
+                        "endColumns": "48,52,46,42",
+                        "endOffsets": "270,323,370,413"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/values/values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "15,4,40,35,21,27,69,61,65,49,54,77",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "602,120,1699,1510,798,1149,2907,2584,2748,2073,2304,3282",
+                        "endLines": "17,13,45,38,25,33,73,63,67,52,57,79",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "731,594,2004,1691,1141,1502,3219,2740,2899,2296,2504,3448"
+                    },
+                    "to": {
+                        "startLines": "10,13,23,29,33,38,45,50,53,56,60,64",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "418,550,1020,1325,1508,1852,2204,2517,2676,2830,3055,3257",
+                        "endLines": "12,22,28,32,37,44,49,52,55,59,63,66",
+                        "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12",
+                        "endOffsets": "545,1015,1320,1503,1847,2199,2512,2671,2825,3050,3252,3421"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "2,4,5,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "57,147,192,102",
+                        "endColumns": "39,43,46,39",
+                        "endOffsets": "92,186,234,137"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,95,139,186",
+                        "endColumns": "39,43,46,39",
+                        "endOffsets": "90,134,181,221"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values\\dimen.xml",
+                    "from": {
+                        "startLines": "5,6,7,4",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "136,186,240,92",
+                        "endColumns": "48,52,46,42",
+                        "endOffsets": "180,234,282,130"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "226,275,328,375",
+                        "endColumns": "48,52,46,42",
+                        "endOffsets": "270,323,370,413"
+                    }
+                }
+            ]
+        }
+    ]
+}

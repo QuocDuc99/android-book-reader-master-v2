@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-xhdpi-v4/ambilwarna_arrow_down.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-xhdpi/ambilwarna_arrow_down.png"
+    },
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-xhdpi-v4/ambilwarna_arrow_right.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-xhdpi/ambilwarna_arrow_right.png"
+    },
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-xhdpi-v4/ambilwarna_target.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-xhdpi/ambilwarna_target.png"
+    },
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-xhdpi-v4/ambilwarna_cursor.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-xhdpi/ambilwarna_cursor.png"
+    }
+]

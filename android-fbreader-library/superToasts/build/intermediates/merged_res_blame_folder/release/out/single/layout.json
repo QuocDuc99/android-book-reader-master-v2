@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/supertoast.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/supertoast.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/supercardtoast_button.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/supercardtoast_button.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/dummy_layout.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/dummy_layout.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/supercardtoast.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/supercardtoast.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/superactivitytoast_button.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/superactivitytoast_button.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/superactivitytoast_progresshorizontal.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/superactivitytoast_progresshorizontal.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/superactivitytoast_progresscircle.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/superactivitytoast_progresscircle.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/supercardtoast_progresscircle.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/supercardtoast_progresscircle.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/layout/supercardtoast_progresshorizontal.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/layout/supercardtoast_progresshorizontal.xml"
+    }
+]

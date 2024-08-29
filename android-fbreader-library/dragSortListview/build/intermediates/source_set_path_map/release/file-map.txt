@@ -1,0 +1,11 @@
+com.mobeta.android.dslv.dragSortListview-media-1.0.0-0 C:\Users\ASUS\.gradle\caches\transforms-3\411588f3392893e296749e04b08275a8\transformed\media-1.0.0\res
+com.mobeta.android.dslv.dragSortListview-core-1.0.0-1 C:\Users\ASUS\.gradle\caches\transforms-3\78c808e87f21da2c1db4ee269b408630\transformed\core-1.0.0\res
+com.mobeta.android.dslv.dragSortListview-coordinatorlayout-1.0.0-2 C:\Users\ASUS\.gradle\caches\transforms-3\acbbaca70b1d7d532930ece8ebafaf65\transformed\coordinatorlayout-1.0.0\res
+com.mobeta.android.dslv.dragSortListview-pngs-3 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\generated\res\pngs\release
+com.mobeta.android.dslv.dragSortListview-resValues-4 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\generated\res\resValues\release
+com.mobeta.android.dslv.dragSortListview-rs-5 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\generated\res\rs\release
+com.mobeta.android.dslv.dragSortListview-mergeReleaseResources-6 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.mobeta.android.dslv.dragSortListview-mergeReleaseResources-7 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.mobeta.android.dslv.dragSortListview-merged_res-8 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\build\intermediates\merged_res\release
+com.mobeta.android.dslv.dragSortListview-main-9 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\src\main\res
+com.mobeta.android.dslv.dragSortListview-release-10 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\dragSortListview\src\release\res

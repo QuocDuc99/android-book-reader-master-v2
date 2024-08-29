@@ -1,0 +1,102 @@
+[
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_black.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_black.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/selector_undobutton.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/selector_undobutton.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_red.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_red.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_kitkat_square_undobarselected.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_kitkat_square_undobarselected.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_red.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_red.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_green.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_green.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_green.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_green.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/selector_kitkat_square_undobutton.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/selector_kitkat_square_undobutton.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_undobarfocused.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_undobarfocused.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_blue.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_blue.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_white.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_white.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_orange.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_orange.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_purple.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_purple.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_undobarselected.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_undobarselected.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_blue.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_blue.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_kitkat_undobarfocused.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_kitkat_undobarfocused.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_kitkat_square_undobarfocused.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_kitkat_square_undobarfocused.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_gray.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_gray.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/selector_kitkat_undobutton.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/selector_kitkat_undobutton.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_kitkat_white.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_kitkat_white.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_purple.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_purple.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_orange.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_orange.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_black.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_black.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/shape_kitkat_undobarselected.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/shape_kitkat_undobarselected.xml"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable/background_standard_gray.xml",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable/background_standard_gray.xml"
+    }
+]
