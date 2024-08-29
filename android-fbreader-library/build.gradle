@@ -106,9 +106,9 @@ publishing {
       artifactId 'android-fbreader-library'
       version android.defaultConfig.versionName
 
-      //  from components.android
-      //   artifact sourcesJar
-      //  artifact javadocJar
+        from components.android
+        artifact sourcesJar
+        artifact javadocJar
 
       pom {
         description = 'First version release'
