@@ -32,7 +32,7 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:textColorHint">@color/blue</item>
+        <item name="android:textColorHint">#22A2E3</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
         <item name="android:windowLightStatusBar">true</item>
