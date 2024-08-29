@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_button_location.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_button_location.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_context_menu_view.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_context_menu_view.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_gridview_files.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_gridview_files.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_simple_text_input_view.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_simple_text_input_view.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_context_menu_tiem.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_context_menu_tiem.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_listview_files.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_listview_files.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout/afc_file_item.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout/afc_file_item.xml"
+    }
+]

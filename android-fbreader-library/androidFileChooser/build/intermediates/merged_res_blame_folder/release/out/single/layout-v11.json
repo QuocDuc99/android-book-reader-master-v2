@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout-v11/afc_settings_sort_view.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout-v11/afc_settings_sort_view.xml"
+    },
+    {
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/layout-v11/afc_file_chooser.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/layout-v11/afc_file_chooser.xml"
+    }
+]

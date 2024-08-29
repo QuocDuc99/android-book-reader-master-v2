@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/layout/ambilwarna_dialog.xml",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/layout/ambilwarna_dialog.xml"
+    },
+    {
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/layout/ambilwarna_pref_widget.xml",
+        "source": "yuku.ambilwarna.ambilWarna-main-5:/layout/ambilwarna_pref_widget.xml"
+    }
+]

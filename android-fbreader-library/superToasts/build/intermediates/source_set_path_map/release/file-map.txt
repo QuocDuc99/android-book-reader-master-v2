@@ -1,0 +1,8 @@
+com.github.johnpersano.supertoasts.superToasts-pngs-0 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\generated\res\pngs\release
+com.github.johnpersano.supertoasts.superToasts-resValues-1 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\generated\res\resValues\release
+com.github.johnpersano.supertoasts.superToasts-rs-2 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\generated\res\rs\release
+com.github.johnpersano.supertoasts.superToasts-mergeReleaseResources-3 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.github.johnpersano.supertoasts.superToasts-mergeReleaseResources-4 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.github.johnpersano.supertoasts.superToasts-merged_res-5 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\build\intermediates\merged_res\release
+com.github.johnpersano.supertoasts.superToasts-main-6 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\src\main\res
+com.github.johnpersano.supertoasts.superToasts-release-7 C:\Users\ASUS\Videos\android-book-reader-master-v2\android-fbreader-library\superToasts\src\release\res

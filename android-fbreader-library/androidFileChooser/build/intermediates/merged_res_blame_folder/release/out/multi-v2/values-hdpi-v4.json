@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-mergeReleaseResources-2:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\androidFileChooser\\src\\main\\res\\values-hdpi\\dimens.xml",
+                    "from": {
+                        "startLines": "10,11,12",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "201,266,324",
+                        "endColumns": "63,56,49",
+                        "endOffsets": "260,318,369"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,176",
+                        "endColumns": "63,56,49",
+                        "endOffsets": "114,171,221"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\androidFileChooser\\src\\main\\res\\values-hdpi\\dimens.xml",
+                    "from": {
+                        "startLines": "10,11,12",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "201,266,324",
+                        "endColumns": "63,56,49",
+                        "endOffsets": "260,318,369"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,176",
+                        "endColumns": "63,56,49",
+                        "endOffsets": "114,171,221"
+                    }
+                }
+            ]
+        }
+    ]
+}

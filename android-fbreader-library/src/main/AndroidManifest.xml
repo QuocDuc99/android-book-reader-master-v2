@@ -122,20 +122,20 @@
             android:label="@string/menu_settings"
             android:theme="@style/AppThemeLight.NoActionBar" />
 
-        <provider
-            android:name="com.github.axet.androidlibrary.services.FileProvider"
-            android:authorities="com.github.axet.bookreader.files"
-            android:exported="false"
-            android:grantUriPermissions="true" />
-        <provider
-            android:name="com.github.axet.androidlibrary.services.StorageProvider"
-            android:authorities="com.github.axet.bookreader.storage"
-            android:exported="false"
-            android:grantUriPermissions="true" />
-        <provider
-            android:name="com.github.axet.bookreader.services.ImagesProvider"
-            android:authorities="com.github.axet.bookreader.images"
-            android:exported="false"
-            android:grantUriPermissions="true" />
+<!--        <provider-->
+<!--            android:name="com.github.axet.androidlibrary.services.FileProvider"-->
+<!--            android:authorities="com.github.axet.bookreader.files"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true" />-->
+<!--        <provider-->
+<!--            android:name="com.github.axet.androidlibrary.services.StorageProvider"-->
+<!--            android:authorities="com.github.axet.bookreader.storage"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true" />-->
+<!--        <provider-->
+<!--            android:name="com.github.axet.bookreader.services.ImagesProvider"-->
+<!--            android:authorities="com.github.axet.bookreader.images"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true" />-->
     </application>
 </manifest>

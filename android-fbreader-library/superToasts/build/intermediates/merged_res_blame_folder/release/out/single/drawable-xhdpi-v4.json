@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_info.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_info.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_save.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_save.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_redo.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_redo.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_exit.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_exit.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_undo.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_undo.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_refresh.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_refresh.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_undo.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_undo.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_share.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_share.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_edit.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_edit.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_dark_refresh.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_dark_refresh.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_exit.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_exit.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_save.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_save.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_info.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_info.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_share.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_share.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_redo.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_redo.png"
+    },
+    {
+        "merged": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/drawable-xhdpi-v4/icon_light_edit.png",
+        "source": "com.github.johnpersano.supertoasts.superToasts-main-5:/drawable-xhdpi/icon_light_edit.png"
+    }
+]
