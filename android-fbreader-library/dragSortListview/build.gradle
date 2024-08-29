@@ -5,16 +5,16 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+//apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: 'digital.wup.android-maven-publish' // 'gradle publishToMavenLocal' and 'publish' tasks
 
 android {
-    compileSdkVersion 14
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 5
-        targetSdkVersion 7
+        minSdkVersion 19
+        targetSdkVersion 34
         versionCode 1
         versionName "0.6.1"
     }
@@ -99,5 +99,5 @@ publishing {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:19.1.0'
+    implementation 'com.android.support:support-v4:28.0.0'
 }

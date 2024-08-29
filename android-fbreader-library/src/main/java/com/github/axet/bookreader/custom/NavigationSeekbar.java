@@ -93,7 +93,7 @@ public class NavigationSeekbar {
                 fromUserCurrent = fromUser;
             }
         });
-        /*text.setOnClickListener(v -> {
+        text.setOnClickListener(v -> {
             final ZLTextView textView = myFBReader.getTextView();
             final ZLTextView.PagePosition pagePosition = textView.pagePosition();
             DialogPage dialogPage = new DialogPage(mContext, mActivity, 1, pagePosition.Total);
@@ -107,7 +107,7 @@ public class NavigationSeekbar {
                 dialogPage.dismiss();
                 return null;
             });
-        });*/
+        });
     }
 
     private int getSelectionCurrent(String s) {

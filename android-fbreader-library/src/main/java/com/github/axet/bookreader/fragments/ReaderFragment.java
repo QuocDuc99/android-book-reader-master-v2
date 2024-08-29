@@ -1177,14 +1177,15 @@ public class ReaderFragment extends Fragment
         tocdialog.show();
     }
 
+    // search book
     @Override
     public void search(String s) {
-        fb.app.runAction(ActionCode.SEARCH, s);
+        //fb.app.runAction(ActionCode.SEARCH, s);
     }
 
     @Override
     public void searchClose() {
-        fb.searchClose();
+        //fb.searchClose();
     }
 
     @Override

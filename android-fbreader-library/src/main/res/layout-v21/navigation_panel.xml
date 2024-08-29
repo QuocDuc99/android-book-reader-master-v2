@@ -19,6 +19,7 @@
         android:layout_height="wrap_content">
         <!--android:background="@drawable/bg_out_line"-->
         <TextView
+            android:background="@drawable/bg_out_line"
             android:id="@+id/navigation_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

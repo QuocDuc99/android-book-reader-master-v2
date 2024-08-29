@@ -1,6 +1,7 @@
 package com.github.axet.bookreader.app;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,6 +12,7 @@ import android.graphics.Rect;
 import android.util.Log;
 
 import androidx.core.graphics.ColorUtils;
+import com.github.axet.bookreader.util.Util;
 import com.github.axet.bookreader.widgets.FBReaderView;
 import com.github.axet.bookreader.widgets.ScrollWidget;
 import com.github.axet.bookreader.widgets.SelectionView;
@@ -72,8 +74,10 @@ public interface Plugin {
         public int h; // display h
         public double hh; // pageBox sizes, visible height
         public double ratio;
-        public int pageStep; // pageBox sizes, page step size (fullscreen height == pageStep + pageOverlap)
-        public int pageOverlap; // pageBox sizes, page overlap size (fullscreen height == pageStep + pageOverlap)
+        public int pageStep;
+                // pageBox sizes, page step size (fullscreen height == pageStep + pageOverlap)
+        public int pageOverlap;
+                // pageBox sizes, page overlap size (fullscreen height == pageStep + pageOverlap)
         public int dpi; // pageBox dpi, set manually
 
         public Page() {
@@ -86,8 +90,7 @@ public interface Plugin {
             ratio = r.ratio;
             pageNumber = r.pageNumber;
             pageOffset = r.pageOffset;
-            if (r.pageBox != null)
-                pageBox = new Box(r.pageBox);
+            if (r.pageBox != null) pageBox = new Box(r.pageBox);
             pageStep = r.pageStep;
             pageOverlap = r.pageOverlap;
         }
@@ -99,7 +102,7 @@ public interface Plugin {
 
         public void renderPage() {
             ratio = pageBox.w / (double) w;
-            hh = h * ratio;
+            hh = h + Util.dpToPx(60);//h * ratio;
 
             pageOverlap = (int) (hh * FBReaderView.PAGE_OVERLAP_PERCENTS / 100);
             pageStep = (int) (hh - pageOverlap); // -5% or lowest base line
@@ -123,10 +126,9 @@ public interface Plugin {
         public boolean next() {
             int pageOffset = this.pageOffset + pageStep;
             int tail = pageBox.h - pageOffset;
-            if (pageOffset >= pageBox.h || tail <= pageOverlap) {
+            if (pageOffset >= pageBox.h - Util.dpToPx(60) || tail <= pageOverlap) {
                 int pageNumber = this.pageNumber + 1;
-                if (pageNumber >= getPagesCount())
-                    return false;
+                if (pageNumber >= getPagesCount()) return false;
                 this.pageOffset = 0;
                 this.pageNumber = pageNumber;
                 load();
@@ -144,15 +146,13 @@ public interface Plugin {
                 return true;
             } else if (pageOffset < 0) {
                 int pageNumber = this.pageNumber - 1;
-                if (pageNumber < 0)
-                    return false;
+                if (pageNumber < 0) return false;
                 this.pageNumber = pageNumber;
                 load(); // load pageBox
                 renderPage(); // calculate pageStep
                 int tail = pageBox.h % pageStep;
                 pageOffset = pageBox.h - tail;
-                if (tail <= pageOverlap)
-                    pageOffset = pageOffset - pageStep; // skip tail
+                if (tail <= pageOverlap) pageOffset = pageOffset - pageStep; // skip tail
                 this.pageOffset = pageOffset;
                 return true;
             }
@@ -162,10 +162,11 @@ public interface Plugin {
 
         public void scale(int w, int h) {
             double ratio = w / (double) pageBox.w;
-            this.hh *= ratio;
+            this.hh = h + Util.dpToPx(60);//*= ratio;
             this.ratio *= ratio;
             pageBox.w = w;
-            pageBox.h = (int) (pageBox.h * ratio);
+            //pageBox.h = (int) (pageBox.h * ratio);
+            pageBox.h = h /*- Util.dpToPx(60)*/;//(int) (pageBox.h * ratio);
             pageOffset = (int) (pageOffset * ratio);
             dpi = (int) (dpi * ratio);
         }
@@ -262,10 +263,8 @@ public interface Plugin {
 
             public static int odd(int page, int i, int max) {
                 int p = page + odd(i);
-                if (page <= i / 2)
-                    p = i;
-                if (page + i / 2 >= max)
-                    p = max - i - 1;
+                if (page <= i / 2) p = i;
+                if (page + i / 2 >= max) p = max - i - 1;
                 return p;
             }
 
@@ -312,9 +311,14 @@ public interface Plugin {
             }
 
             public boolean isWord(Character c) {
-                if (Character.isSpaceChar(c))
-                    return false;
-                return Character.isDigit(c) || Character.isLetter(c) || Character.isLetterOrDigit(c) || c == '[' || c == ']' || c == '(' || c == ')';
+                if (Character.isSpaceChar(c)) return false;
+                return Character.isDigit(c)
+                        || Character.isLetter(c)
+                        || Character.isLetterOrDigit(c)
+                        || c == '['
+                        || c == ']'
+                        || c == '('
+                        || c == ')';
             }
 
             public void setStart(Page page, Point point) {
@@ -419,20 +423,24 @@ public interface Plugin {
             try {
                 FBReaderApp app = new FBReaderApp(null, new BookCollectionShadow());
                 ZLFile wallpaper = app.BookTextView.getWallpaperFile();
-                if (wallpaper != null)
+                if (wallpaper != null) {
                     this.wallpaper = BitmapFactory.decodeStream(wallpaper.getInputStream());
-                else
+                } else {
                     this.wallpaper = null;
+                }
                 wallpaperColor = (0xff << 24) | app.BookTextView.getBackgroundColor().intValue();
-                if (ColorUtils.calculateLuminance(wallpaperColor) < 0.5f && ! (this instanceof ComicsPlugin.ComicsView))
+                if (ColorUtils.calculateLuminance(wallpaperColor) < 0.5f
+                        && !(this instanceof ComicsPlugin.ComicsView)) {
                     paint.setColorFilter(new ColorMatrixColorFilter(NEGATIVE));
-                else
+                } else {
                     paint.setColorFilter(null);
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
+        // draw background color
         public void drawWallpaper(Canvas canvas) {
             if (wallpaper != null) {
                 float dx = wallpaper.getWidth();
@@ -447,10 +455,11 @@ public interface Plugin {
         }
 
         public void gotoPosition(ZLTextPosition p) {
-            if (p == null)
-                return;
-            if (current.pageNumber != p.getParagraphIndex() || current.pageOffset != p.getElementIndex())
+            if (p == null) return;
+            if (current.pageNumber != p.getParagraphIndex()
+                    || current.pageOffset != p.getElementIndex()) {
                 current.load(p);
+            }
             if (reflower != null) {
                 if (reflower.page != p.getParagraphIndex()) {
                     reflower.reset();
@@ -479,8 +488,7 @@ public interface Plugin {
             if (reflower != null) {
                 reflower.onScrollingFinished(index);
                 Log.d(TAG, "Reflow position: " + reflower.page + "." + reflower.index);
-                if (index == ZLViewEnums.PageIndex.current)
-                    return false;
+                if (index == ZLViewEnums.PageIndex.current) return false;
                 if (reflower.page != current.pageNumber) {
                     current.pageNumber = reflower.page;
                     current.pageOffset = 0;
@@ -549,8 +557,9 @@ public interface Plugin {
         }
 
         public ZLTextPosition getNextPosition() {
-            if (current.w == 0 || current.h == 0)
+            if (current.w == 0 || current.h == 0) {
                 return null; // after reset() we do not know display size
+            }
             Page next = new Page(current, ZLViewEnums.PageIndex.next) {
                 @Override
                 public void load() {
@@ -561,25 +570,23 @@ public interface Plugin {
                     return current.getPagesCount();
                 }
             };
-            if (current.equals(next.pageNumber, next.pageOffset))
-                return null; // !canScroll()
+            if (current.equals(next.pageNumber, next.pageOffset)) return null; // !canScroll()
             ZLTextFixedPosition e = new ZLTextFixedPosition(next.pageNumber, next.pageOffset, 0);
-            if (e.ParagraphIndex >= next.getPagesCount())
-                return null;
+            if (e.ParagraphIndex >= next.getPagesCount()) return null;
             return e;
         }
 
         public boolean canScroll(ZLView.PageIndex index) {
             if (reflower != null) {
-                if (reflower.canScroll(index))
-                    return true;
+                if (reflower.canScroll(index)) return true;
                 switch (index) {
                     case previous:
-                        if (current.pageNumber > 0)
-                            return true;
-                        if (current.pageNumber != reflower.page) { // only happens to 0 page of document, we need to know it reflow count
+                        if (current.pageNumber > 0) return true;
+                        if (current.pageNumber
+                                != reflower.page) { // only happens to 0 page of document, we need to know it reflow count
                             int render = reflower.index;
-                            Bitmap bm = render(reflower.rw, reflower.h, current.pageNumber); // 0 page
+                            Bitmap bm =
+                                    render(reflower.rw, reflower.h, current.pageNumber); // 0 page
                             reflower.load(bm, current.pageNumber, 0);
                             bm.recycle();
                             int count = reflower.count();
@@ -589,11 +596,12 @@ public interface Plugin {
                         }
                         return false;
                     case next:
-                        if (current.pageNumber + 1 < current.getPagesCount())
-                            return true;
-                        if (current.pageNumber != reflower.page) { // only happens to last page of document, we need to know it reflow count
+                        if (current.pageNumber + 1 < current.getPagesCount()) return true;
+                        if (current.pageNumber
+                                != reflower.page) { // only happens to last page of document, we need to know it reflow count
                             int render = reflower.index - reflower.count();
-                            Bitmap bm = render(reflower.rw, reflower.h, current.pageNumber); // last page
+                            Bitmap bm = render(reflower.rw, reflower.h,
+                                    current.pageNumber); // last page
                             reflower.load(bm, current.pageNumber, 0);
                             bm.recycle();
                             reflower.index = render;
@@ -634,7 +642,8 @@ public interface Plugin {
             return render(w, h, page, Bitmap.Config.RGB_565); // reflower active, always 565
         }
 
-        public void drawOnBitmap(Context context, Bitmap bitmap, int w, int h, ZLView.PageIndex index, FBReaderView.CustomView custom, Storage.RecentInfo info) {
+        public void drawOnBitmap(Context context, Bitmap bitmap, int w, int h,
+                ZLView.PageIndex index, FBReaderView.CustomView custom, Storage.RecentInfo info) {
             Canvas canvas = new Canvas(bitmap);
             drawOnCanvas(context, canvas, w, h, index, custom, info);
         }
@@ -648,10 +657,12 @@ public interface Plugin {
             return r.pageBox.h / r.ratio;
         }
 
-        public void drawOnCanvas(Context context, Canvas canvas, int w, int h, ZLView.PageIndex index, FBReaderView.CustomView custom, Storage.RecentInfo info) {
+        public void drawOnCanvas(Context context, Canvas canvas, int w, int h,
+                ZLView.PageIndex index, FBReaderView.CustomView custom, Storage.RecentInfo info) {
             if (reflow) {
-                if (reflower == null)
+                if (reflower == null) {
                     reflower = new Reflow(context, w, h, current.pageNumber, custom, info);
+                }
                 Bitmap bm = null;
                 reflower.reset(w, h);
                 int render = reflower.index; // render reflow page index
@@ -672,15 +683,15 @@ public interface Plugin {
                 }
                 switch (index) {
                     case previous: // prev can point to many (no more then 2) pages behind, we need to walk every page manually
-                        if (reflower.count() == -1 && render > 0) { // walking on reset reflower, reload
+                        if (reflower.count() == -1
+                                && render > 0) { // walking on reset reflower, reload
                             bm = render(reflower.rw, reflower.h, page);
                             reflower.load(bm);
                         }
                         render -= 1;
                         while (render < 0) {
                             page--;
-                            if (bm != null)
-                                bm.recycle();
+                            if (bm != null) bm.recycle();
                             bm = render(reflower.rw, reflower.h, page);
                             reflower.load(bm);
                             render = render + reflower.emptyCount();
@@ -688,8 +699,7 @@ public interface Plugin {
                             reflower.index = render + 1; // onScrollingFinished - 1
                         }
                         if (reflower.count() > render) {
-                            if (bm != null)
-                                bm.recycle();
+                            if (bm != null) bm.recycle();
                             bm = reflower.render(render);
                         }
                         reflower.pending = -1;
@@ -725,24 +735,24 @@ public interface Plugin {
                         while (reflower.emptyCount() - render <= 0) {
                             page++;
                             render -= reflower.emptyCount();
-                            if (bm != null)
-                                bm.recycle();
+                            if (bm != null) bm.recycle();
                             bm = render(reflower.rw, reflower.h, page);
                             reflower.load(bm, page, render - 1); // onScrollingFinished + 1
                         }
                         if (reflower.count() > render) {
-                            if (bm != null)
-                                bm.recycle();
+                            if (bm != null) bm.recycle();
                             bm = reflower.render(render);
                         }
                         reflower.pending = 1;
                         break;
                 }
                 if (bm != null) {
-                    if (reflower == null || reflower.bm == bm)
-                        drawWallpaper(canvas); // we are about to draw original page, perapre bacgkournd
-                    else
+                    if (reflower == null || reflower.bm == bm) {
+                        drawWallpaper(
+                                canvas); // we are about to draw original page, perapre bacgkournd
+                    } else {
                         canvas.drawColor(wallpaperColor); // prepare white
+                    }
                     drawPage(canvas, w, h, bm);
                     bm.recycle();
                     return;
@@ -772,10 +782,12 @@ public interface Plugin {
             Rect dst;
             if (dh > h) { // scaling width max makes it too high
                 int mid = (w - dw) / 2;
-                dst = new Rect(mid, 0, dw + mid, h); // scale it by height max and take calulated width
+                dst = new Rect(mid, 0, dw + mid,
+                        h); // scale it by height max and take calulated width
             } else { // take width
                 int mid = (h - dh) / 2;
-                dst = new Rect(0, mid, w, dh + mid); // scale it by width max and take calulated height
+                dst = new Rect(0, mid, w,
+                        dh + mid); // scale it by width max and take calulated height
             }
             canvas.drawBitmap(bm, src, dst, paint);
         }
@@ -787,10 +799,8 @@ public interface Plugin {
             TOCTree treeToSelect = null;
             for (TOCTree tree : tocTree) {
                 final TOCTree.Reference reference = tree.getReference();
-                if (reference == null)
-                    continue;
-                if (reference.ParagraphIndex > current.pageNumber)
-                    break;
+                if (reference == null) continue;
+                if (reference.ParagraphIndex > current.pageNumber) break;
                 treeToSelect = tree;
             }
             return treeToSelect;
@@ -809,18 +819,19 @@ public interface Plugin {
         }
 
         public Selection.Page selectPage(ZLTextPosition start, Reflow.Info info, int w, int h) {
-            if (reflow && info != null)
-                return new Selection.Page(start.getParagraphIndex(), info.bm.width(), info.bm.height());
-            else
+            if (reflow && info != null) {
+                return new Selection.Page(start.getParagraphIndex(), info.bm.width(),
+                        info.bm.height());
+            } else {
                 return new Selection.Page(start.getParagraphIndex(), w, h);
+            }
         }
 
         public Rect selectRect(Reflow.Info info, int x, int y) {
             x = x - info.margin.left;
             Map<Rect, Rect> dst = info.dst;
             for (Rect d : dst.keySet()) {
-                if (d.contains(x, y))
-                    return dst.get(d);
+                if (d.contains(x, y)) return dst.get(d);
             }
             return null;
         }
@@ -829,8 +840,7 @@ public interface Plugin {
             if (reflow) {
                 x = x - info.margin.left;
                 for (Rect d : info.dst.keySet()) {
-                    if (d.contains(x, y))
-                        return new Selection.Point(info.fromDst(d, x, y));
+                    if (d.contains(x, y)) return new Selection.Point(info.fromDst(d, x, y));
                 }
                 return null;
             } else {
@@ -838,10 +848,10 @@ public interface Plugin {
             }
         }
 
-        public Selection select(ZLTextPosition start, Reflow.Info info, int w, int h, int x, int y) {
+        public Selection select(ZLTextPosition start, Reflow.Info info, int w, int h, int x,
+                int y) {
             Selection.Point p = selectPoint(info, x, y);
-            if (p != null)
-                return select(selectPage(start, info, w, h), p);
+            if (p != null) return select(selectPage(start, info, w, h), p);
             return null;
         }
 
@@ -850,7 +860,11 @@ public interface Plugin {
             for (Rect r : rr) {
                 for (Rect s : info.src.keySet()) {
                     Rect i = new Rect(r);
-                    if (i.intersect(s) && (i.height() * 100 / s.height() > SelectionView.ARTIFACT_PERCENTS || r.height() > 0 && i.height() * 100 / r.height() > SelectionView.ARTIFACT_PERCENTS)) { // ignore artifacts height less then 10%
+                    if (i.intersect(s) && (i.height() * 100 / s.height()
+                            > SelectionView.ARTIFACT_PERCENTS
+                            || r.height() > 0
+                            && i.height() * 100 / r.height()
+                            > SelectionView.ARTIFACT_PERCENTS)) { // ignore artifacts height less then 10%
                         Rect d = info.fromSrc(s, i);
                         list.add(d);
                     }

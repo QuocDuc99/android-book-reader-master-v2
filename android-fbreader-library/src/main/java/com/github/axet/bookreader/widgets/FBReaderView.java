@@ -754,6 +754,8 @@ public class FBReaderView extends RelativeLayout {
         }
     }
 
+
+    // zom view
     public static class PinchGesture extends com.github.axet.androidlibrary.widgets.PinchGesture {
         FBReaderView fb;
 
@@ -762,9 +764,14 @@ public class FBReaderView extends RelativeLayout {
             this.fb = view;
         }
 
+        /**
+         * disabled zom view book
+         * @param e
+         * @return
+         */
         public boolean isScaleTouch(MotionEvent e) {
             if (fb.pluginview == null || fb.pluginview.reflow) return false;
-            return super.isScaleTouch(e);
+            return false;//super.isScaleTouch(e);
         }
 
         public void pinchOpen(int page, Rect v) {

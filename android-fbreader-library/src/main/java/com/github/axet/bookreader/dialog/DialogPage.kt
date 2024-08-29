@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import com.github.axet.bookreader.keyboard_height.KeyboardHeightProvider
 import com.github.axet.bookreader.util.Util
 import org.geometerplus.zlibrary.ui.android.databinding.DialogPageBinding
+import java.lang.NumberFormatException
 
 class DialogPage(
   private val context: Context,
@@ -39,12 +40,16 @@ class DialogPage(
       if (text.isEmpty() || !isTextDigital(text)) {
         return@setOnClickListener
       }
-      val pageSelect = text.toInt()
-      if (pageSelect < pageStart || pageSelect > pageEnd) {
+      try {
+        val pageSelect = text.toInt()
+        if (pageSelect < pageStart || pageSelect > pageEnd) {
+          binding.navigationEditText.error = "Số trang không hợp lệ"
+        } else {
+          Util.closeKeyboard(context)
+          actionOk?.invoke(pageSelect)
+        }
+      } catch (e: NumberFormatException) {
         binding.navigationEditText.error = "Số trang không hợp lệ"
-      } else {
-        Util.closeKeyboard(context,binding.navigationEditText)
-        actionOk?.invoke(pageSelect)
       }
     }
 

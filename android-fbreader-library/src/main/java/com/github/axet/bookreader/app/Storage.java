@@ -898,10 +898,15 @@ public class Storage extends com.github.axet.androidlibrary.app.Storage {
                         }
                     }
                     break; // priority first - more imporant
+                } else {
+                    if (book.ext == null) {
+                        book.ext = Storage.getExt(u.toString());
+                        break;
+                    }
                 }
             }
 
-            if (book.ext == null) throw new RuntimeException("Unsupported format");
+            if (book.ext == null) throw new RuntimeException("Định dạng không hợp lệ");
 
             if (book.ext.equals(ComicsPlugin.CBR)) { // handling cbz solid archives
                 File cbz = null;
@@ -929,7 +934,7 @@ public class Storage extends com.github.axet.androidlibrary.app.Storage {
                     }
                 } catch (Exception e) {
                     if (cbz != null) cbz.delete();
-                    throw new RuntimeException("unsupported rar", e);
+                    throw new RuntimeException("Định dạng không hợp lệ", e);
                 }
             }
 

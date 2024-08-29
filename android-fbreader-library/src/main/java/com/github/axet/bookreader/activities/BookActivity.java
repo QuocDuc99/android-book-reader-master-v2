@@ -90,6 +90,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static final String MY_STORE_BOOK = "MY_STORE_BOOK";
     public static final String CURRENT_BOOK = "CURRENT_BOOK";
     public static final String INDEX_CURRENT = "INDEX_CURRENT";
+    public static final String FIRST_PAGE = "FIRST_PAGE";
     public String pathBookCurrent = "";
     private List<Attachments> mAttachmentsList = new ArrayList<>();
     private MyStores mMyStores;
@@ -121,6 +122,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public boolean volumeEnabled = true; // tmp enabled / disable volume keys
     private boolean checkBackPressed = false;
     private AlertDialog mAlertDialog;
+    private boolean checkFirstPage = false;
     public void setOnBackPressed(OnBackPressed onBackPressed) {
         mOnBackPressed = onBackPressed;
     }
@@ -139,7 +141,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static Intent newInstance(Context context, String nameBook, String thumb,
             List<Attachments> attachmentsList, MyStores myStores,
             List<TableOfContents> tableOfContentsList, TableOfContents tableOfContents,
-            Attachments attachments,int indexCurrent) {
+            Attachments attachments,int indexCurrent, boolean checkFirstPage) {
         Intent intent = new Intent(context, BookActivity.class);
         intent.putExtra(NAME_BOOK, nameBook);
         intent.putExtra(PATH_THUMB, thumb);
@@ -149,6 +151,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         intent.putExtra(LIST_TOC, (Serializable) tableOfContentsList);
         intent.putExtra(TOC, (Serializable) tableOfContents);
         intent.putExtra(INDEX_CURRENT, indexCurrent);
+        intent.putExtra(FIRST_PAGE, checkFirstPage);
         return intent;
     }
 
@@ -420,6 +423,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         mTableOfContents = (TableOfContents) getIntent().getSerializableExtra(TOC);
         mTableOfContentsList = (List<TableOfContents>) getIntent().getSerializableExtra(LIST_TOC);
         mAttachments = (Attachments) getIntent().getSerializableExtra(ATTACHMENT);
+        checkFirstPage = getIntent().getBooleanExtra(FIRST_PAGE, false);
         String pathBook;
         if (mAttachmentsList.size() > 0) {
             if (indexCurrent >= mAttachmentsList.size()) {
@@ -442,6 +446,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 pageBook = mMyStores.getPageIndex();
             }
         }
+        if (checkFirstPage) pageBook = 1;
         if (pathBook == null) return;
         if (pathBook.endsWith(".pdf") || pathBook.endsWith(".epub")) {
             Uri uri = Uri.parse(pathBook);

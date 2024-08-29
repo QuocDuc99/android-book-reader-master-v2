@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.github.axet.bookreader.app.Plugin;
 import com.github.axet.bookreader.app.Reflow;
 
+import com.github.axet.bookreader.util.Util;
 import org.geometerplus.fbreader.fbreader.options.PageTurningOptions;
 import org.geometerplus.zlibrary.core.application.ZLApplication;
 import org.geometerplus.zlibrary.core.view.ZLViewEnums;
@@ -122,7 +123,7 @@ public class PagerWidget extends ZLAndroidWidget {
             if (p.pageOffset < 0) { // show empty space at beginig
                 int t = (int) (-p.pageOffset / p.ratio);
                 dst = new Rect(0, t, p.w, t + (int) (p.pageBox.h / p.ratio));
-            } else if (p.pageOffset == 0 && p.hh > p.pageBox.h) {  // show middle vertically
+            } else if (p.pageOffset == 0 && p.hh + Util.dpToPx(60) > p.pageBox.h) {  // show middle vertically
                 int t = (int) ((p.hh - p.pageBox.h) / p.ratio / 2);
                 dst = new Rect(0, t, p.w, p.h - t);
             } else {
