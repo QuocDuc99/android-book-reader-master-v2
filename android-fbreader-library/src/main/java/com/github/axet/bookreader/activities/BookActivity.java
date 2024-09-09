@@ -47,7 +47,9 @@ import com.github.axet.androidlibrary.widgets.ThemeUtils;
 import com.github.axet.androidlibrary.widgets.WebViewCustom;
 import com.github.axet.bookreader.app.BookApplication;
 import com.github.axet.bookreader.app.Storage;
+import com.github.axet.bookreader.fragments.DialogBookFragment;
 import com.github.axet.bookreader.fragments.FragmentReadBookWebView;
+import com.github.axet.bookreader.fragments.FragmentTableOfContent;
 import com.github.axet.bookreader.fragments.LibraryFragment;
 import com.github.axet.bookreader.fragments.ReaderFragment;
 import com.github.axet.bookreader.keyboard_height.KeyboardHeightProvider;
@@ -89,6 +91,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static final String MY_STORES = "MY_STORES";
     public static final String MY_STORE_BOOK = "MY_STORE_BOOK";
     public static final String CURRENT_BOOK = "CURRENT_BOOK";
+    public static final String TOTAL_PAGE_BOOK = "TOTAL_PAGE_BOOK";
     public static final String INDEX_CURRENT = "INDEX_CURRENT";
     public static final String FIRST_PAGE = "FIRST_PAGE";
     public String pathBookCurrent = "";
@@ -155,9 +158,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         return intent;
     }
 
-    public void refreshData(int currentPage) {
+    public void refreshData(int currentPage, int totalPageBook) {
         Intent intent = new Intent(MY_STORE_BOOK);
         intent.putExtra(CURRENT_BOOK, currentPage);
+        intent.putExtra(TOTAL_PAGE_BOOK, totalPageBook);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
@@ -451,6 +455,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         if (pathBook.endsWith(".pdf") || pathBook.endsWith(".epub")) {
             Uri uri = Uri.parse(pathBook);
             new Handler().postDelayed(() -> {
+                if(isDestroyed()) return;
                 textViewNameBook.setText(nameBook);
                 mMainViewModel.eventPageBook.setValue(pageBook);
                 loadBook(uri, null, pathBookCurrent);
@@ -461,6 +466,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             fragmentReadBookWebView.show(getSupportFragmentManager(),
                     FragmentReadBookWebView.Companion.getTAG());
             fragmentReadBookWebView.setActionClose(() -> {
+                refreshData(0, 0);
                 finish();
                 return null;
             });
@@ -724,6 +730,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public void openBook(Uri uri) {
+
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, nameBook, thumbBook, mAttachmentsList,
                 mTableOfContentsList, pathBookCurrent), ReaderFragment.TAG).commit();
@@ -732,6 +739,13 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, pos), ReaderFragment.TAG).commit();
+    }
+
+    public void removeFragment(String tag){
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        }
     }
 
     public void openLibrary() {
@@ -746,6 +760,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public FragmentTransaction openFragment(Fragment f, String tag) {
+        //removeFragment(tag);
         FragmentManager fm = getSupportFragmentManager();
         return fm.beginTransaction().replace(R.id.main_content, f, tag);
     }
@@ -1000,4 +1015,5 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             mListenAction.extendView(btnBookMark);
         }
     }
+
 }

@@ -122,6 +122,7 @@ public class ReaderFragment extends Fragment
     SearchView btnSearch;
     MainViewModel mMainViewModel;
     Runnable invalidateOptionsMenu;
+    FragmentReadBookWebView fragmentReadBookWebView;
     Runnable time = new Runnable() {
         @Override
         public void run() {
@@ -386,9 +387,9 @@ public class ReaderFragment extends Fragment
         //                && !fb.app.Model.mTOCTree.hasChildren()) {
         //            // openNote();
         //        } else {
-        final TOCTree current = fb.app.getCurrentTOCElement();
-        List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
-        final TOCAdapter a = new TOCAdapter(tocTreeList, current);
+       // final TOCTree current = fb.app.getCurrentTOCElement();
+       // List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
+      //  final TOCAdapter a = new TOCAdapter(tocTreeList, current);
         String page = "";
         if (mNavigationSeekbar != null) {
             page = mNavigationSeekbar.getPage();
@@ -414,6 +415,7 @@ public class ReaderFragment extends Fragment
             mDialogBookFragment.dismissAllowingStateLoss();
             return null;
         });
+
         mDialogBookFragment.setActionSelectAttachments(attachments -> {
             String pathBook = "";
             if (attachments != null) {
@@ -421,10 +423,25 @@ public class ReaderFragment extends Fragment
                 if (pathBook == null) return null;
                 if (!getPathBookCurrent.equals(pathBook)) {
                     getPathBookCurrent = pathBook;
-                    Uri uri = Uri.parse(pathBook);
-                    mMainViewModel.eventPageBook.setValue(1);
-                    ((BookActivity) requireActivity()).loadBook(uri, null, getPathBookCurrent);
-                    mDialogBookFragment.dismissAllowingStateLoss();
+                    if (pathBook.endsWith(".pdf") || pathBook.endsWith(".epub")) {
+                        if (fragmentReadBookWebView != null
+                                && fragmentReadBookWebView.isVisible()) {
+                            fragmentReadBookWebView.dismissAllowingStateLoss();
+                        }
+                        Uri uri = Uri.parse(pathBook);
+                        mMainViewModel.eventPageBook.setValue(1);
+                        ((BookActivity) requireActivity()).loadBook(uri, null, getPathBookCurrent);
+                        mDialogBookFragment.dismissAllowingStateLoss();
+                    } else {
+                        fragmentReadBookWebView = null;
+                        fragmentReadBookWebView = new FragmentReadBookWebView(pathBook, nameBook);
+                        fragmentReadBookWebView.show(getChildFragmentManager(),
+                                FragmentReadBookWebView.Companion.getTAG());
+                        fragmentReadBookWebView.setActionClose(() -> {
+                            requireActivity().finish();
+                            return null;
+                        });
+                    }
                 }
             }
             return null;
@@ -1244,7 +1261,8 @@ public class ReaderFragment extends Fragment
         if (fb != null && fb.app != null && fb.app.getTextView() != null) {
             final ZLTextView textView = fb.app.getTextView();
             final ZLTextView.PagePosition pagePosition = textView.pagePosition();
-            ((BookActivity) requireActivity()).refreshData(pagePosition.Current);
+            ((BookActivity) requireActivity()).refreshData(pagePosition.Current,
+                    pagePosition.Total);
         }
         return false;
     }

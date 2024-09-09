@@ -4,7 +4,8 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
-import android.webkit.WebViewClient
+import com.github.axet.bookreader.activities.BookActivity
+import com.github.axet.bookreader.activities.BookActivity.OnBackPressed
 import com.github.axet.bookreader.custom.webview.WebViewLoadingListener
 import com.github.axet.bookreader.dialog.BaseDialogFragmentBinding
 import com.github.axet.bookreader.viewmodel.MainViewModel
@@ -13,7 +14,7 @@ import org.geometerplus.zlibrary.ui.android.databinding.FragmentWebviewReadBookB
 
 class FragmentReadBookWebView constructor(private val url: String, private val titleBook: String) :
   BaseDialogFragmentBinding<FragmentWebviewReadBookBinding, MainViewModel>(TYPE_FULL_SCREEN),
-  WebViewLoadingListener {
+  WebViewLoadingListener, OnBackPressed {
   private val DOMAIN_URL = "https://view.officeapps.live.com/op/embed.aspx?src="
   var actionClose: (() -> Unit)? = null
 
@@ -31,6 +32,7 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
       actionClose?.invoke()
       dismissAllowingStateLoss()
     }
+    (requireActivity() as BookActivity).setOnBackPressed { this.onBackPressed() }
   }
 
   override fun initData() {
@@ -79,4 +81,8 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
 
   }
 
+  override fun onBackPressed(): Boolean {
+    (requireActivity() as BookActivity).refreshData(0, 0)
+    return false
+  }
 }

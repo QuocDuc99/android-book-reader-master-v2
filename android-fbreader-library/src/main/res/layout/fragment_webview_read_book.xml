@@ -61,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/afc_10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layoutPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textBook"
@@ -74,9 +74,32 @@
             android:indeterminateTint="@color/seek_bar_secondary_progress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layoutPanel"
             app:layout_constraintTop_toBottomOf="@id/imgBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutPanel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/imgMucLuc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/afc_5dp"
+            android:layout_marginEnd="@dimen/afc_15dp"
+            android:text="Mục lục"
+            android:background="?selectableItemBackgroundBorderless"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layoutPanel"
+            android:drawableTop="@drawable/ic_toc2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
