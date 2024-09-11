@@ -67,6 +67,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import org.geometerplus.zlibrary.ui.android.R;
 import org.geometerplus.zlibrary.ui.android.library.ZLAndroidApplication;
 
@@ -94,6 +96,8 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     public static final String TOTAL_PAGE_BOOK = "TOTAL_PAGE_BOOK";
     public static final String INDEX_CURRENT = "INDEX_CURRENT";
     public static final String FIRST_PAGE = "FIRST_PAGE";
+    public static final String ATTACHMENT_ID = "ATTACHMENT_ID";
+    private int attachmentId = 0;
     public String pathBookCurrent = "";
     private List<Attachments> mAttachmentsList = new ArrayList<>();
     private MyStores mMyStores;
@@ -126,6 +130,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     private boolean checkBackPressed = false;
     private AlertDialog mAlertDialog;
     private boolean checkFirstPage = false;
+    FragmentReadBookWebView fragmentReadBookWebView;
     public void setOnBackPressed(OnBackPressed onBackPressed) {
         mOnBackPressed = onBackPressed;
     }
@@ -162,6 +167,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         Intent intent = new Intent(MY_STORE_BOOK);
         intent.putExtra(CURRENT_BOOK, currentPage);
         intent.putExtra(TOTAL_PAGE_BOOK, totalPageBook);
+        intent.putExtra(ATTACHMENT_ID, attachmentId);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
@@ -428,6 +434,9 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         mTableOfContentsList = (List<TableOfContents>) getIntent().getSerializableExtra(LIST_TOC);
         mAttachments = (Attachments) getIntent().getSerializableExtra(ATTACHMENT);
         checkFirstPage = getIntent().getBooleanExtra(FIRST_PAGE, false);
+        boolean showMucLuc = isShowMucLuc();
+        mMainViewModel.eventShowMucLuc.setValue(showMucLuc);
+
         String pathBook;
         if (mAttachmentsList.size() > 0) {
             if (indexCurrent >= mAttachmentsList.size()) {
@@ -461,8 +470,14 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 loadBook(uri, null, pathBookCurrent);
             }, 100);
         } else {
-            FragmentReadBookWebView fragmentReadBookWebView =
+            addFragment(ReaderFragment.newInstance(nameBook, thumbBook, mAttachmentsList,
+                    mTableOfContentsList, pathBookCurrent), ReaderFragment.TAG).commit();
+            fragmentReadBookWebView =
                     new FragmentReadBookWebView(pathBook, nameBook);
+            fragmentReadBookWebView.setActionClickMucLuc(() -> {
+                mMainViewModel.eventShowViewMucLuc.setValue(true);
+                return null;
+            });
             fragmentReadBookWebView.show(getSupportFragmentManager(),
                     FragmentReadBookWebView.Companion.getTAG());
             fragmentReadBookWebView.setActionClose(() -> {
@@ -471,6 +486,22 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                 return null;
             });
         }
+    }
+
+    private boolean isShowMucLuc() {
+        boolean showMucLuc = false;
+        if (mAttachmentsList == null || mAttachmentsList.isEmpty()) {
+        } else {
+            if (mAttachmentsList.size() == 1) {
+                if (mTableOfContentsList.isEmpty()) {
+                } else {
+                    showMucLuc = true;
+                }
+            } else {
+                showMucLuc = true;
+            }
+        }
+        return showMucLuc;
     }
 
     @Override
@@ -542,6 +573,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
                         @Override
                         public void run() {
                             if (isFinishing() || mAlertDialog == null) return;
+                            if (fragmentReadBookWebView != null
+                                    && fragmentReadBookWebView.isVisible()) {
+                                fragmentReadBookWebView.dismissAllowingStateLoss();
+                            }
                             loadBook(book);
                             if (success != null) success.run();
                         }
@@ -760,7 +795,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public FragmentTransaction openFragment(Fragment f, String tag) {
-        //removeFragment(tag);
+        removeFragment(tag);
         FragmentManager fm = getSupportFragmentManager();
         return fm.beginTransaction().replace(R.id.main_content, f, tag);
     }
@@ -925,6 +960,12 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     private void observerData() {
+        mMainViewModel.attachmentId.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                attachmentId = integer;
+            }
+        });
         mMainViewModel.eventFont.observe((LifecycleOwner) this, aBoolean -> {
             if (btnFont != null) {
                 // btnFont.setVisibility(aBoolean ? View.VISIBLE : View.GONE);

@@ -67,6 +67,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 import org.geometerplus.fbreader.bookmodel.TOCTree;
@@ -265,6 +266,20 @@ public class ReaderFragment extends Fragment
         return fragment;
     }
 
+    public static ReaderFragment newInstance(String nameBook, String thumbBook,
+            List<Attachments> attachmentsList, List<TableOfContents> mTableOfContentsList,
+            String pathBookCurrent) {
+        ReaderFragment fragment = new ReaderFragment();
+        Bundle args = new Bundle();
+        args.putString(PATHTHUMB, thumbBook);
+        args.putString(NAMEBOOK, nameBook);
+        args.putString(PATH_BOOK_CURRENT, pathBookCurrent);
+        args.putSerializable(LIST_ATTACHMENT, (Serializable) attachmentsList);
+        args.putSerializable(LIST_TOCS, (Serializable) mTableOfContentsList);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     public static ReaderFragment newInstance(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
         ReaderFragment fragment = new ReaderFragment();
         Bundle args = new Bundle();
@@ -299,7 +314,7 @@ public class ReaderFragment extends Fragment
             if (fb != null && fb.app != null) {
                 mNavigationSeekbar =
                         new NavigationSeekbar(fb.app, requireContext(), requireActivity());
-                mMainViewModel.eventShowMucLuc.setValue(!mAttachmentsList.isEmpty());
+                //mMainViewModel.eventShowMucLuc.setValue(!mAttachmentsList.isEmpty());
                 if (mNavigationSeekbar.getRootView() != null) {
                     mView.removeView(mNavigationSeekbar.getRootView());
                 }
@@ -343,6 +358,15 @@ public class ReaderFragment extends Fragment
             public void onChanged(Boolean aBoolean) {
                 if (btnMucLuc != null) {
                     // btnMucLuc.setVisibility(aBoolean ? View.VISIBLE : View.INVISIBLE);
+                }
+            }
+        });
+        mMainViewModel.eventShowViewMucLuc.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean){
+                    showToc();
+                    mMainViewModel.eventShowViewMucLuc.setValue(false);
                 }
             }
         });
@@ -422,6 +446,7 @@ public class ReaderFragment extends Fragment
                 pathBook = attachments.getUrl() == null ? "" : attachments.getUrl();
                 if (pathBook == null) return null;
                 if (!getPathBookCurrent.equals(pathBook)) {
+                    mMainViewModel.attachmentId.setValue(attachments.getId());
                     getPathBookCurrent = pathBook;
                     if (pathBook.endsWith(".pdf") || pathBook.endsWith(".epub")) {
                         if (fragmentReadBookWebView != null
@@ -435,6 +460,10 @@ public class ReaderFragment extends Fragment
                     } else {
                         fragmentReadBookWebView = null;
                         fragmentReadBookWebView = new FragmentReadBookWebView(pathBook, nameBook);
+                        fragmentReadBookWebView.setActionClickMucLuc(() -> {
+                            showToc();
+                            return null;
+                        });
                         fragmentReadBookWebView.show(getChildFragmentManager(),
                                 FragmentReadBookWebView.Companion.getTAG());
                         fragmentReadBookWebView.setActionClose(() -> {
@@ -442,6 +471,7 @@ public class ReaderFragment extends Fragment
                             return null;
                         });
                     }
+                    mDialogBookFragment.dismissAllowingStateLoss();
                 }
             }
             return null;
@@ -636,6 +666,7 @@ public class ReaderFragment extends Fragment
                 btnMucLuc.setVisibility(View.VISIBLE);
             }
         }
+        mMainViewModel.eventShowMucLuc.setValue(btnMucLuc.getVisibility() == View.VISIBLE);
         FBReaderView.ZLTextIndexPosition pos = getArguments().getParcelable("pos");
 
         try {
@@ -644,14 +675,14 @@ public class ReaderFragment extends Fragment
             fb.loadBook(fbook);
             if (pos != null) fb.gotoPosition(pos);
         } catch (RuntimeException e) {
-            ErrorDialog.Error(main, e);
-            handler.post(
-                    new Runnable() { // or openLibrary crash with java.lang.IllegalStateException on FragmentActivity.onResume
-                        @Override
-                        public void run() {
-                            if (!main.isFinishing()) main.openLibrary();
-                        }
-                    });
+            //ErrorDialog.Error(main, e);
+//            handler.post(
+//                    new Runnable() { // or openLibrary crash with java.lang.IllegalStateException on FragmentActivity.onResume
+//                        @Override
+//                        public void run() {
+//                            if (!main.isFinishing()) main.openLibrary();
+//                        }
+//                    });
             return v; // ignore post called
         }
 
@@ -1265,5 +1296,9 @@ public class ReaderFragment extends Fragment
                     pagePosition.Total);
         }
         return false;
+    }
+
+    interface ListenerReadBook{
+
     }
 }

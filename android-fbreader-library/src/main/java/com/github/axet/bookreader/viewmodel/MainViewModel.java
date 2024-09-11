@@ -14,7 +14,9 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Boolean> eventCloseBookMark = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> eventLoadFrNote = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> eventSearchN = new MutableLiveData<>(false);
+    public MutableLiveData<Boolean> eventShowViewMucLuc = new MutableLiveData<>(false);
     public MutableLiveData<Integer> eventPageBook = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> attachmentId = new MutableLiveData<>(0);
     @Override
     protected void onCleared() {
     //    compositeDisposable.clear();

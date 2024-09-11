@@ -86,6 +86,7 @@
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
@@ -96,7 +97,6 @@
             android:layout_marginEnd="@dimen/afc_15dp"
             android:text="Mục lục"
             android:background="?selectableItemBackgroundBorderless"
-            android:visibility="invisible"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/layoutPanel"

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
+import androidx.lifecycle.ViewModelProvider
 import com.github.axet.bookreader.activities.BookActivity
 import com.github.axet.bookreader.activities.BookActivity.OnBackPressed
 import com.github.axet.bookreader.custom.webview.WebViewLoadingListener
@@ -15,6 +16,8 @@ import org.geometerplus.zlibrary.ui.android.databinding.FragmentWebviewReadBookB
 class FragmentReadBookWebView constructor(private val url: String, private val titleBook: String) :
   BaseDialogFragmentBinding<FragmentWebviewReadBookBinding, MainViewModel>(TYPE_FULL_SCREEN),
   WebViewLoadingListener, OnBackPressed {
+  var mMainViewModel: MainViewModel? = null
+  var actionClickMucLuc: (() -> Unit)? = null
   private val DOMAIN_URL = "https://view.officeapps.live.com/op/embed.aspx?src="
   var actionClose: (() -> Unit)? = null
 
@@ -26,6 +29,7 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
     get() = R.layout.fragment_webview_read_book
 
   override fun initListeners() {
+    mMainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     mBinding.lifecycleOwner = this
     mBinding.listener = this
     mBinding.imgBack.setOnClickListener {
@@ -33,6 +37,9 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
       dismissAllowingStateLoss()
     }
     (requireActivity() as BookActivity).setOnBackPressed { this.onBackPressed() }
+    mBinding.imgMucLuc2.setOnClickListener {
+      actionClickMucLuc?.invoke()
+    }
   }
 
   override fun initData() {
@@ -55,7 +62,13 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
   }
 
   override fun subscribeToViewModel() {
-
+    mMainViewModel?.eventShowMucLuc?.observe(this) {
+      mBinding.layoutPanel.visibility = if (it) {
+        View.VISIBLE
+      } else {
+        View.GONE
+      }
+    }
   }
 
   override val classViewModel: Class<MainViewModel>
