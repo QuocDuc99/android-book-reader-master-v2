@@ -414,6 +414,7 @@ public class ReaderFragment extends Fragment
        // final TOCTree current = fb.app.getCurrentTOCElement();
        // List<TOCTree> tocTreeList = fb.app.Model.mTOCTree.subtrees();
       //  final TOCAdapter a = new TOCAdapter(tocTreeList, current);
+        if (mAttachmentsList == null || mAttachmentsList.isEmpty()) return;
         String page = "";
         if (mNavigationSeekbar != null) {
             page = mNavigationSeekbar.getPage();

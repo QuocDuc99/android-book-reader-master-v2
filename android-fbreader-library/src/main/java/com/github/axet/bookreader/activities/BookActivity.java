@@ -436,9 +436,10 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         checkFirstPage = getIntent().getBooleanExtra(FIRST_PAGE, false);
         boolean showMucLuc = isShowMucLuc();
         mMainViewModel.eventShowMucLuc.setValue(showMucLuc);
-
+        if (mAttachmentsList == null) mAttachmentsList = new ArrayList<>();
+        if (mTableOfContentsList == null) mTableOfContentsList = new ArrayList<>();
         String pathBook;
-        if (mAttachmentsList.size() > 0) {
+        if (mAttachmentsList != null && !mAttachmentsList.isEmpty()) {
             if (indexCurrent >= mAttachmentsList.size()) {
                 indexCurrent = 0;
             }
@@ -735,6 +736,11 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
             return;
         }*/
         openBook(book.url);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        //super.onSaveInstanceState(outState);
     }
 
     @SuppressLint("RestrictedApi")
