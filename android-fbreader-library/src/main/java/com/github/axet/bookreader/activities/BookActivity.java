@@ -438,6 +438,7 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
         mMainViewModel.eventShowMucLuc.setValue(showMucLuc);
         if (mAttachmentsList == null) mAttachmentsList = new ArrayList<>();
         if (mTableOfContentsList == null) mTableOfContentsList = new ArrayList<>();
+        if (nameBook == null || nameBook.isEmpty()) nameBook = "VieLib";
         String pathBook;
         if (mAttachmentsList != null && !mAttachmentsList.isEmpty()) {
             if (indexCurrent >= mAttachmentsList.size()) {
@@ -778,6 +779,9 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
+        if (isFinishing()) {
+            return;
+        }
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, pos), ReaderFragment.TAG).commit();
     }

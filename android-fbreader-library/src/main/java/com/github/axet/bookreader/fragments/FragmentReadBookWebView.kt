@@ -13,7 +13,7 @@ import com.github.axet.bookreader.viewmodel.MainViewModel
 import org.geometerplus.zlibrary.ui.android.R
 import org.geometerplus.zlibrary.ui.android.databinding.FragmentWebviewReadBookBinding
 
-class FragmentReadBookWebView constructor(private val url: String, private val titleBook: String) :
+class FragmentReadBookWebView constructor(private val url: String, private var titleBook: String = "VieLib") :
   BaseDialogFragmentBinding<FragmentWebviewReadBookBinding, MainViewModel>(TYPE_FULL_SCREEN),
   WebViewLoadingListener, OnBackPressed {
   var mMainViewModel: MainViewModel? = null
@@ -47,6 +47,7 @@ class FragmentReadBookWebView constructor(private val url: String, private val t
     mBinding.zoomable = true
     mBinding.webview.settings.javaScriptEnabled = true
     mBinding.url = "https://view.officeapps.live.com/op/embed.aspx?src=${url}"
+    if(titleBook.isEmpty()) titleBook = "VieLib"
     mBinding.titleBook = titleBook
   }
 
