@@ -778,6 +778,9 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     }
 
     public void openBook(Uri uri, FBReaderView.ZLTextIndexPosition pos) {
+        if (isFinishing()) {
+            return;
+        }
         // popBackStack(ReaderFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         addFragment(ReaderFragment.newInstance(uri, pos), ReaderFragment.TAG).commit();
     }
