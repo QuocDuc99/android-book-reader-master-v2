@@ -17,7 +17,7 @@
 
         <activity
             android:windowSoftInputMode="adjustResize"
-            android:name="com.github.axet.bookreader.activities.BookActivity"
+            android:name="org.bookreader.activities.BookActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -118,7 +118,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.github.axet.bookreader.activities.SettingsActivity"
+            android:name="org.bookreader.activities.SettingsActivity"
             android:label="@string/menu_settings"
             android:theme="@style/AppThemeLight.NoActionBar" />
 

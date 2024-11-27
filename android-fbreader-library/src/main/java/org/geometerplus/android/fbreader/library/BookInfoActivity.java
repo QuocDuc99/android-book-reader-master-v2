@@ -42,9 +42,10 @@ import org.geometerplus.zlibrary.core.language.Language;
 import org.geometerplus.zlibrary.core.language.ZLLanguageUtil;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageData;
-import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageManager;
+import org.geometerplus.zlibrary.image.ZLAndroidImageData;
+import org.geometerplus.zlibrary.image.ZLAndroidImageManager;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.book.*;
@@ -76,7 +77,7 @@ public class BookInfoActivity extends Activity implements IBookCollection.Listen
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Thread.setDefaultUncaughtExceptionHandler(
-			new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this)
+			new UncaughtExceptionHandler(this)
 		);
 
 		final Intent intent = getIntent();

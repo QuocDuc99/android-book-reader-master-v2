@@ -32,7 +32,6 @@ import org.geometerplus.zlibrary.core.options.Config;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 
 import static android.content.Context.RECEIVER_EXPORTED;
-import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public final class ConfigShadow extends Config implements ServiceConnection {
 	private final Context myContext;

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.github.johnpersano.supertoasts.superToasts-mergeReleaseResources-2:/values-v19/values-v19.xml",
+            "outputFile": "com.github.johnpersano.supertoasts.superToasts-mergeReleaseResources-4:/values-v19/values-v19.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values-v19\\dimen.xml",
@@ -42,7 +42,7 @@
             ]
         },
         {
-            "outputFile": "com.github.johnpersano.supertoasts.superToasts-merged_res-4:/values-v19/values-v19.xml",
+            "outputFile": "com.github.johnpersano.supertoasts.superToasts-merged_res-6:/values-v19/values-v19.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\superToasts\\src\\main\\res\\values-v19\\dimen.xml",

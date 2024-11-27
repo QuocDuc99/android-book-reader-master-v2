@@ -29,6 +29,7 @@ import org.geometerplus.zlibrary.core.application.ZLApplication;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.tree.ZLTree;
 
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 import org.geometerplus.zlibrary.ui.android.R;
 
 import org.geometerplus.fbreader.bookmodel.TOCTree;
@@ -45,7 +46,7 @@ public class TOCActivity extends ListActivity {
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 

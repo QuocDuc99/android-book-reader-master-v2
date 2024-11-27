@@ -8,6 +8,10 @@
     <dimen name="buttontoast_x_padding">12dp</dimen>
     <dimen name="cardtoast_margin">4dp</dimen>
     <dimen name="toast_hover">64dp</dimen>
+    <item name="dataBinding" type="id"/>
+    <item name="onAttachStateChangeListener" type="id"/>
+    <item name="onDateChanged" type="id"/>
+    <item name="textWatcher" type="id"/>
     <style name="DefaultRootLayout">
         <item name="android:background">@drawable/background_standard_gray</item>
     </style>

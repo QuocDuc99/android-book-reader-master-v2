@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:weightSum="5"
-    tools:context="com.github.axet.bookreader.activities.BookActivity">
+    tools:context="org.bookreader.activities.BookActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"

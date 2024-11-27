@@ -32,8 +32,9 @@ import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.util.MimeType;
 
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.network.*;
 import org.geometerplus.fbreader.network.opds.OPDSCustomNetworkLink;
@@ -56,7 +57,7 @@ public class AddCustomCatalogActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		SQLiteCookieDatabase.init(this);
 		AuthenticationActivity.initCredentialsCreator(this);

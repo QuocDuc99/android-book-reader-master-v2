@@ -22,11 +22,12 @@ package org.geometerplus.zlibrary.core.application;
 import android.util.Log;
 import java.util.*;
 
-import org.fbreader.util.Boolean3;
+
 
 import org.geometerplus.zlibrary.core.util.SystemInfo;
 import org.geometerplus.zlibrary.core.view.ZLView;
 import org.geometerplus.zlibrary.core.view.ZLViewWidget;
+import org.util.Boolean3;
 
 public abstract class ZLApplication {
     public static ZLApplication Instance() {

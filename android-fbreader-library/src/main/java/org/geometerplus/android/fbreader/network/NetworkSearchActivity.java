@@ -31,6 +31,7 @@ import org.geometerplus.fbreader.network.NetworkTree;
 import org.geometerplus.fbreader.network.tree.SearchCatalogTree;
 
 import org.geometerplus.android.fbreader.network.auth.ActivityNetworkContext;
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 
 public class NetworkSearchActivity extends Activity {
 	private final ActivityNetworkContext myNetworkContext = new ActivityNetworkContext(this);
@@ -39,7 +40,7 @@ public class NetworkSearchActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		final Intent intent = getIntent();
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {

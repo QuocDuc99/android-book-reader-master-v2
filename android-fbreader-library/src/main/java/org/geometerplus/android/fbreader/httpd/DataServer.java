@@ -31,7 +31,7 @@ import org.geometerplus.zlibrary.core.filesystem.ZLFile;
 import org.geometerplus.zlibrary.core.image.*;
 import org.geometerplus.zlibrary.core.util.MimeType;
 import org.geometerplus.zlibrary.core.util.SliceInputStream;
-import org.geometerplus.zlibrary.ui.android.image.ZLBitmapImage;
+import org.geometerplus.zlibrary.image.ZLBitmapImage;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.book.CoverUtil;

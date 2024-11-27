@@ -7,7 +7,7 @@
 
         <variable
             name="chapter"
-            type="com.github.axet.bookreader.model.TableOfContents" />
+            type="org.bookreader.model.TableOfContents" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

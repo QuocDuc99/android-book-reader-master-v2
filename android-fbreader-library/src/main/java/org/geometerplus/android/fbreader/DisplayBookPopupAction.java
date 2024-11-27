@@ -35,7 +35,7 @@ import org.geometerplus.zlibrary.core.network.QuietNetworkContext;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.text.view.*;
 import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageData;
+import org.geometerplus.zlibrary.image.ZLAndroidImageData;
 
 import org.geometerplus.fbreader.book.Book;
 import org.geometerplus.fbreader.fbreader.BookElement;

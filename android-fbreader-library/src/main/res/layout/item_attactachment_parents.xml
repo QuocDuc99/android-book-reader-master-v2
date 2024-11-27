@@ -11,7 +11,7 @@
 
         <variable
             name="attachment"
-            type="com.github.axet.bookreader.model.Attachments" />
+            type="org.bookreader.model.Attachments" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

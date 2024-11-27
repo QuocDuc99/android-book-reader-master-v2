@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    tools:context="com.github.axet.bookreader.activities.BookActivity">
+    tools:context="org.bookreader.activities.BookActivity">
 
     <ImageView
         android:id="@+id/expand"

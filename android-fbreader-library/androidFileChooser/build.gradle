@@ -26,6 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
         }
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 // https://docs.gradle.org/current/userguide/publishing_maven.html
@@ -100,5 +103,5 @@ publishing {
 }
 
 dependencies {
-    api 'com.github.axet.fbreader:util:0.0.1' // compile project(':util')
+    api 'com.github.axet.fbreader:util:0.0.5' // compile project(':util')
 }

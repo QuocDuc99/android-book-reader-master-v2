@@ -28,7 +28,7 @@ import android.net.Uri;
 import android.content.Intent;
 
 import org.geometerplus.zlibrary.core.util.MimeType;
-import org.geometerplus.fbreader.network.urlInfo.BookUrlInfo;
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 
 public class BookDownloader extends Activity {
 	public static boolean acceptsUri(Uri uri, String mime) {
@@ -79,7 +79,7 @@ public class BookDownloader extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		final Intent intent = getIntent();
 		Uri uri = intent.getData();

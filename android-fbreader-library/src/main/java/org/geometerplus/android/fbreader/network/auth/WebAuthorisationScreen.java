@@ -30,11 +30,10 @@ import android.os.Bundle;
 import android.view.Window;
 import android.webkit.*;
 
-import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.cookie.BasicClientCookie2;
 
 import org.geometerplus.zlibrary.core.network.ZLNetworkManager;
-import org.geometerplus.zlibrary.ui.android.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.android.util.OrientationUtil;
 

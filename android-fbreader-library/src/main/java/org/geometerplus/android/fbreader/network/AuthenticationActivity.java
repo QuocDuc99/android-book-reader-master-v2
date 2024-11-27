@@ -37,6 +37,7 @@ import org.geometerplus.fbreader.network.INetworkLink;
 import org.geometerplus.fbreader.network.NetworkLibrary;
 import org.geometerplus.fbreader.network.authentication.NetworkAuthenticationManager;
 
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 import org.geometerplus.zlibrary.ui.android.R;
 
 import org.geometerplus.android.util.UIUtil;
@@ -104,7 +105,7 @@ public class AuthenticationActivity extends Activity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.authentication);
 
 		final Intent intent = getIntent();

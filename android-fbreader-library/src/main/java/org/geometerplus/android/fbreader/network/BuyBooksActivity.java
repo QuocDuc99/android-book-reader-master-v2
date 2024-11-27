@@ -40,6 +40,7 @@ import org.geometerplus.fbreader.network.authentication.NetworkAuthenticationMan
 
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.util.SimpleDialogActivity;
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 
 public class BuyBooksActivity extends SimpleDialogActivity implements NetworkLibrary.ChangeListener {
 	private final BookCollectionShadow myBookCollection = new BookCollectionShadow();
@@ -73,7 +74,7 @@ public class BuyBooksActivity extends SimpleDialogActivity implements NetworkLib
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		myBookCollection.bindToService(this, null);
 		myLibrary = Util.networkLibrary(this);

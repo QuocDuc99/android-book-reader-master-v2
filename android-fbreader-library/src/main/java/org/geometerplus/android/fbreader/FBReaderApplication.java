@@ -19,7 +19,7 @@
 
 package org.geometerplus.android.fbreader;
 
-import org.geometerplus.zlibrary.ui.android.library.ZLAndroidApplication;
+import org.geometerplus.zlibrary.library.ZLAndroidApplication;
 
 public class FBReaderApplication extends ZLAndroidApplication {
 }

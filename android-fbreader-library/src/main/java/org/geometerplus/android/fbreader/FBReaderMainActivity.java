@@ -27,8 +27,11 @@ import android.view.WindowManager;
 import com.github.johnpersano.supertoasts.SuperActivityToast;
 
 import org.geometerplus.zlibrary.core.options.*;
-import org.geometerplus.zlibrary.ui.android.library.*;
-import org.geometerplus.zlibrary.ui.android.view.AndroidFontUtil;
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
+import org.geometerplus.zlibrary.library.ZLAndroidApplication;
+import org.geometerplus.zlibrary.library.ZLAndroidLibrary;
+
+import org.geometerplus.zlibrary.view.AndroidFontUtil;
 
 import org.geometerplus.android.fbreader.dict.DictionaryUtil;
 

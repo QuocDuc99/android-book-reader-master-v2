@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
-    tools:context="com.github.axet.bookreader.activities.BookActivity">
+    tools:context="com.github.axet.bookreader.org.bookreader.activities.BookActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"

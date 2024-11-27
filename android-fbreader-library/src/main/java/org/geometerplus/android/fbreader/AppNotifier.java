@@ -29,7 +29,7 @@ import android.net.Uri;
 
 
 import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.Paths;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;

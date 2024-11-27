@@ -19,7 +19,7 @@
 
         <variable
             name="listener"
-            type="com.github.axet.bookreader.custom.webview.WebViewLoadingListener" />
+            type="org.bookreader.custom.webview.WebViewLoadingListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/afc_file" />
 
-        <com.github.axet.bookreader.custom.webview.CustomWebview
+        <org.bookreader.custom.webview.CustomWebview
             android:id="@+id/webview"
             android:layout_width="0dp"
             android:layout_height="0dp"

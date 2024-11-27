@@ -22,8 +22,7 @@ package org.geometerplus.android.fbreader.dict;
 import android.app.Activity;
 import android.content.Intent;
 
-import org.geometerplus.android.fbreader.FBReaderMainActivity;
-import org.geometerplus.zlibrary.ui.android.library.ZLAndroidApplication;
+import org.geometerplus.zlibrary.library.ZLAndroidApplication;
 
 final class ColorDict extends DictionaryUtil.PackageInfo {
 	private interface ColorDict3 {

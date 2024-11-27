@@ -19,7 +19,6 @@
 
 package org.geometerplus.android.fbreader.bookmark;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -33,6 +32,7 @@ import org.geometerplus.fbreader.book.HighlightingStyle;
 
 import org.geometerplus.android.fbreader.libraryService.BookCollectionShadow;
 import org.geometerplus.android.fbreader.preferences.*;
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 
 public class EditStyleActivity extends PreferenceActivity {
 	static final String STYLE_ID_KEY = "style.id";
@@ -47,7 +47,7 @@ public class EditStyleActivity extends PreferenceActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		super.onCreate(bundle);
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
 		final PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);
 		setPreferenceScreen(screen);
