@@ -1,0 +1,68 @@
+{
+    "logs": [
+        {
+            "outputFile": "org.geometerplus.zlibrary.ui.android.util-mergeReleaseResources-4:/values/values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "40",
+                        "endOffsets": "91"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\4411619bab46bcd8dbf31e1b1f4ede82\\transformed\\databinding-adapters-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,112,155",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "107,150,191"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "96,153,196",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "148,191,232"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "org.geometerplus.zlibrary.ui.android.util-merged_res-6:/values/values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "40",
+                        "endOffsets": "91"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\4411619bab46bcd8dbf31e1b1f4ede82\\transformed\\databinding-adapters-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,112,155",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "107,150,191"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "96,153,196",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "148,191,232"
+                    }
+                }
+            ]
+        }
+    ]
+}

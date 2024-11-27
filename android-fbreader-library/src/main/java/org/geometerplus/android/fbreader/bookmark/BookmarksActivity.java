@@ -27,6 +27,7 @@ import android.view.*;
 import android.widget.*;
 import android.content.*;
 
+import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
 import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 import org.geometerplus.zlibrary.core.util.MiscUtil;
@@ -75,7 +76,7 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 
-		Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.bookmarks);
 
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);

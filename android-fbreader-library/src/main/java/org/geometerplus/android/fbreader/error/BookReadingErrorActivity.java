@@ -25,8 +25,8 @@ import android.view.View;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.error.ErrorKeys;
-import org.geometerplus.zlibrary.ui.android.error.ErrorUtil;
+import org.geometerplus.zlibrary.error.ErrorKeys;
+import org.geometerplus.zlibrary.error.ErrorUtil;
 import org.geometerplus.android.fbreader.util.SimpleDialogActivity;
 
 public class BookReadingErrorActivity extends SimpleDialogActivity implements ErrorKeys {

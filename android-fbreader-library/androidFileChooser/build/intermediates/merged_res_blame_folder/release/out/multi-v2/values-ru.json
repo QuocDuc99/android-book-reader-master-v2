@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/values-ru/values-ru.xml",
+            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/values-ru/values-ru.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\androidFileChooser\\src\\main\\res\\values-ru\\strings.xml",
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-mergeReleaseResources-2:/values-ru/values-ru.xml",
+            "outputFile": "group.pals.android.lib.ui.filechooser.androidFileChooser-mergeReleaseResources-4:/values-ru/values-ru.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\androidFileChooser\\src\\main\\res\\values-ru\\strings.xml",

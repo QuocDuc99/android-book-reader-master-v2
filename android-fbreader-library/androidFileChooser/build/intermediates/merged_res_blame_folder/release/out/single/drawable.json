@@ -1,50 +1,50 @@
 [
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_navi_left.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_navi_left.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_location_dark.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_location_dark.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_navi_right.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_navi_right.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_folders_view_list.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_folders_view_list.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_button_location_dark_pressed.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_button_location_dark_pressed.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_item_folder.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_item_folder.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_sort_de.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_sort_de.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_ok_saveas.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_ok_saveas.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_sort_as.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_sort_as.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_item_file.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_item_file.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_item_folder.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_item_folder.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_folders_view_grid.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_folders_view_grid.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_ok_saveas.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_ok_saveas.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_navi_left.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_navi_left.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_create_folder.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_create_folder.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_sort_as.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_sort_as.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_location_dark.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_location_dark.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_sort_de.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_sort_de.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_item_file.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_item_file.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_create_folder.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_create_folder.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_folders_view_grid.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_folders_view_grid.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_button_location_dark_pressed.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_button_location_dark_pressed.xml"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable/afc_selector_button_folders_view_list.xml",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable/afc_selector_button_folders_view_list.xml"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable/afc_selector_button_navi_right.xml",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable/afc_selector_button_navi_right.xml"
     }
 ]

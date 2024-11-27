@@ -1,18 +1,18 @@
 [
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-hdpi-v4/ambilwarna_target.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-hdpi/ambilwarna_target.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable-hdpi-v4/ambilwarna_arrow_right.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable-hdpi/ambilwarna_arrow_right.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-hdpi-v4/ambilwarna_arrow_right.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-hdpi/ambilwarna_arrow_right.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable-hdpi-v4/ambilwarna_target.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable-hdpi/ambilwarna_target.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-hdpi-v4/ambilwarna_arrow_down.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-hdpi/ambilwarna_arrow_down.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable-hdpi-v4/ambilwarna_cursor.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable-hdpi/ambilwarna_cursor.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable-hdpi-v4/ambilwarna_cursor.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable-hdpi/ambilwarna_cursor.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable-hdpi-v4/ambilwarna_arrow_down.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable-hdpi/ambilwarna_arrow_down.png"
     }
 ]

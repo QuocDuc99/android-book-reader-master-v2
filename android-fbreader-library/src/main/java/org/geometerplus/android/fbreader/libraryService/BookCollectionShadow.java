@@ -37,7 +37,6 @@ import org.geometerplus.fbreader.book.*;
 import org.geometerplus.android.fbreader.api.FBReaderIntents;
 
 import static android.content.Context.RECEIVER_EXPORTED;
-import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public class BookCollectionShadow extends AbstractBookCollection<Book> implements ServiceConnection {
 	private volatile Context myContext;

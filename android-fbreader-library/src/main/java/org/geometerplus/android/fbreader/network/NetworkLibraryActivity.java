@@ -31,11 +31,10 @@ import android.widget.*;
 import org.fbreader.util.Boolean3;
 
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
-import org.geometerplus.zlibrary.core.network.ZLNetworkManager;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.core.util.MimeType;
 
-import org.geometerplus.zlibrary.ui.android.network.SQLiteCookieDatabase;
+import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.network.*;
 import org.geometerplus.fbreader.network.opds.OPDSCustomNetworkLink;

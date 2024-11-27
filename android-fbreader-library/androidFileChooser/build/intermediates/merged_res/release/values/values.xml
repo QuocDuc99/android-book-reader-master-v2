@@ -14,6 +14,10 @@
     <dimen name="afc_context_menu_item_padding_left">18sp</dimen>
     <dimen name="afc_single_button_min_width">192sp</dimen>
     <dimen name="afc_viewgroup_button_locations_bottom_divider_height">1dp</dimen>
+    <item name="dataBinding" type="id"/>
+    <item name="onAttachStateChangeListener" type="id"/>
+    <item name="onDateChanged" type="id"/>
+    <item name="textWatcher" type="id"/>
     <integer name="afc_pkey_display_sort_type_def">0</integer>
     <integer name="afc_pkey_display_view_type_def">0</integer>
     <string name="afc_cmd_advanced_selection_all">All</string>

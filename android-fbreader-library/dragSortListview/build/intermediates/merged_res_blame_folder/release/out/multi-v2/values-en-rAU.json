@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.mobeta.android.dslv.dragSortListview-mergeReleaseResources-5:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.mobeta.android.dslv.dragSortListview-mergeReleaseResources-7:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\78c808e87f21da2c1db4ee269b408630\\transformed\\core-1.0.0\\res\\values-en-rAU\\values-en-rAU.xml",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "outputFile": "com.mobeta.android.dslv.dragSortListview-merged_res-7:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.mobeta.android.dslv.dragSortListview-merged_res-9:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\78c808e87f21da2c1db4ee269b408630\\transformed\\core-1.0.0\\res\\values-en-rAU\\values-en-rAU.xml",

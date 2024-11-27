@@ -22,7 +22,7 @@ package org.geometerplus.android.fbreader.bookmark;
 import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 import org.geometerplus.zlibrary.core.util.ZLColor;
-import org.geometerplus.zlibrary.ui.android.util.ZLAndroidColorUtil;
+import org.geometerplus.zlibrary.util.ZLAndroidColorUtil;
 import org.geometerplus.fbreader.book.HighlightingStyle;
 
 abstract class BookmarksUtil {

@@ -14,7 +14,6 @@ import android.os.IBinder;
 import android.os.Parcelable;
 
 import static android.content.Context.RECEIVER_EXPORTED;
-import static com.github.axet.bookreader.widgets.FBReaderView.ACTION_MENU;
 
 public class ApiClientImplementation implements ServiceConnection, Api, ApiMethods {
 	public static interface ConnectionListener {
