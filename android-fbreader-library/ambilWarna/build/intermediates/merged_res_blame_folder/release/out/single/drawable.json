@@ -1,22 +1,22 @@
 [
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable/ambilwarna_arrow_right.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable/ambilwarna_arrow_right.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable/ambilwarna_arrow_right.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable/ambilwarna_arrow_right.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable/ambilwarna_target.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable/ambilwarna_target.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable/ambilwarna_arrow_down.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable/ambilwarna_arrow_down.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable/ambilwarna_arrow_down.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable/ambilwarna_arrow_down.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable/ambilwarna_hue.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable/ambilwarna_hue.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable/ambilwarna_hue.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable/ambilwarna_hue.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable/ambilwarna_cursor.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable/ambilwarna_cursor.png"
     },
     {
-        "merged": "yuku.ambilwarna.ambilWarna-merged_res-4:/drawable/ambilwarna_cursor.png",
-        "source": "yuku.ambilwarna.ambilWarna-main-5:/drawable/ambilwarna_cursor.png"
+        "merged": "yuku.ambilwarna.ambilWarna-merged_res-6:/drawable/ambilwarna_target.png",
+        "source": "yuku.ambilwarna.ambilWarna-main-7:/drawable/ambilwarna_target.png"
     }
 ]

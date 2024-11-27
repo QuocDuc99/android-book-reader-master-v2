@@ -900,7 +900,6 @@ public class BookActivity extends AppCompatFullscreenThemeActivity
     @Override
     protected void onResume() {
         super.onResume();
-        //overridePendingTransition(R.anim.slide_in_top, 0);
         isRunning = true;
         RotatePreferenceCompat.onResume(this, BookApplication.PREFERENCE_ROTATE);
         CacheImagesAdapter.cacheClear(this);

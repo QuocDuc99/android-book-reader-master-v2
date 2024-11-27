@@ -4,4 +4,8 @@
     <dimen name="ambilwarna_hsvWidth">240dp</dimen>
     <dimen name="ambilwarna_hueWidth">30dp</dimen>
     <dimen name="ambilwarna_spacer">8dp</dimen>
+    <item name="dataBinding" type="id"/>
+    <item name="onAttachStateChangeListener" type="id"/>
+    <item name="onDateChanged" type="id"/>
+    <item name="textWatcher" type="id"/>
 </resources>

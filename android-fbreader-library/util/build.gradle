@@ -25,6 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 // https://docs.gradle.org/current/userguide/publishing_maven.html

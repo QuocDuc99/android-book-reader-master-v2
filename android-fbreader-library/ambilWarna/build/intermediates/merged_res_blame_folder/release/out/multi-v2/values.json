@@ -1,8 +1,42 @@
 {
     "logs": [
         {
-            "outputFile": "yuku.ambilwarna.ambilWarna-merged_res-4:/values/values.xml",
+            "outputFile": "yuku.ambilwarna.ambilWarna-merged_res-6:/values/values.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "40",
+                        "endOffsets": "91"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "259",
+                        "endColumns": "40",
+                        "endOffsets": "295"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\4411619bab46bcd8dbf31e1b1f4ede82\\transformed\\databinding-adapters-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,112,155",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "107,150,191"
+                    },
+                    "to": {
+                        "startLines": "7,8,9",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "300,357,400",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "352,395,436"
+                    }
+                },
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\ambilWarna\\src\\main\\res\\values\\dimen.xml",
                     "from": {
@@ -23,8 +57,42 @@
             ]
         },
         {
-            "outputFile": "yuku.ambilwarna.ambilWarna-mergeReleaseResources-2:/values/values.xml",
+            "outputFile": "yuku.ambilwarna.ambilWarna-mergeReleaseResources-4:/values/values.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "40",
+                        "endOffsets": "91"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "259",
+                        "endColumns": "40",
+                        "endOffsets": "295"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\4411619bab46bcd8dbf31e1b1f4ede82\\transformed\\databinding-adapters-7.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,112,155",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "107,150,191"
+                    },
+                    "to": {
+                        "startLines": "7,8,9",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "300,357,400",
+                        "endColumns": "56,42,40",
+                        "endOffsets": "352,395,436"
+                    }
+                },
                 {
                     "source": "C:\\Users\\ASUS\\Videos\\android-book-reader-master-v2\\android-fbreader-library\\ambilWarna\\src\\main\\res\\values\\dimen.xml",
                     "from": {

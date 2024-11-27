@@ -1,138 +1,138 @@
 [
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_audio.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_audio.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_audio.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_audio.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_folder.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_folder.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_left_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_left_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_video.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_video.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_folder_locked.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_folder_locked.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_plain_text.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_plain_text.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_list_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_list_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_de_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_de_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_de_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_de_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_image.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_image.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_as.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_as.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_left.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_left.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_grid_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_grid_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_grid_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_grid_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_as_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_as_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_folder_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_folder_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_context_menu_item_divider.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_context_menu_item_divider.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_context_menu_item_divider.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_context_menu_item_divider.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_compressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_compressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_grid.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_grid.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_de.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_de.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_right_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_right_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_right_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_right_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_left_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_left_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_video.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_video.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_left_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_left_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_ok_saveas.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_ok_saveas.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_folder.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_folder.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_plain_text.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_plain_text.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_right.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_right.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_list_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_list_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_grid_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_grid_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_right.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_right.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_create_folder.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_create_folder.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_list.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_list.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_de.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_de.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_folder_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_folder_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_left.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_left.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_create_folder_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_create_folder_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_list_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_list_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_as_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_as_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_folder_locked.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_folder_locked.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_left_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_left_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_create_folder_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_create_folder_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_grid_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_grid_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_ok_saveas.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_ok_saveas.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_de_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_de_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_as_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_as_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_folders_view_grid.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_folders_view_grid.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_sort_de_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_sort_de_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_as_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_as_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_list.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_list.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_navi_right_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_navi_right_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_folders_view_list_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_folders_view_list_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_file_disabled.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_file_disabled.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_navi_right_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_navi_right_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_create_folder.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_create_folder.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_image.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_image.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_create_folder_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_create_folder_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_create_folder_disabled.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_create_folder_disabled.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_sort_as.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_sort_as.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_button_ok_saveas_pressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_button_ok_saveas_pressed.png"
     },
     {
-        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-4:/drawable-hdpi-v4/afc_button_ok_saveas_pressed.png",
-        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-5:/drawable-hdpi/afc_button_ok_saveas_pressed.png"
+        "merged": "group.pals.android.lib.ui.filechooser.androidFileChooser-merged_res-6:/drawable-hdpi-v4/afc_file_compressed.png",
+        "source": "group.pals.android.lib.ui.filechooser.androidFileChooser-main-7:/drawable-hdpi/afc_file_compressed.png"
     }
 ]
