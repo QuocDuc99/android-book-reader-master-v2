@@ -21,7 +21,7 @@ package org.geometerplus.fbreader.network;
 
 import java.util.*;
 
-import org.fbreader.util.Boolean3;
+import org.util.Boolean3;
 
 import org.geometerplus.zlibrary.core.network.*;
 

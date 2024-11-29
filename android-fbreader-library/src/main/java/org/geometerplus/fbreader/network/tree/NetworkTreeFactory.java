@@ -19,7 +19,7 @@
 
 package org.geometerplus.fbreader.network.tree;
 
-import org.fbreader.util.Boolean3;
+import org.util.Boolean3;
 
 import org.geometerplus.fbreader.network.*;
 
