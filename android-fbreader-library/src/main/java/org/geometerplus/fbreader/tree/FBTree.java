@@ -21,11 +21,12 @@ package org.geometerplus.fbreader.tree;
 
 import java.io.Serializable;
 
-import org.fbreader.util.ComparisonUtil;
-import org.fbreader.util.Pair;
+
 
 import org.geometerplus.zlibrary.core.image.ZLImage;
 import org.geometerplus.zlibrary.core.tree.ZLTree;
+import org.util.ComparisonUtil;
+import org.util.Pair;
 
 public abstract class FBTree extends ZLTree<FBTree> implements Comparable<FBTree> {
 	public static class Key implements Serializable {

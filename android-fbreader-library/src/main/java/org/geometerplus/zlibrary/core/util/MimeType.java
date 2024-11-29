@@ -19,9 +19,10 @@
 
 package org.geometerplus.zlibrary.core.util;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 import java.util.*;
+import org.util.ComparisonUtil;
 
 public final class MimeType {
 	private static Map<String,MimeType> ourSimpleTypesMap = new HashMap<String,MimeType>();

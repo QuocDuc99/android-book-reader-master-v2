@@ -224,7 +224,7 @@ dependencies {
   implementation "com.google.android.material:material:1.4.0"
   implementation 'com.android.support.constraint:constraint-layout:1.1.3'
   api 'com.github.axet.fbreader:ambilwarna:1.0' // compile project(':ambilWarna')
-  api 'com.github.axet.fbreader:androidfilechooser:5.0' // compile project(':androidFileChooser')
+  //api 'com.github.axet.fbreader:androidfilechooser:5.0' // compile project(':androidFileChooser')
   api 'com.github.axet.fbreader:dragsortlistview:0.6.1' // compile project(':dragSortListview')
   api 'com.github.axet.fbreader:supertoasts:1.3.4' // compile project(':superToasts')
   api 'com.github.axet:pdfparse-lib:1.0'
@@ -232,7 +232,7 @@ dependencies {
   api 'org.apache.httpcomponents:httpmime:4.5.2'
   api 'com.nanohttpd:nanohttpd:2.1.0'
   implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-  implementation 'com.github.axet.fbreader:util:0.0.5'
+  //implementation 'com.github.axet.fbreader:util:0.0.5'
   testImplementation 'junit:junit:4.12'
   // implementation "com.google.android.material:material:1.4.0"
   implementation 'com.github.axet:android-library:1.35.21'

@@ -21,7 +21,7 @@ package org.geometerplus.fbreader.book;
 
 import java.math.BigDecimal;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 public final class SeriesInfo implements Comparable<SeriesInfo> {
 	public static SeriesInfo createSeriesInfo(String title, String index) {

@@ -21,7 +21,7 @@ package org.geometerplus.fbreader.network.urlInfo;
 
 import java.util.Date;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 import org.geometerplus.zlibrary.core.util.MimeType;
 

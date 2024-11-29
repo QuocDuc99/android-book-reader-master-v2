@@ -25,11 +25,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
 
-import group.pals.android.lib.ui.filechooser.FileChooserActivity;
-import group.pals.android.lib.ui.filechooser.io.IFile;
-import group.pals.android.lib.ui.filechooser.io.localfile.LocalFile;
-import group.pals.android.lib.ui.filechooser.services.IFileProvider;
-
+import org.filechooser.FileChooserActivity;
+import org.filechooser.io.IFile;
+import org.filechooser.io.localfile.LocalFile;
+import org.filechooser.services.IFileProvider;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
 public abstract class FileChooserUtil {
