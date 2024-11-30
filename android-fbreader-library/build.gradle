@@ -64,12 +64,15 @@ android {
       path 'src/main/jni/Android.mk'
     }
   }
-//  buildFeatures {
-//    dataBinding true
-//    viewBinding true
-//  }
+  buildFeatures {
+    dataBinding true
+    viewBinding true
+  }
   dataBinding{
     enabled true
+  }
+  kapt {
+    generateStubs = true
   }
   compileOptions {
     sourceCompatibility  JavaVersion.VERSION_1_8            // << --- ADD This
