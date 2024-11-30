@@ -33,7 +33,7 @@ import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.util.MimeType;
 
 import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.network.*;

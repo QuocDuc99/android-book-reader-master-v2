@@ -21,7 +21,7 @@ import com.github.axet.androidlibrary.widgets.SearchView;
 import org.bookreader.app.BookApplication;
 import org.bookreader.app.TTFManager;
 import java.util.List;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.library.ZLAndroidApplication;
 
 public class FullscreenActivity extends AppCompatFullscreenThemeActivity {

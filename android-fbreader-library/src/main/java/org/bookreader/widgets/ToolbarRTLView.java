@@ -9,7 +9,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.github.axet.androidlibrary.widgets.ThemeUtils;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 @Keep
 public class ToolbarRTLView extends ToolbarButtonView {

@@ -10,8 +10,8 @@ import org.bookreader.activities.BookActivity.OnBackPressed
 import org.bookreader.custom.webview.WebViewLoadingListener
 import org.bookreader.dialog.BaseDialogFragmentBinding
 import org.bookreader.viewmodel.MainViewModel
-import org.geometerplus.zlibrary.ui.android.R
-import org.geometerplus.zlibrary.ui.android.databinding.FragmentWebviewReadBookBinding
+import org.geometerplus.zlibrary.R
+import org.geometerplus.zlibrary.databinding.FragmentWebviewReadBookBinding
 
 class FragmentReadBookWebView constructor(private val url: String, private var titleBook: String = "VieLib") :
   BaseDialogFragmentBinding<FragmentWebviewReadBookBinding, MainViewModel>(TYPE_FULL_SCREEN),

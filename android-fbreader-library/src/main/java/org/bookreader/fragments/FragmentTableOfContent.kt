@@ -27,8 +27,8 @@ import org.bookreader.model.TableOfContents
 import org.bookreader.viewmodel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import org.geometerplus.zlibrary.ui.android.R
-import org.geometerplus.zlibrary.ui.android.databinding.FragmentTableOfContentBinding
+import org.geometerplus.zlibrary.R
+import org.geometerplus.zlibrary.databinding.FragmentTableOfContentBinding
 
 class FragmentTableOfContent : BottomSheetDialogFragment {
   private var listAttachment = mutableListOf<Attachments>()

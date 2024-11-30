@@ -15,7 +15,7 @@ import java.util.Map;
 import org.filechooser.io.IFile;
 import org.filechooser.io.localfile.ParentFile;
 import org.filechooser.services.IFileProvider;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 /**
  * Utilities for files.

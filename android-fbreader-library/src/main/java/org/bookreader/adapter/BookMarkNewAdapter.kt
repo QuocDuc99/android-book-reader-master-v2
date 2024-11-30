@@ -8,8 +8,8 @@ import org.bookreader.app.Storage
 import org.bookreader.app.Storage.Bookmark
 import org.bookreader.widgets.FBReaderView
 import org.bookreader.widgets.SelectionView
-import org.geometerplus.zlibrary.ui.android.R
-import org.geometerplus.zlibrary.ui.android.databinding.BookMarkItemsBinding
+import org.geometerplus.zlibrary.R
+import org.geometerplus.zlibrary.databinding.BookMarkItemsBinding
 
 class BookMarkNewAdapter(private var fb: FBReaderView) :
   RecyclerView.Adapter<RecyclerView.ViewHolder>() {

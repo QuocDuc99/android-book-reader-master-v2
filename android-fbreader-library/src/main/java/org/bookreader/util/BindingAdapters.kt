@@ -14,7 +14,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.BindingAdapter
 import org.bookreader.custom.webview.WebViewLoadingListener
-import org.geometerplus.zlibrary.ui.android.R
+import org.geometerplus.zlibrary.R
 
 object BindingAdapters {
   @JvmStatic

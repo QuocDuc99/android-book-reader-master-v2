@@ -20,8 +20,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 import org.geometerplus.fbreader.bookmodel.TOCTree;
-import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.databinding.BottomSheetBinding;
+import org.geometerplus.zlibrary.R;
+import org.geometerplus.zlibrary.databinding.BottomSheetBinding;
 
 public class DialogBookFragment extends DialogFragment {
     private TOCTree mTOCTree;

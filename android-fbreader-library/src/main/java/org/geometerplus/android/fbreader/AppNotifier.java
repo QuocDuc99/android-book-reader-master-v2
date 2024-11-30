@@ -28,7 +28,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 
 
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.network.SQLiteCookieDatabase;
 
 import org.geometerplus.fbreader.Paths;

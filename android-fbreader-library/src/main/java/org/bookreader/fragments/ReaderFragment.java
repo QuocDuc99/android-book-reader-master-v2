@@ -69,7 +69,7 @@ import org.geometerplus.fbreader.fbreader.ActionCode;
 import org.geometerplus.zlibrary.core.application.ZLApplication;
 import org.geometerplus.zlibrary.core.view.ZLViewEnums;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 import static android.content.Context.RECEIVER_EXPORTED;
 import static org.bookreader.app.Storage.TYPE_BOOKMARK;

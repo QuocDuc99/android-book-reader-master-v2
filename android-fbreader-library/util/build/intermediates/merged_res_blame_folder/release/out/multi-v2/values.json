@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.geometerplus.zlibrary.ui.android.util-mergeReleaseResources-4:/values/values.xml",
+            "outputFile": "org.geometerplus.zlibrary.util-mergeReleaseResources-4:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "outputFile": "org.geometerplus.zlibrary.ui.android.util-merged_res-6:/values/values.xml",
+            "outputFile": "org.geometerplus.zlibrary.util-merged_res-6:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\3021727de8fbe83ba8a22dd3a9175157\\transformed\\databinding-runtime-7.2.2\\res\\values\\values.xml",

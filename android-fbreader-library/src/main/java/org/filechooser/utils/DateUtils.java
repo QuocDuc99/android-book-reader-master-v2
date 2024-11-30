@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import org.filechooser.prefs.DisplayPrefs;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 /**
  * Date utilities.

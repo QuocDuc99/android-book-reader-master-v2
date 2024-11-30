@@ -65,7 +65,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.library.ZLAndroidApplication;
 
 public class BookActivity extends AppCompatFullscreenThemeActivity

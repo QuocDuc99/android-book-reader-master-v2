@@ -1,4 +1,4 @@
-package org.geometerplus.zlibrary.ui.android.util;
+package org.geometerplus.zlibrary.util;
 
 public class BR {
   public static int _all = 0;

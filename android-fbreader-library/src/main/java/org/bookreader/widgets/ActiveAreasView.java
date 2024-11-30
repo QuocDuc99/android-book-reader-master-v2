@@ -22,7 +22,7 @@ import org.geometerplus.fbreader.fbreader.TapZoneMap;
 import org.geometerplus.fbreader.fbreader.options.PageTurningOptions;
 
 import java.util.HashMap;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class ActiveAreasView extends RelativeLayout {
     public static int PERC = 10000; // precision

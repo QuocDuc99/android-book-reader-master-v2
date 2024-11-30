@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.bookreader.model.Attachments
-import org.geometerplus.zlibrary.ui.android.R
-import org.geometerplus.zlibrary.ui.android.databinding.ItemAttactachmentParentsBinding
+import org.geometerplus.zlibrary.R
+import org.geometerplus.zlibrary.databinding.ItemAttactachmentParentsBinding
 
 
 /**

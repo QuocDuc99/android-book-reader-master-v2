@@ -108,7 +108,7 @@ import org.geometerplus.zlibrary.text.view.ZLTextSimpleHighlighting;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
 import org.geometerplus.zlibrary.text.view.ZLTextWordCursor;
 import org.geometerplus.zlibrary.text.view.ZLTextWordRegionSoul;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.view.ZLAndroidPaintContext;
 import org.geometerplus.zlibrary.view.ZLAndroidWidget;
 
@@ -1154,7 +1154,7 @@ public class FBReaderView extends RelativeLayout {
                 public void createControlPanel(Activity activity, RelativeLayout root) {
                     super.createControlPanel(activity, root);
                     View t = myWindow.findViewById(
-                            org.geometerplus.zlibrary.ui.android.R.id.selection_panel_translate);
+                            org.geometerplus.zlibrary.R.id.selection_panel_translate);
                     PackageManager packageManager = getContext().getPackageManager();
                     List<ResolveInfo> rr =
                             packageManager.queryIntentActivities(translateIntent(null), 0);

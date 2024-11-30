@@ -10,7 +10,7 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.PopupWindow
-import org.geometerplus.zlibrary.ui.android.R
+import org.geometerplus.zlibrary.R
 
 
 class KeyboardHeightProvider(private val activity: Activity) : PopupWindow(activity) {

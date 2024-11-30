@@ -44,7 +44,7 @@ public class NavigationSeekbar {
     private void init(Context context) {
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        rootView = inflater.inflate(org.geometerplus.zlibrary.ui.android.R.layout.navigation_panel,
+        rootView = inflater.inflate(org.geometerplus.zlibrary.R.layout.navigation_panel,
                 null);
         createPanel();
     }
@@ -69,9 +69,9 @@ public class NavigationSeekbar {
 
     private void createPanel() {
         slider = (SeekBar) rootView.findViewById(
-                org.geometerplus.zlibrary.ui.android.R.id.navigation_slider);
+                org.geometerplus.zlibrary.R.id.navigation_slider);
         text = (TextView) rootView.findViewById(
-                org.geometerplus.zlibrary.ui.android.R.id.navigation_text);
+                org.geometerplus.zlibrary.R.id.navigation_text);
         setUpNavigation();
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -122,9 +122,9 @@ public class NavigationSeekbar {
     public void setUpNavigation() {
         if (rootView == null) return;
         final SeekBar slider = (SeekBar) rootView.findViewById(
-                org.geometerplus.zlibrary.ui.android.R.id.navigation_slider);
+                org.geometerplus.zlibrary.R.id.navigation_slider);
         final TextView text = (TextView) rootView.findViewById(
-                org.geometerplus.zlibrary.ui.android.R.id.navigation_text);
+                org.geometerplus.zlibrary.R.id.navigation_text);
         final ZLTextView textView = myFBReader.getTextView();
         final ZLTextView.PagePosition pagePosition = textView.pagePosition();
 

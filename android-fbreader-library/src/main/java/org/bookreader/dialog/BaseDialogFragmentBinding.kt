@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.geometerplus.zlibrary.ui.android.R
+import org.geometerplus.zlibrary.R
 
 abstract class BaseDialogFragmentBinding<B : ViewDataBinding, V : ViewModel> :
   DialogFragment {

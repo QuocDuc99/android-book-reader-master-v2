@@ -14,7 +14,7 @@ import com.github.axet.androidlibrary.widgets.OpenStorageChoicer;
 import org.bookreader.app.Storage;
 
 import java.io.File;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class StoragePathPreferenceCompat extends com.github.axet.androidlibrary.preferences.StoragePathPreferenceCompat {
     CharSequence defSummary;

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.bookreader.model.TableOfContents
-import org.geometerplus.zlibrary.ui.android.databinding.ItemChildChaptersBinding
+import org.geometerplus.zlibrary.databinding.ItemChildChaptersBinding
 
 
 /**

@@ -21,7 +21,7 @@ import com.github.axet.androidlibrary.widgets.ThemeUtils;
 import org.bookreader.app.Storage;
 
 import java.util.ArrayList;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class BookmarkPopup { // bookmark click popup
     public static int COLORS[] = new int[]{0xffff0000, 0xffFF8000, 0xffFFFF00, 0xff00FF00, 0xff0000FF, 0xff3F00FF, 0xff7F00FF};

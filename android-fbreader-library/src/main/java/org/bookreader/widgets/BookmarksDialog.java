@@ -27,7 +27,7 @@ import org.bookreader.app.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class BookmarksDialog extends AlertDialog.Builder { // bookmarks list dialog
     BMAdapter a;

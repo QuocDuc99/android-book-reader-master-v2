@@ -29,7 +29,7 @@ import android.widget.*;
 
 import com.mobeta.android.dslv.DragSortListView;
 
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.fbreader.network.*;
 import org.geometerplus.android.fbreader.FBReader;
 import org.geometerplus.android.fbreader.covers.CoverManager;

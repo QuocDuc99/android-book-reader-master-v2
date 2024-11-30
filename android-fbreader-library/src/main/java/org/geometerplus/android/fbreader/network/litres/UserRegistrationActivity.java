@@ -30,7 +30,7 @@ import android.widget.TextView;
 import org.geometerplus.zlibrary.core.network.ZLNetworkManager;
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class UserRegistrationActivity extends RegistrationActivity {
 	private TextView findTextView(int resourceId) {
@@ -69,7 +69,7 @@ public class UserRegistrationActivity extends RegistrationActivity {
 
 		myResource = ZLResource.resource("dialog").getResource("litresUserRegistration");
 
-		//Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.ui.android.library.UncaughtExceptionHandler(this));
+		//Thread.setDefaultUncaughtExceptionHandler(new org.geometerplus.zlibrary.library.UncaughtExceptionHandler(this));
 
 		setContentView(R.layout.lr_user_registration);
 

@@ -41,7 +41,7 @@ import org.geometerplus.zlibrary.core.view.ZLViewWidget;
 import org.geometerplus.zlibrary.text.view.ZLTextRegion;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
 
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.error.ErrorKeys;
 import org.geometerplus.zlibrary.library.ZLAndroidApplication;
 import org.geometerplus.zlibrary.library.ZLAndroidLibrary;

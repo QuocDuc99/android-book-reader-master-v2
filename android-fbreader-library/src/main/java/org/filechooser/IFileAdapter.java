@@ -34,7 +34,7 @@ import org.filechooser.utils.DateUtils;
 import org.filechooser.utils.FileUtils;
 import org.filechooser.utils.ui.ContextMenuUtils;
 import org.filechooser.utils.ui.LoadingDialog;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 /**
  * The adapter to be used in {@link android.widget.ListView}

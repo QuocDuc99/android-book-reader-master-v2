@@ -30,7 +30,7 @@ import org.bookreader.app.BookApplication;
 import org.bookreader.app.Storage;
 import org.bookreader.app.TTFManager;
 
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.view.AndroidFontUtil;
 
 import java.io.File;

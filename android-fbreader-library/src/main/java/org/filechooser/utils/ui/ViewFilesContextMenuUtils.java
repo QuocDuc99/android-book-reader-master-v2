@@ -22,7 +22,7 @@ import org.filechooser.IFileDataModel;
 import org.filechooser.io.IFile;
 import org.filechooser.services.IFileProvider;
 import org.filechooser.utils.history.History;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 /**
  * Utilities for editor context menu.

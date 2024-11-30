@@ -11,7 +11,7 @@ package org.filechooser.prefs;
 import android.content.Context;
 import org.filechooser.FileChooserActivity;
 import org.filechooser.services.IFileProvider;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 /**
  * Display preferences.

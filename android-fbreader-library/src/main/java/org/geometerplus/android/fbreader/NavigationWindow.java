@@ -31,7 +31,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import org.geometerplus.fbreader.bookmodel.TOCTree;
 import org.geometerplus.fbreader.fbreader.FBReaderApp;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class NavigationWindow extends LinearLayout {
     public View rootView;

@@ -56,7 +56,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class LibraryFragment extends Fragment implements BookActivity.SearchListener {
     public static final String TAG = LibraryFragment.class.getSimpleName();

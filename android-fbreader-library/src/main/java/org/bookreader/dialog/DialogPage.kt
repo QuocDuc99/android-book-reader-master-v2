@@ -9,7 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import org.bookreader.util.Util
-import org.geometerplus.zlibrary.ui.android.databinding.DialogPageBinding
+import org.geometerplus.zlibrary.databinding.DialogPageBinding
 import java.lang.NumberFormatException
 
 class DialogPage(

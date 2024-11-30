@@ -25,7 +25,7 @@ import org.geometerplus.fbreader.fbreader.options.FooterOptions;
 import org.geometerplus.zlibrary.core.fonts.FontEntry;
 import org.geometerplus.zlibrary.core.library.ZLibrary;
 import org.geometerplus.zlibrary.text.view.ZLTextView;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.view.AndroidFontUtil;
 import org.geometerplus.zlibrary.view.ZLAndroidPaintContext;
 

@@ -18,8 +18,8 @@ import org.bookreader.viewmodel.MainViewModel;
 import org.bookreader.widgets.FBReaderView;
 import java.util.ArrayList;
 import java.util.List;
-import org.geometerplus.zlibrary.ui.android.R;
-import org.geometerplus.zlibrary.ui.android.databinding.FragmentBookmarkBinding;
+import org.geometerplus.zlibrary.R;
+import org.geometerplus.zlibrary.databinding.FragmentBookmarkBinding;
 
 public class FragmentBookMark extends Fragment {
     private List<Storage.Bookmark> mBookmarkList = new ArrayList<>();

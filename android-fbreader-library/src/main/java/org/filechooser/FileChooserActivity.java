@@ -74,7 +74,7 @@ import org.filechooser.utils.ui.Dlg;
 import org.filechooser.utils.ui.LoadingDialog;
 import org.filechooser.utils.ui.TaskListener;
 import org.filechooser.utils.ui.ViewFilesContextMenuUtils;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 import static org.filechooser.FileChooserActivity.ViewType.Grid;
 

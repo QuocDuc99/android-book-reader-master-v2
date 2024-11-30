@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.bookreader.model.TableOfContents
-import org.geometerplus.zlibrary.ui.android.R
-import org.geometerplus.zlibrary.ui.android.databinding.ItemChaptersBinding
+import org.geometerplus.zlibrary.R
+import org.geometerplus.zlibrary.databinding.ItemChaptersBinding
 
 /**
  * Created by DucNA on 11/04/2024.

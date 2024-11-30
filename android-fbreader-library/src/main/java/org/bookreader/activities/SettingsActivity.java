@@ -15,7 +15,7 @@ import com.github.axet.androidlibrary.preferences.RotatePreferenceCompat;
 import com.github.axet.androidlibrary.preferences.StoragePathPreferenceCompat;
 import org.bookreader.app.BookApplication;
 import org.bookreader.app.Storage;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class SettingsActivity extends AppCompatSettingsThemeActivity {
     public static final int RESULT_STORAGE = 1;
