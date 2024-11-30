@@ -11,7 +11,7 @@
 
         <variable
             name="attachment"
-            type="org.bookreader.model.Attachments" />
+            type="org.geometerplus.zlibrary.bookreader.model.Attachments" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

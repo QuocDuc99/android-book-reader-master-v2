@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="org.bookreader.fragments.LibraryFragment">
+    tools:context=".bookreader.fragments.LibraryFragment">
 
     <include
         android:id="@+id/library_header"
