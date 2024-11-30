@@ -5,4 +5,4 @@ before_install:
   - ./scripts/prepareJitpackEnvironment.sh
 install:
   - FILE="-Dfile=android-fbreader-library-release.aar"
-  - mvn install:install-file $FILE -DgroupId=com.github.QuocDuc99 -DartifactId=android-book-reader-master-v2 -Dversion=0.3.9 -Dpackaging=aar -DgeneratePom=true
+  - mvn install:install-file $FILE -DgroupId=com.github.QuocDuc99 -DartifactId=android-book-reader-master-v2 -Dversion=0.4.0 -Dpackaging=aar -DgeneratePom=true
