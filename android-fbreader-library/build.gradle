@@ -224,26 +224,26 @@ publishing {
 dependencies {
   implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
   implementation 'com.android.support:support-v4:28.0.0'
-  implementation "com.google.android.material:material:1.4.0"
-  implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+  implementation "com.google.android.material:material:1.12.0"
+  implementation 'com.android.support.constraint:constraint-layout:2.0.4'
   api 'com.github.axet.fbreader:ambilwarna:1.0' // compile project(':ambilWarna')
   //api 'com.github.axet.fbreader:androidfilechooser:5.0' // compile project(':androidFileChooser')
   api 'com.github.axet.fbreader:dragsortlistview:0.6.1' // compile project(':dragSortListview')
   api 'com.github.axet.fbreader:supertoasts:1.3.4' // compile project(':superToasts')
   api 'com.github.axet:pdfparse-lib:1.0'
   api('com.googlecode.json-simple:json-simple:1.1.1') { exclude group: 'junit' }
-  api 'org.apache.httpcomponents:httpmime:4.5.2'
+  api 'org.apache.httpcomponents:httpmime:4.5.6'
   api 'com.nanohttpd:nanohttpd:2.1.0'
-  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+  implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
   //implementation 'com.github.axet.fbreader:util:0.0.5'
-  testImplementation 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.13.2'
   // implementation "com.google.android.material:material:1.4.0"
   implementation 'com.github.axet:android-library:1.35.21'
 //   implementation project(':util')
   // implementation project(':android-library')
-  implementation 'com.android.support:design:25.3.1'
+  implementation 'com.android.support:design:28.0.0'
   // implementation project(':android-fbreader-library')
-  implementation 'com.android.support:support-vector-drawable:25.3.1'
+  implementation 'com.android.support:support-vector-drawable:28.0.0'
   //  implementation 'com.android.support.constraint:constraint-layout:1.1.3'
   //  implementation ('com.github.axet.fbreader:library:0.1.18') { exclude group: 'org.apache.httpcomponents', module: 'httpclient' }
   implementation 'com.github.axet:djvulibre:0.1.4'
@@ -255,7 +255,7 @@ dependencies {
   //    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
   //   implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
   implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-  implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
+  implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
 
   implementation 'com.github.bumptech.glide:glide:4.16.0'
   implementation 'com.android.support:multidex:2.0.1'
@@ -263,4 +263,5 @@ dependencies {
 
   implementation "android.arch.persistence.room:runtime:1.1.1"
   kapt "android.arch.persistence.room:compiler:1.1.1"
+  kaptAndroidTest 'androidx.databinding:databinding-compiler:8.7.2'
 }
