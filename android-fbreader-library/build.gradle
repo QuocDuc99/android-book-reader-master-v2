@@ -29,6 +29,7 @@ apply plugin: 'maven-publish'
 android {
   compileSdkVersion 34
   ndkVersion "16.1.4479499"
+  namespace 'org.geometerplus.zlibrary'
   defaultConfig {
     minSdkVersion 19
     targetSdkVersion 34
