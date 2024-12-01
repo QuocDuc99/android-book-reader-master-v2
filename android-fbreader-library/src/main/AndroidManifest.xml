@@ -2,7 +2,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto"
     package="org.geometerplus.zlibrary">
     <uses-permission
         android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"
@@ -11,9 +10,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application android:supportsRtl="true">
 
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
+<!--        <uses-library-->
+<!--            android:name="org.apache.http.legacy"-->
+<!--            android:required="false" />-->
 
         <activity
             android:windowSoftInputMode="adjustResize"

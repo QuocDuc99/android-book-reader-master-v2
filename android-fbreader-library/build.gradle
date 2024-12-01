@@ -18,14 +18,15 @@ repositories {
   google()
 }
 
+
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 //apply plugin: 'signing'
-apply plugin: 'digital.wup.android-maven-publish' // 'gradle publishToMavenLocal' and 'publish' tasks
+//apply plugin: 'digital.wup.android-maven-publish' // 'gradle publishToMavenLocal' and 'publish' tasks
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'maven-publish'
+
 android {
   compileSdkVersion 34
   //ndkVersion "16.1.4479499"
@@ -42,17 +43,17 @@ android {
     multiDexEnabled true
   }
 
-  lintOptions {
-    disable 'WrongViewCast'
-    checkReleaseBuilds false
-    abortOnError false
-  }
+//  lintOptions {
+//    disable 'WrongViewCast'
+//    checkReleaseBuilds false
+//    abortOnError false
+//  }
 
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
-      consumerProguardFiles 'consumer-rules.pro'
+      //consumerProguardFiles 'consumer-rules.pro'
     }
     debug {
       debuggable true
@@ -60,11 +61,11 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-  externalNativeBuild {
-    ndkBuild {
-      path 'src/main/jni/Android.mk'
-    }
-  }
+//  externalNativeBuild {
+//    ndkBuild {
+//      path 'src/main/jni/Android.mk'
+//    }
+//  }
   buildFeatures {
     dataBinding true
     viewBinding true
@@ -89,25 +90,25 @@ android {
 //}
 // https://docs.gradle.org/current/userguide/publishing_maven.html
 
-task javadoc(type: Javadoc) {
-  failOnError = false // options.addStringOption('Xdoclint:none', '-quiet')
-  source = android.sourceSets.main.java.srcDirs
-  classpath += project.files(project.android.getBootClasspath().join(File.pathSeparator))
-}
+//task javadoc(type: Javadoc) {
+//  failOnError = false // options.addStringOption('Xdoclint:none', '-quiet')
+//  source = android.sourceSets.main.java.srcDirs
+//  classpath += project.files(project.android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//  classifier = 'javadoc'
+//  from javadoc.destinationDir
+//}
+//
+//task sourcesJar(type: Jar) {
+//  classifier = 'sources'
+//  from android.sourceSets.main.java.srcDirs
+//}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
-  from javadoc.destinationDir
-}
-
-task sourcesJar(type: Jar) {
-  classifier = 'sources'
-  from android.sourceSets.main.java.srcDirs
-}
-
-def prop(String name) {
-  project.hasProperty(name) ? project.getProperty(name) : null
-}
+//def prop(String name) {
+//  project.hasProperty(name) ? project.getProperty(name) : null
+//}
 publishing {
   publications {
     mavenJava(MavenPublication) {
@@ -119,9 +120,9 @@ publishing {
     }
   }
 }
-publishing {
-  publications {
-    mavenJava(MavenPublication) {
+//publishing {
+//  publications {
+   /* mavenJava(MavenPublication) {
       groupId 'com.github.QuocDuc99'
       artifactId 'android-fbreader-library'
       version android.defaultConfig.versionName
@@ -133,7 +134,7 @@ publishing {
       pom {
         description = 'First version release'
         //name = 'Android FBReader Library'
-        /* description = 'First version release'
+        *//* description = 'First version release'
          url = 'https://github.com/QuocDuc99/android-book-reader-master'
          licenses {
              license {
@@ -152,11 +153,11 @@ publishing {
              connection = 'scm:git:' + pom.url.get()
              developerConnection = 'scm:git:' + pom.url.get()
              url = pom.url
-         }*/
+         }*//*
       }
-    }
-  }
-  repositories {
+    }*/
+//  }
+ /* repositories {
     mavenLocal()
     maven {
       def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
@@ -167,8 +168,8 @@ publishing {
         password prop('ossrhPassword')
       }
     }
-  }
-}
+  }*/
+//}
 //publishing {
 //  publications {
 //    mavenJava(MavenPublication) {
@@ -224,7 +225,7 @@ publishing {
 
 dependencies {
   implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-  implementation 'com.android.support:support-v4:28.0.0'
+ // implementation 'com.android.support:support-v4:28.0.0'
   implementation "com.google.android.material:material:1.12.0"
   implementation 'com.android.support.constraint:constraint-layout:2.0.4'
   api 'com.github.axet.fbreader:ambilwarna:1.0' // compile project(':ambilWarna')
