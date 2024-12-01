@@ -21,7 +21,7 @@ package org.geometerplus.fbreader.fbreader;
 
 import java.util.*;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 import org.geometerplus.zlibrary.core.application.*;
 import org.geometerplus.zlibrary.core.drm.FileEncryptionInfo;

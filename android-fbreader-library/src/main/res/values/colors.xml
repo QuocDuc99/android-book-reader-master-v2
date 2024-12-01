@@ -7,4 +7,5 @@
   <color name="seek_bar_background">#803399CC</color>
   <color name="seek_bar_progress">#3399CC</color>
   <color name="seek_bar_secondary_progress">#3399CC</color>
+ <color name="afc_border_line_dark">#33B5E5</color>
 </resources>

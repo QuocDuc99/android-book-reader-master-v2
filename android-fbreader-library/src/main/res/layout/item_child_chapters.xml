@@ -7,7 +7,7 @@
 
         <variable
             name="chapter"
-            type="org.bookreader.model.TableOfContents" />
+            type="org.geometerplus.zlibrary.bookreader.model.TableOfContents" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

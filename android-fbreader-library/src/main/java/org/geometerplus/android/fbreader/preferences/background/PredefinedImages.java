@@ -28,7 +28,7 @@ import android.widget.*;
 
 import org.geometerplus.zlibrary.core.filesystem.ZLFile;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 import org.geometerplus.fbreader.fbreader.WallpapersUtil;
 

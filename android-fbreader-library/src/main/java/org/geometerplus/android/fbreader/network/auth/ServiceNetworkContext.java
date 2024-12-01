@@ -32,7 +32,7 @@ import android.text.TextUtils;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 
 public class ServiceNetworkContext extends AndroidNetworkContext {
 	private final Service myService;

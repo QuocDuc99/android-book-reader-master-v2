@@ -1,4 +1,4 @@
-package org.geometerplus.zlibrary.ui.android.util;
+package org.geometerplus.zlibrary.util;
 
 import android.util.SparseArray;
 import android.util.SparseIntArray;

@@ -19,7 +19,7 @@
 
         <variable
             name="listener"
-            type="org.bookreader.custom.webview.WebViewLoadingListener" />
+            type="org.geometerplus.zlibrary.bookreader.custom.webview.WebViewLoadingListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/afc_file" />
 
-        <org.bookreader.custom.webview.CustomWebview
+        <org.geometerplus.zlibrary.bookreader.custom.webview.CustomWebview
             android:id="@+id/webview"
             android:layout_width="0dp"
             android:layout_height="0dp"

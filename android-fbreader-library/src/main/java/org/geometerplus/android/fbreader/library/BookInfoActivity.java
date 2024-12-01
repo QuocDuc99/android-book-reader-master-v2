@@ -43,7 +43,7 @@ import org.geometerplus.zlibrary.core.language.ZLLanguageUtil;
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 
 import org.geometerplus.zlibrary.library.UncaughtExceptionHandler;
-import org.geometerplus.zlibrary.ui.android.R;
+import org.geometerplus.zlibrary.R;
 import org.geometerplus.zlibrary.image.ZLAndroidImageData;
 import org.geometerplus.zlibrary.image.ZLAndroidImageManager;
 

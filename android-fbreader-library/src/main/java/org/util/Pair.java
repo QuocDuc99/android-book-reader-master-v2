@@ -19,7 +19,7 @@
 
 package org.util;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 public class Pair<T1,T2> {
 	public final T1 First;

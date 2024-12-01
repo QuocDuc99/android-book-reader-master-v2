@@ -1,5 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <org.bookreader.widgets.StoragePathPreferenceCompat
+    <org.geometerplus.zlibrary.bookreader.widgets.StoragePathPreferenceCompat
         android:defaultValue="My Readings"
         android:key="storage_path"
         android:summary="@string/pref_storagepath_summary"

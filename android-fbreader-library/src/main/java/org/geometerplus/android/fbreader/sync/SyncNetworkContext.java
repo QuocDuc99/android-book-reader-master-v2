@@ -23,7 +23,7 @@ import android.app.Service;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import org.fbreader.util.ComparisonUtil;
+import org.util.ComparisonUtil;
 
 import org.geometerplus.zlibrary.core.network.ZLNetworkException;
 import org.geometerplus.zlibrary.core.network.ZLNetworkRequest;

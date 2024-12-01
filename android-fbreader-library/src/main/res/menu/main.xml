@@ -40,13 +40,13 @@
         android:id="@+id/action_rtl"
         android:icon="@drawable/ic_gesture_black_24dp"
         android:title="LRT"
-        app:actionViewClass="org.bookreader.widgets.ToolbarRTLView"
+        app:actionViewClass="org.geometerplus.zlibrary.bookreader.widgets.ToolbarRTLView"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_fontsize"
         android:icon="@drawable/ic_format_size_white_24dp"
         android:title="@string/book_font"
-        app:actionViewClass="org.bookreader.widgets.ToolbarFontSizeView"
+        app:actionViewClass="org.geometerplus.zlibrary.bookreader.widgets.ToolbarFontSizeView"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_reflow"

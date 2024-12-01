@@ -21,8 +21,8 @@ package org.geometerplus.fbreader.library;
 
 import java.util.*;
 
-import org.fbreader.util.NaturalOrderComparator;
-import org.fbreader.util.Pair;
+import org.util.NaturalOrderComparator;
+import org.util.Pair;
 
 import org.geometerplus.zlibrary.core.filesystem.ZLFile;
 import org.geometerplus.zlibrary.core.image.ZLImage;
